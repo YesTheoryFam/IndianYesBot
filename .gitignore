@@ -1,0 +1,18 @@
+# BETA Test Files 
+/beta
+/src/collections
+
+# configuration files
+/src/config
+
+# node modules
+/node_modules
+
+# .evn files
+.evn
+
+# VS Code Files
+*.code-workspace
+
+# MAC Files
+.DS_Store

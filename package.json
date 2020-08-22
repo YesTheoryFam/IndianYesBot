@@ -1,0 +1,29 @@
+{
+  "name": "indianyesbot",
+  "version": "1.0.0",
+  "description": "A moderation bot for the Yes Fam India Discrod Server",
+  "main": "bot.js",
+  "scripts": {
+    "test": "node beta/BetaBot/bot.js",
+    "start": "node src/bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YesTheoryFam/IndianYesBot.git"
+  },
+  "keywords": [
+    "Yes",
+    "Theary",
+    "Fam",
+    "India"
+  ],
+  "author": "Mohammed Farish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YesTheoryFam/IndianYesBot/issues"
+  },
+  "homepage": "https://github.com/YesTheoryFam/IndianYesBot#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1"
+  }
+}
