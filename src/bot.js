@@ -31,13 +31,33 @@ customCommands(bot);
 
 // ===========================================================================!|
 // ===========================================================================!|
+//                                TEST ZONE
 // ==========================================================================÷!|
 // ==========================================================================÷!|
 
-// bot.on('message', message => {
+// commandtest
+bot.on('message', message => {
+const PREFIX = "!";
+const serverLogs = message.guild.channels.cache.get('747121287381516399');
+
+const archiveCategory = '747111680168820766';
 
 
-// })
+  let args = message.content.substring(PREFIX.length).split(" ");
+  switch(args[0]) {
+
+    
+    case 'archive':
+    if (message.member.hasPermission('ADMINISTRATOR')){
+      message.channel.setParent(archiveCategory);
+      message.channel.lockPermissions();
+      message.react('👍');
+      serverLogs.send(`${message.author} has archived ${message.channel}`);
+    };
+      break;
+
+  }
+})
 
 
 bot.on('messageReactionAdd', async (reaction, user) =>{
