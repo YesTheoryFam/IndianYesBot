@@ -1,14 +1,15 @@
 // const Discord = require('discord.js');
 // const bot = new Discord.Client({partials: ["MESSAGE", "REACTION", "CHANNEL"]});
 
-const states = require('../collections/Roles/stateTags.json')
+// const states = require('../collections/Roles/stateTags.json')
+const PREFIX = "!";
 
 
 module.exports = bot => {
 
     bot.on('message', message => {
-
-        const PREFIX = '!';
+        
+            console.log(message.content);
         
         const betaTestChannel = message.guild.channels.cache.get('746755589895487488');
         
