@@ -32,6 +32,8 @@ messageEvent(bot);
 
 bot.on('message', message => {
 
+PREFIX = '!';
+
   let args = message.content.substring(PREFIX.length).split(" ");
   switch(args[0]) {
 
