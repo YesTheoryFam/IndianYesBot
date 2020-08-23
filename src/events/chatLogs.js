@@ -1,3 +1,5 @@
+const Discord = require('discord.js');
+
 module.exports = bot => {
     //Message update logging
 bot.on("messageUpdate", async(oldMessage, newMessage) =>{
