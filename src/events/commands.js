@@ -9,13 +9,13 @@ module.exports = bot => {
 
     bot.on('message', message => {
     if(message.author.bot) return;
-    let args = message.content.substring(PREFIX.length).split(" ");
 
 
     const betaTestChannel = message.guild.channels.cache.get('746755589895487488');
+    const archiveCategory = '747111680168820766';
         
-        
-          switch(args[0]) {
+        let args = message.content.substring(PREFIX.length).split(" ");
+        switch(args[0]) {
         
             case 'ping':
             if (message.channel == betaTestChannel) {
@@ -42,7 +42,22 @@ module.exports = bot => {
               }
             };
               break;
-        
+
+              const archiveCategory = '747111680168820766';
+            
+            case 'archive':
+
+                if (message.member.hasPermission('ADMINISTRATOR')){
+
+                    message.channel.setParent(archiveCategory);
+                    message.channel.lockPermissions(archiveCategory);
+                    message.react('👍');
+                    message.channel.setPosition(0);
+                    // serverLogs.send(`${message.author} has archived ${message.channel}`);
+
+            };
+
+            break;
 
           };
         })
