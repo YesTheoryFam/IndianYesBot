@@ -8,13 +8,13 @@ const PREFIX = "!";
 module.exports = bot => {
 
     bot.on('message', message => {
+    if(message.author.bot) return;
+    let args = message.content.substring(PREFIX.length).split(" ");
+
+
+    const betaTestChannel = message.guild.channels.cache.get('746755589895487488');
         
-            console.log(message.content);
         
-        const betaTestChannel = message.guild.channels.cache.get('746755589895487488');
-        
-        
-          let args = message.content.substring(PREFIX.length).split(" ");
           switch(args[0]) {
         
             case 'ping':
@@ -40,7 +40,7 @@ module.exports = bot => {
               } else {
                 return;
               }
-            }
+            };
               break;
         
 

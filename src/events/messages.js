@@ -3,6 +3,8 @@ const states = require('../collections/Roles/stateTags.json');
 module.exports = bot => {
     bot.on('message', message =>{
         const betaTestChannel = message.guild.channels.cache.get('746755589895487488');
+        const pollsChannel = message.guild.channels.cache.get('720682985581707325');
+        const featureRequestChannel = message.guild.channels.cache.get('715200556817317940');
         
             if (message.author.bot) return;
         
@@ -13,7 +15,7 @@ module.exports = bot => {
         
             // reply for hi
             if (message.content.includes('hi')) {
-                
+
                 if (message.member.hasPermission('KICK_MEMBERS')){
                     message.channel.send(`Hi there, ${message.author}`);
             
@@ -47,5 +49,14 @@ module.exports = bot => {
 
         //      Reaction of F ends here ----------------
         
+      // Reaction in #polls
+        if (message.channel == pollsChannel){
+          message.react('🇦').then(() => message.react('🅱️'));
+        };
+      
+        // Reaction in #feature-request
+        if (message.channel == featureRequestChannel){
+          message.react('👍').then(() => message.react('👎'));
+        };
 
 })};
