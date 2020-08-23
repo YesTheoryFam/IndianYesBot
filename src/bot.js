@@ -80,11 +80,11 @@ bot.on('messageReactionRemove', async (reaction, user) =>{
     // if (reaction.message.id === '745420667507179532'){
 
     if(reaction.emoji.name === '👍') {
-      await reaction.message.guild.members.cache.get(user.id).roles.remove("745418771417792634")
+      await reaction.message.guild.members.cache.get(user.id).roles.remove(states.test1.role)
       return;
     }
     if(reaction.emoji.name === '👎') {
-      await reaction.message.guild.members.cache.get(user.id).roles.remove("745418854091718687")
+      await reaction.message.guild.members.cache.get(user.id).roles.remove(states.test2.role)
       return;
   }
 }

@@ -13,6 +13,7 @@ module.exports = bot => {
         
             // reply for hi
             if (message.content.includes('hi')) {
+                
                 if (message.member.hasPermission('KICK_MEMBERS')){
                     message.channel.send(`Hi there, ${message.author}`);
             
@@ -22,7 +23,8 @@ module.exports = bot => {
                     message.react(states.test2.emote);
                 }
             } else {
-                message.channel.send(`I'm currently under development. But you can always tell me hi and I'll say hi back. See, I'm a nice bot.`)
+                // message.channel.send(`I'm currently under development. But you can always tell me hi and I'll say hi back. See, I'm a nice bot.`)
+                return;
             };
         
             
@@ -42,7 +44,7 @@ module.exports = bot => {
             if (message.content.startsWith('f ')) (
                 message.react('🇫')
             );
-            
+
         //      Reaction of F ends here ----------------
         
 
