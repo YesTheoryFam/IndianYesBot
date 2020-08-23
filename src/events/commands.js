@@ -48,7 +48,8 @@ module.exports = betabot => {
             console.log(fetchedMessage)
             console.log(reactContent)
             console.log(message.content);
-        //   fetchedMessage.react(states.test1.emote);1
+            
+          reactContent.react(states.test1.emote);1
 
               break;
           };
