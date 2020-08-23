@@ -30,7 +30,20 @@ module.exports = bot => {
            };
         
         //    ============================================
-        
+
+
+        //    Reaction for F 
+        if (message.content.toLowerCase() === 'F'.toLocaleLowerCase()) {
+            message.react('🇫');
+            };
+            if (message.content.startsWith('F ')) (
+                message.react('🇫')
+            );
+            if (message.content.startsWith('f ')) (
+                message.react('🇫')
+            );
+            
+        //      Reaction of F ends here ----------------
         
 
 })};
