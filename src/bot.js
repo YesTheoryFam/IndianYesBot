@@ -8,6 +8,8 @@ const states = require('./collections/Roles/stateTags.json');
 
 const messageEvent = require('./events/messages.js');
 // const memberJoinEvent = require('./events/memberJoin.js');
+const customCommands = require('./events/commands.js');
+
 
 
 bot.on('ready', () => {
@@ -21,6 +23,8 @@ bot.on('ready', () => {
 
 messageEvent(bot);
 // memberJoinEvent(bot);
+customCommands(betabot);
+
 
 
 
@@ -30,42 +34,6 @@ messageEvent(bot);
 // ==========================================================================÷!|
 // ==========================================================================÷!|
 
-bot.on('message', message => {
-
-const PREFIX = '!';
-
-const betaTestChannel = message.guild.channels.cache.get('746755589895487488');
-
-
-  let args = message.content.substring(PREFIX.length).split(" ");
-  switch(args[0]) {
-
-    case 'ping':
-    if (message.channel == betaTestChannel) {
-      message.channel.send('calculating ping ...').then(resultMessage => {
-        const pong = resultMessage.createdTimestamp - message.createdTimestamp;
-      
-        resultMessage.delete();
-        message.channel.send("```Latency = " + pong + "ms``````API Latency = " + bot.ws.ping + "ms```");
-      })
-    } else {
-      if (message.member.hasPermission('ADMINISTRATOR')){
-        message.channel.send('calculating ping ...').then(resultMessage => {
-          const pong = resultMessage.createdTimestamp - message.createdTimestamp;
-        
-          resultMessage.delete();
-          message.channel.send("```Latency = " + pong + "ms``````API Latency = " + bot.ws.ping + "ms```").then(pongMessage => {
-            pongMessage.delete({timeout: 5000});
-            return;
-          })
-        })
-      } else {
-        return;
-      }
-    }
-      break;
-  };
-})
 
 
 bot.on('messageReactionAdd', async (reaction, user) =>{
