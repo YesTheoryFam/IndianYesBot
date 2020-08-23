@@ -45,8 +45,8 @@ module.exports = betabot => {
             case 'react':
                 const reactContent = message.content.replace('!react ', "")
           const fetchedMessage = message.fetch(reactContent);
-
-          fetchedMessage.react(states.test1.emote);1
+            console.log(fetchedMessage)
+        //   fetchedMessage.react(states.test1.emote);1
 
               break;
           };
