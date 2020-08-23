@@ -2,9 +2,9 @@
   "name": "indianyesbot",
   "version": "1.0.0",
   "description": "A moderation bot for the Yes Fam India Discrod Server",
-  "main": "bot.js",
+  "main": "src/bot.js",
   "scripts": {
-    "test": "node beta/BetaBot/bot.js",
+    "test": "node beta/BetaBot/index.js",
     "start": "node src/bot.js"
   },
   "repository": {

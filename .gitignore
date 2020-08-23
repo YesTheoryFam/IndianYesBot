@@ -1,15 +1,11 @@
 # BETA Test Files 
 /beta
-/src/collections
 
 # configuration files
-/src/config
+# /src/config
 
 # node modules
-/node_modules
-
-# .evn files
-.evn
+# /node_modules
 
 # VS Code Files
 *.code-workspace
