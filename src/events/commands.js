@@ -10,7 +10,7 @@ module.exports = bot => {
     bot.on('message', message => {
     if(message.author.bot) return;
 
-
+    const serverLogs = message.guild.channels.cache.get('747121287381516399');
     const betaTestChannel = message.guild.channels.cache.get('746755589895487488');
     const archiveCategory = '747111680168820766';
 
@@ -53,7 +53,7 @@ module.exports = bot => {
                     message.channel.lockPermissions(archiveCategory);
                     message.react('👍');
                     message.channel.setPosition(0);
-                    // serverLogs.send(`${message.author} has archived ${message.channel}`);
+                    serverLogs.send(`${message.author} has archived ${message.channel} channel.`);
 
             };
 
