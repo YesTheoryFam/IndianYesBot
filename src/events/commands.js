@@ -12,6 +12,8 @@ module.exports = bot => {
 
 
     const betaTestChannel = message.guild.channels.cache.get('746755589895487488');
+    const archiveCategory = '747111680168820766';
+
         
         let args = message.content.substring(PREFIX.length).split(" ");
         switch(args[0]) {
@@ -42,10 +44,8 @@ module.exports = bot => {
             };
               break;
 
-              const archiveCategory = '747111680168820766';
             
             case 'archive':
-                const archiveCategory = '747111680168820766';
 
                 if (message.member.hasPermission('ADMINISTRATOR')){
 
