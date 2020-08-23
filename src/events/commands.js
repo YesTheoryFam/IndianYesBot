@@ -4,9 +4,9 @@
 const states = require('../collections/Roles/stateTags.json')
 
 
-module.exports = betabot => {
+module.exports = bot => {
 
-    betabot.on('message', message => {
+    bot.on('message', message => {
 
         const PREFIX = '!';
         
@@ -42,16 +42,7 @@ module.exports = betabot => {
             }
               break;
         
-            case 'react':
-                const reactContent = message.content.replace('!react ', "")
-          const fetchedMessage = message.fetch(reactContent);
-            console.log(fetchedMessage)
-            console.log(reactContent)
-            console.log(message.content);
-            
-          reactContent.react(states.test1.emote);1
 
-              break;
           };
         })
 
