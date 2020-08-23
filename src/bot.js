@@ -30,21 +30,39 @@ messageEvent(bot);
 // ==========================================================================÷!|
 // ==========================================================================÷!|
 
-betabot.on('message', message => {
+bot.on('message', message => {
 
-PREFIX = '!';
+const PREFIX = '!';
+
+const betaTestChannel = message.guild.channels.cache.get('746755589895487488');
+
 
   let args = message.content.substring(PREFIX.length).split(" ");
   switch(args[0]) {
 
     case 'ping':
-
-    message.channel.send('calculating ping ...').then(resultMessage => {
-      const pong = resultMessage.createdTimestamp - message.createdTimestamp;
-    
-      resultMessage.delete();
-      message.channel.send("```Latency = " + pong + "ms``````API Latency = " + bot.ws.ping + "ms```");
-    })
+    if (message.channel == betaTestChannel) {
+      message.channel.send('calculating ping ...').then(resultMessage => {
+        const pong = resultMessage.createdTimestamp - message.createdTimestamp;
+      
+        resultMessage.delete();
+        message.channel.send("```Latency = " + pong + "ms``````API Latency = " + bot.ws.ping + "ms```");
+      })
+    } else {
+      if (message.member.hasPermission('ADMINISTRATOR')){
+        message.channel.send('calculating ping ...').then(resultMessage => {
+          const pong = resultMessage.createdTimestamp - message.createdTimestamp;
+        
+          resultMessage.delete();
+          message.channel.send("```Latency = " + pong + "ms``````API Latency = " + bot.ws.ping + "ms```").then(pongMessage => {
+            pongMessage.delete({timeout: 5000});
+            return;
+          })
+        })
+      } else {
+        return;
+      }
+    }
       break;
   };
 })
