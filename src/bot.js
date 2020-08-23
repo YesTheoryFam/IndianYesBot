@@ -11,11 +11,11 @@ const messageEvent = require('./events/messages.js');
 
 
 bot.on('ready', () => {
-const botOnNotificationChannel = bot.channels.cache.get('746764608890470470');
+// const botOnNotificationChannel = bot.channels.cache.get('746764608890470470');
 
     console.log('IndianYesBot is online.');
-    if(!botOnNotificationChannel) return;
-    botOnNotificationChannel.send('restart_success');
+    // if(!botOnNotificationChannel) return;
+    // botOnNotificationChannel.send('restart_success');
     
 });
 
@@ -30,9 +30,22 @@ messageEvent(bot);
 // ==========================================================================÷!|
 // ==========================================================================÷!|
 
-// bot.on('message', message => {
+bot.on('message', message => {
 
-// })
+  let args = message.content.substring(PREFIX.length).split(" ");
+  switch(args[0]) {
+
+    case 'ping':
+
+    message.channel.send('calculating ping ...').then(resultMessage => {
+      const pong = resultMessage.createdTimestamp - message.createdTimestamp;
+    
+      resultMessage.delete();
+      message.channel.send("```Latency = " + pong + "ms``````API Latency = " + bot.ws.ping + "ms```");
+    })
+      break;
+  };
+})
 
 
 bot.on('messageReactionAdd', async (reaction, user) =>{
