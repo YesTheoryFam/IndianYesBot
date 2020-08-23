@@ -50,7 +50,7 @@ const archiveCategory = '747111680168820766';
     case 'archive':
     if (message.member.hasPermission('ADMINISTRATOR')){
       message.channel.setParent(archiveCategory);
-      message.channel.lockPermissions();
+      message.channel.lockPermissions(archiveCategory);
       message.react('👍');
       serverLogs.send(`${message.author} has archived ${message.channel}`);
     };
