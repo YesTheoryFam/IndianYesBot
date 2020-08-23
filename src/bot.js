@@ -23,7 +23,7 @@ bot.on('ready', () => {
 
 messageEvent(bot);
 // memberJoinEvent(bot);
-customCommands(betabot);
+customCommands(bot);
 
 
 
