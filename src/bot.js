@@ -180,6 +180,7 @@ bot.on('message', message =>{
   
       if (message.channel == regionSelectChannel){
           message.react(states.north.emoji);
+          message.react(states.central.emoji);
           message.react(states.east.emoji);
           message.react(states.west.emoji);
           message.react(states.south.emoji);
