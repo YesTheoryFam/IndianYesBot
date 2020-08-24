@@ -97,7 +97,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
   };
 
 // north
-  if(reaction.message.channel == regionSelectChannel) {
+  if(reaction.message.channel.id == regionSelectChannel.id) {
     console.log('region select channel');
 
 
