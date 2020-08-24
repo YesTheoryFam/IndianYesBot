@@ -55,6 +55,14 @@ const serverLogs = message.guild.channels.cache.get('747121287381516399');
 
 
 bot.on('messageReactionAdd', async (reaction, user) =>{
+  const regionSelectChannel = message.guild.channels.cache.get('746849042197118987');
+  const southRegion = message.guild.channels.cache.get('747508674205057145');
+  const northeastRegion = message.guild.channels.cache.get('747509081362792639');
+  const northRegion = message.guild.channels.cache.get('747508740714135672');
+  const centralRegion = message.guild.channels.cache.get('747508926936907787');
+  const eastRegion = message.guild.channels.cache.get('747508785115037828');
+  const westRegion = message.guild.channels.cache.get('747508857726566460');
+  const islandRegion = message.guild.channels.cache.get('747508979931939038');
   
     if(reaction.message.partial) await reaction.message.fetch();
     if (reaction.partial) await reaction.fetch();
