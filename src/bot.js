@@ -251,7 +251,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // ladhak
     if(reaction.emoji.name === states.north.ladhak.emoji){
-      await reaction.message.guild.members.cache.get(states.north.ladhak.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.ladhak.role);
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -274,7 +274,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // Chandigarh
     if(reaction.emoji.name === states.north.chandigarh.emoji){
-      await reaction.message.guild.members.cache.get(states.north.chandigarh.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.chandigarh.role);
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -297,7 +297,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // delhi
     if(reaction.emoji.name === states.north.delhi.emoji){
-      await reaction.message.guild.members.cache.get(states.north.delhi.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.delhi.role);
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
@@ -320,7 +320,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // haryana
     if(reaction.emoji.name === states.north.haryana.emoji){
-      await reaction.message.guild.members.cache.get(states.north.haryana.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.haryana.role);
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -343,7 +343,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // himachal pradesh
     if(reaction.emoji.name === states.north.himachalPradesh.emoji){
-      await reaction.message.guild.members.cache.get(states.north.himachalPradesh.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.himachalPradesh.role);
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -366,7 +366,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // Jammu and Kashmir
     if(reaction.emoji.name === states.north.jammuandkashmir.emoji){
-      await reaction.message.guild.members.cache.get(states.north.jammuandkashmir.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.jammuandkashmir.role);
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -389,7 +389,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // punjab
     if(reaction.emoji.name === states.north.punjab.emoji){
-      await reaction.message.guild.members.cache.get(states.north.punjab.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.punjab.role);
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -412,7 +412,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // rejasthan
     if(reaction.emoji.name === states.north.rajasthan.emoji){
-      await reaction.message.guild.members.cache.get(states.north.rajasthan.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.rajasthan.role);
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -440,7 +440,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // Andra Pradesh
     if(reaction.emoji.name === states.south.andraPradesh.emoji) {
-      await reaction.message.guild.members.cache.get(states.south.andraPradesh.role)
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.south.andraPradesh.role)
 
       const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
@@ -459,7 +459,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // karnataka
     if(reaction.emoji.name === states.south.karnataka.emoji) {
-      await reaction.message.guild.members.cache.get(states.south.karnataka.role)
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.south.karnataka.role)
 
       const emoji2 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
@@ -478,7 +478,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // kerala
     if(reaction.emoji.name === states.south.kerala.emoji) {
-      await reaction.message.guild.members.cache.get(states.south.kerala.role)
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.south.kerala.role)
 
       const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
@@ -497,7 +497,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // puduchery
     if(reaction.emoji.name === states.south.puduchery.emoji) {
-      await reaction.message.guild.members.cache.get(states.south.puduchery.role)
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.south.puduchery.role)
 
       const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
@@ -516,7 +516,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // Tamil Nadu
     if(reaction.emoji.name === states.south.tamilNadu.emoji) {
-      await reaction.message.guild.members.cache.get(states.south.tamilNadu.role)
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.south.tamilNadu.role)
 
       const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
@@ -535,7 +535,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
     // telengana
     if(reaction.emoji.name === states.south.telengana.emoji) {
-      await reaction.message.guild.members.cache.get(states.south.telengana.role)
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.south.telengana.role)
 
       const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
