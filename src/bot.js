@@ -414,7 +414,6 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     // punjab
     if(reaction.emoji.name === states.north.punjab.emoji){
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.punjab.role);
-      await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.chandigarh.role);
       await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
