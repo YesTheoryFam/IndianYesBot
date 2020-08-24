@@ -245,6 +245,315 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
       return;
     };
   }
+
+  // north region
+  if(reaction.message.channel == northRegion) {
+
+    // ladhak
+    if(reaction.emoji.name === states.north.ladhak.emoji){
+      await reaction.message.guild.members.cache.get(states.north.ladhak.role);
+
+      const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+      const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+      const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+      emoji7.users.remove(user.id);
+      emoji8.users.remove(user.id);
+
+      return;
+    };
+
+    // Chandigarh
+    if(reaction.emoji.name === states.north.chandigarh.emoji){
+      await reaction.message.guild.members.cache.get(states.north.chandigarh.role);
+
+      const emoji2 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+      const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+      const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+      emoji7.users.remove(user.id);
+      emoji8.users.remove(user.id);
+
+      return;
+    };
+
+    // delhi
+    if(reaction.emoji.name === states.north.delhi.emoji){
+      await reaction.message.guild.members.cache.get(states.north.delhi.role);
+
+      const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+      const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+      const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+      emoji7.users.remove(user.id);
+      emoji8.users.remove(user.id);
+
+      return;
+    };
+
+    // haryana
+    if(reaction.emoji.name === states.north.haryana.emoji){
+      await reaction.message.guild.members.cache.get(states.north.haryana.role);
+
+      const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+      const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+      const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+      emoji7.users.remove(user.id);
+      emoji8.users.remove(user.id);
+
+      return;
+    };
+
+    // himachal pradesh
+    if(reaction.emoji.name === states.north.himachalPradesh.emoji){
+      await reaction.message.guild.members.cache.get(states.north.himachalPradesh.role);
+
+      const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+      const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+      const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+      emoji7.users.remove(user.id);
+      emoji8.users.remove(user.id);
+
+      return;
+    };
+
+    // Jammu and Kashmir
+    if(reaction.emoji.name === states.north.jammuandkashmir.emoji){
+      await reaction.message.guild.members.cache.get(states.north.jammuandkashmir.role);
+
+      const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+      const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+      const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+      emoji7.users.remove(user.id);
+      emoji8.users.remove(user.id);
+
+      return;
+    };
+
+    // punjab
+    if(reaction.emoji.name === states.north.punjab.emoji){
+      await reaction.message.guild.members.cache.get(states.north.punjab.role);
+
+      const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+      const emoji7 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+      const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+      emoji7.users.remove(user.id);
+      emoji8.users.remove(user.id);
+
+      return;
+    };
+
+    // rejasthan
+    if(reaction.emoji.name === states.north.rajasthan.emoji){
+      await reaction.message.guild.members.cache.get(states.north.rajasthan.role);
+
+      const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+      const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+      const emoji8 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+      emoji7.users.remove(user.id);
+      emoji8.users.remove(user.id);
+
+      return;
+    };
+
+  };
+
+  // South Region
+  if(reaction.message.channel == southRegion) {
+
+    // Andra Pradesh
+    if(reaction.emoji.name === states.south.andraPradesh.emoji) {
+      await reaction.message.guild.members.cache.get(states.south.andraPradesh.role)
+
+      const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.south.puduchery.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+
+      return;
+    };
+
+    // karnataka
+    if(reaction.emoji.name === states.south.karnataka.emoji) {
+      await reaction.message.guild.members.cache.get(states.south.karnataka.role)
+
+      const emoji2 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.south.puduchery.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+
+      return;
+    };
+
+    // kerala
+    if(reaction.emoji.name === states.south.kerala.emoji) {
+      await reaction.message.guild.members.cache.get(states.south.kerala.role)
+
+      const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.south.puduchery.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+
+      return;
+    };
+
+    // puduchery
+    if(reaction.emoji.name === states.south.puduchery.emoji) {
+      await reaction.message.guild.members.cache.get(states.south.puduchery.role)
+
+      const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+
+      return;
+    };
+
+    // Tamil Nadu
+    if(reaction.emoji.name === states.south.tamilNadu.emoji) {
+      await reaction.message.guild.members.cache.get(states.south.tamilNadu.role)
+
+      const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+
+      return;
+    };
+
+    // telengana
+    if(reaction.emoji.name === states.south.telengana.emoji) {
+      await reaction.message.guild.members.cache.get(states.south.telengana.role)
+
+      const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+
+      return;
+    };
+
+    
+  };
   
   });
 
@@ -306,8 +615,73 @@ if(reaction.message.channel == regionSelectChannel) {
     await reaction.message.guild.members.cache.get(user.id).roles.remove(states.islands.role)
     return;
   };
-}
+};
 
+if(reaction.message.channel == northRegion) {
+
+  if(reaction.emoji.name === states.north.chandigarh.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.chandigarh.role);
+    return;
+  };
+  if(reaction.emoji.name === states.north.delhi.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.delhi.role);
+    return;
+  };
+  if(reaction.emoji.name === states.north.haryana.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.haryana.role);
+    return;
+  };
+  if(reaction.emoji.name === states.north.himachalPradesh.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.himachalPradesh.role);
+    return;
+  };
+  if(reaction.emoji.name === states.north.jammuandkashmir.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.jammuandkashmir.role);
+    return;
+  };
+  if(reaction.emoji.name === states.north.ladhak.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.ladhak.role);
+    return;
+  };
+  if(reaction.emoji.name === states.north.punjab.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.punjab.role);
+    return;
+  };
+  if(reaction.emoji.name === states.north.rajasthan.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.rajasthan.role);
+    return;
+  };
+
+};
+
+if(reaction.message.channel == southRegion) {
+
+  if(reaction.emoji.name === states.south.andraPradesh.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.south.andraPradesh.role);
+    return;
+  };
+  if(reaction.emoji.name === states.south.karnataka.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.south.karnataka.role);
+    return;
+  };
+  if(reaction.emoji.name === states.south.kerala.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.south.kerala.role);
+    return;
+  };
+  if(reaction.emoji.name === states.south.puduchery.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.south.puduchery.role);
+    return;
+  };
+  if(reaction.emoji.name === states.south.tamilNadu.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.south.tamilNadu.role);
+    return;
+  };
+  if(reaction.emoji.name === states.south.telengana.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.south.telengana.role);
+    return;
+  };
+  
+};
 });
 
 
