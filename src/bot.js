@@ -5,6 +5,7 @@ const betabot = new Discord.Client({partials: ["MESSAGE", "REACTION", "CHANNEL"]
 const config = require('./config/config.json');
 
 const states = require('./collections/Roles/stateTags.json');
+const serverRoles = require('./collections/Roles/Roles.json');
 
 const messageEvent = require('./events/messages.js');
 // const memberJoinEvent = require('./events/memberJoin.js');
@@ -93,11 +94,11 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
   };
 
-// north
+// Select Region
   if(reaction.message.channel == regionSelectChannel) {
     // console.log('region select channel');
 
-
+    // north
     if(reaction.emoji.name === states.north.emoji) {
       // console.log('north emote');
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.role);
@@ -244,14 +245,16 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
       return;
     };
-  }
+  };
 
   // north region
   if(reaction.message.channel == northRegion) {
 
     // ladhak
     if(reaction.emoji.name === states.north.ladhak.emoji){
-      await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.ladhak.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.ladhak.role)
+      await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role)
+      
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
