@@ -730,6 +730,7 @@ bot.on('message', message =>{
           message.react(states.north.ladhak.emoji);
           message.react(states.north.jammuandkashmir.emoji);
           message.react(states.north.himachalPradesh.emoji);
+          message.react(states.north.punjab.emoji);
           message.react(states.north.chandigarh.emoji);
           message.react(states.north.haryana.emoji);
           message.react(states.north.delhi.emoji);
