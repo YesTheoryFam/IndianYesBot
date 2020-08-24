@@ -55,6 +55,8 @@ const serverLogs = message.guild.channels.cache.get('747121287381516399');
 
 
 bot.on('messageReactionAdd', async (reaction, user) =>{
+  console.log('reacted');
+
   const regionSelectChannel = reaction.message.guild.channels.cache.get('746849042197118987');
   const southRegion = reaction.message.guild.channels.cache.get('747508674205057145');
   const northeastRegion = reaction.message.guild.channels.cache.get('747509081362792639');
@@ -96,8 +98,11 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
 // north
   if(reaction.message.channel == regionSelectChannel) {
+    console.log('region select channel');
+
 
     if(reaction.emoji.name === states.north.emoji) {
+      console.log('north emote');
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.role);
 
       const emoji2 = reaction.message.reactions.cache.get(states.central.emoji);
