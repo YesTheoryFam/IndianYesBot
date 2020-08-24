@@ -26,7 +26,7 @@ bot.on("messageUpdate", async(oldMessage, newMessage) =>{
   });
   //Deleted messages logging
   bot.on("messageDelete", async(message) =>{
-    // if (Message.author.bot) return;)
+    if (message.author.bot) return;
   
       let logDelembed = new Discord.MessageEmbed()
       .setThumbnail(message.author.avatarURL())
