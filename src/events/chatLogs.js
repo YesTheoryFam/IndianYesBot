@@ -25,19 +25,19 @@ bot.on("messageUpdate", async(oldMessage, newMessage) =>{
         loggingChannel.send(logembed);
   });
   //Deleted messages logging
-  bot.on("messageDelete", async(Message) =>{
-    // if (Message.author.bot) return;
+  bot.on("messageDelete", async(message) =>{
+    // if (Message.author.bot) return;)
   
       let logDelembed = new Discord.MessageEmbed()
-      .setThumbnail(Message.author.avatarURL())
+      .setThumbnail(message.author.avatarURL())
       .setAuthor("Message Deleted")
       .setColor("#FF0000")
-      .setDescription("<@"+Message.author.id+">")
-      .addField("Channel", "<#"+Message.channel.id+">", true)
-      .addField("Message", Message.content || 'image', true)
+      .setDescription("<@"+message.author.id+">")
+      .addField("Channel", "<#"+message.channel.id+">", true)
+      .addField("Message", message.content || 'image', true)
       .setTimestamp();
   
-      let loggingDelChannel = Message.guild.channels.cache.get('746907185623072869')
+      let loggingDelChannel = message.guild.channels.cache.get('746907185623072869')
         if(!loggingDelChannel) return;
   
         loggingDelChannel.send(logDelembed);
