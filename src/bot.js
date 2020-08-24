@@ -55,7 +55,7 @@ const serverLogs = message.guild.channels.cache.get('747121287381516399');
 
 
 bot.on('messageReactionAdd', async (reaction, user) =>{
-  console.log('reacted');
+  // console.log('reacted');
 
   const regionSelectChannel = reaction.message.guild.channels.cache.get('746849042197118987');
   const southRegion = reaction.message.guild.channels.cache.get('747508674205057145');
@@ -94,12 +94,12 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
   };
 
 // north
-  if(reaction.message.channel.id == regionSelectChannel.id) {
-    console.log('region select channel');
+  if(reaction.message.channel == regionSelectChannel) {
+    // console.log('region select channel');
 
 
     if(reaction.emoji.name === states.north.emoji) {
-      console.log('north emote');
+      // console.log('north emote');
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.role);
 
       const emoji2 = reaction.message.reactions.cache.get(states.central.emoji);
@@ -139,6 +139,111 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
       return;
     };
+
+    // east
+    if(reaction.emoji.name === states.east.emoji) {
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.east.role);
+
+      const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.central.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
+      const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+      emoji7.users.remove(user.id);
+
+      return;
+    };
+
+    // west
+    if(reaction.emoji.name === states.west.emoji) {
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.west.role);
+
+      const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.central.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
+      const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+      emoji7.users.remove(user.id);
+
+      return;
+    };
+
+    // south
+    if(reaction.emoji.name === states.south.emoji) {
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.south.role);
+
+      const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.central.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
+      const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+      emoji7.users.remove(user.id);
+
+      return;
+    };
+
+    // islands 
+    if(reaction.emoji.name === states.islands.emoji) {
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.islands.role);
+
+      const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.central.emoji);
+      const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+      emoji7.users.remove(user.id);
+
+      return;
+    };
+
+    // northeast 
+    if(reaction.emoji.name === states.northeast.emoji) {
+      await reaction.message.guild.members.cache.get(user.id).roles.add(states.northeast.role);
+
+      const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
+      const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
+      const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
+      const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
+      const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
+      const emoji7 = reaction.message.reactions.cache.get(states.central.emoji);
+
+      emoji2.users.remove(user.id);
+      emoji3.users.remove(user.id);
+      emoji4.users.remove(user.id);
+      emoji5.users.remove(user.id);
+      emoji6.users.remove(user.id);
+      emoji7.users.remove(user.id);
+
+      return;
+    };
   }
   
   });
@@ -146,13 +251,20 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 
 bot.on('messageReactionRemove', async (reaction, user) =>{
 
+  const regionSelectChannel = reaction.message.guild.channels.cache.get('746849042197118987');
+  const southRegion = reaction.message.guild.channels.cache.get('747508674205057145');
+  const northeastRegion = reaction.message.guild.channels.cache.get('747509081362792639');
+  const northRegion = reaction.message.guild.channels.cache.get('747508740714135672');
+  const centralRegion = reaction.message.guild.channels.cache.get('747508926936907787');
+  const eastRegion = reaction.message.guild.channels.cache.get('747508785115037828');
+  const westRegion = reaction.message.guild.channels.cache.get('747508857726566460');
+  const islandRegion = reaction.message.guild.channels.cache.get('747508979931939038');
+
     if(reaction.message.partial) await reaction.message.fetch();
   if (reaction.partial) await reaction.fetch();
   if(user.bot) return;
-//   if(!reaction.message.guild) return;
-//   if(reaction.message.guild.id !== '701088725605548133') return;
+
   if(reaction.message.channel.id === '746755589895487488') {
-    // if (reaction.message.id === '745420667507179532'){
 
     if(reaction.emoji.name === '👍') {
       await reaction.message.guild.members.cache.get(user.id).roles.remove(states.test1.role)
@@ -162,10 +274,41 @@ bot.on('messageReactionRemove', async (reaction, user) =>{
       await reaction.message.guild.members.cache.get(user.id).roles.remove(states.test2.role)
       return;
   }
+};
+
+if(reaction.message.channel == regionSelectChannel) {
+
+  if(reaction.emoji.name === states.central.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.central.role)
+    return;
+  };
+  if(reaction.emoji.name === states.north.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role)
+    return;
+  }; 
+  if(reaction.emoji.name === states.east.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.east.role)
+    return;
+  };  
+  if(reaction.emoji.name === states.west.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.west.role)
+    return;
+  };  
+  if(reaction.emoji.name === states.northeast.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.northeast.role)
+    return;
+  };  
+  if(reaction.emoji.name === states.south.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.south.role)
+    return;
+  };  
+  if(reaction.emoji.name === states.islands.emoji) {
+    await reaction.message.guild.members.cache.get(user.id).roles.remove(states.islands.role)
+    return;
+  };
 }
-else {
-  return;
-}});
+
+});
 
 
 bot.on('message', message =>{
