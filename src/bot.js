@@ -102,6 +102,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     if(reaction.emoji.name === states.north.emoji) {
       // console.log('north emote');
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.role);
+      northRegion.send(`Great! Now select your state, ${user}.`);
 
       const emoji2 = reaction.message.reactions.cache.get(states.central.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
@@ -256,7 +257,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
       await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role)
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember)
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator)
-      
+
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
