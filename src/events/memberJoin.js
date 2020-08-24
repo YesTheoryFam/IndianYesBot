@@ -1,4 +1,6 @@
 const states = require('../collections/Roles/stateTags.json');
+const serverRoles = require('./collections/Roles/Roles.json');
+
 
 module.exports = bot => {
     bot.on('messageReactionAdd', async (reaction, user) =>{
