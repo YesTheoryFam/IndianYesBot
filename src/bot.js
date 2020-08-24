@@ -91,9 +91,6 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
         return;
     };
 
-  }
-  else {
-    return;
   };
 
 // north
