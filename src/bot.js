@@ -95,7 +95,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
   };
 
 // north
-  if(reaction.message.channel === regionSelectChannel) {
+  if(reaction.message.channel == regionSelectChannel) {
 
     if(reaction.emoji.name === states.north.emoji) {
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.role);
