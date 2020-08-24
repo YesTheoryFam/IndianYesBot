@@ -102,6 +102,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     if(reaction.emoji.name === states.north.emoji) {
       // console.log('north emote');
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
       northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
 
       const emoji2 = reaction.message.reactions.cache.get(states.central.emoji);
@@ -124,6 +125,8 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     // central
     if(reaction.emoji.name === states.central.emoji) {
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.central.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
+      northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
@@ -145,6 +148,9 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     // east
     if(reaction.emoji.name === states.east.emoji) {
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.east.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
+      northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
+
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.central.emoji);
@@ -166,6 +172,9 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     // west
     if(reaction.emoji.name === states.west.emoji) {
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.west.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
+      northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
+
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
@@ -187,6 +196,9 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     // south
     if(reaction.emoji.name === states.south.emoji) {
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.south.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
+      northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
+
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
@@ -208,6 +220,9 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     // islands 
     if(reaction.emoji.name === states.islands.emoji) {
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.islands.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
+      northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
+
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
@@ -229,6 +244,9 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     // northeast 
     if(reaction.emoji.name === states.northeast.emoji) {
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.northeast.role);
+      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
+      northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
+
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
@@ -255,7 +273,6 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     if(reaction.emoji.name === states.north.ladhak.emoji){
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.ladhak.role)
       await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role)
-      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember)
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator)
 
@@ -285,7 +302,6 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
       await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -313,7 +329,6 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
       await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
@@ -341,7 +356,6 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
       await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -369,7 +383,6 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
       await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -397,7 +410,6 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
       await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -424,7 +436,6 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
       await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -452,7 +463,6 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
       await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
       await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
