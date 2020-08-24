@@ -126,7 +126,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     if(reaction.emoji.name === states.central.emoji) {
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.central.role);
       await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
-      northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
+      centralRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
       const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
@@ -149,7 +149,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     if(reaction.emoji.name === states.east.emoji) {
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.east.role);
       await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
-      northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
+      eastRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
 
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
@@ -173,7 +173,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     if(reaction.emoji.name === states.west.emoji) {
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.west.role);
       await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
-      northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
+      westRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
 
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
@@ -197,7 +197,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     if(reaction.emoji.name === states.south.emoji) {
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.south.role);
       await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
-      northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
+      southRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
 
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
@@ -221,7 +221,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     if(reaction.emoji.name === states.islands.emoji) {
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.islands.role);
       await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
-      northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
+      islandRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
 
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
@@ -245,7 +245,7 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
     if(reaction.emoji.name === states.northeast.emoji) {
       await reaction.message.guild.members.cache.get(user.id).roles.add(states.northeast.role);
       await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
-      northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
+      northeastRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
 
 
       const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
@@ -935,84 +935,84 @@ bot.on('messageReactionAdd', async (reaction, user) =>{
 // });
 
 
-bot.on('message', message =>{
-  const regionSelectChannel = message.guild.channels.cache.get('746849042197118987');
-  const southRegion = message.guild.channels.cache.get('747508674205057145');
-  const northeastRegion = message.guild.channels.cache.get('747509081362792639');
-  const northRegion = message.guild.channels.cache.get('747508740714135672');
-  const centralRegion = message.guild.channels.cache.get('747508926936907787');
-  const eastRegion = message.guild.channels.cache.get('747508785115037828');
-  const westRegion = message.guild.channels.cache.get('747508857726566460');
-  const islandRegion = message.guild.channels.cache.get('747508979931939038');
+// bot.on('message', message =>{
+//   const regionSelectChannel = message.guild.channels.cache.get('746849042197118987');
+//   const southRegion = message.guild.channels.cache.get('747508674205057145');
+//   const northeastRegion = message.guild.channels.cache.get('747509081362792639');
+//   const northRegion = message.guild.channels.cache.get('747508740714135672');
+//   const centralRegion = message.guild.channels.cache.get('747508926936907787');
+//   const eastRegion = message.guild.channels.cache.get('747508785115037828');
+//   const westRegion = message.guild.channels.cache.get('747508857726566460');
+//   const islandRegion = message.guild.channels.cache.get('747508979931939038');
   
-      if (!message.author.bot) return;
+//       if (!message.author.bot) return;
   
-      if (message.channel == regionSelectChannel){
-          message.react(states.north.emoji);
-          message.react(states.central.emoji);
-          message.react(states.east.emoji);
-          message.react(states.west.emoji);
-          message.react(states.south.emoji);
-          message.react(states.northeast.emoji);
-          message.react(states.islands.emoji);
-      };
+//       if (message.channel == regionSelectChannel){
+//           message.react(states.north.emoji);
+//           message.react(states.central.emoji);
+//           message.react(states.east.emoji);
+//           message.react(states.west.emoji);
+//           message.react(states.south.emoji);
+//           message.react(states.northeast.emoji);
+//           message.react(states.islands.emoji);
+//       };
   
-      if (message.channel == southRegion) {
-          message.react(states.south.telengana.emoji);
-          message.react(states.south.andraPradesh.emoji);
-          message.react(states.south.karnataka.emoji);
-          message.react(states.south.tamilNadu.emoji);
-          message.react(states.south.puduchery.emoji);
-          message.react(states.south.kerala.emoji);
-      };
+//       if (message.channel == southRegion) {
+//           message.react(states.south.telengana.emoji);
+//           message.react(states.south.andraPradesh.emoji);
+//           message.react(states.south.karnataka.emoji);
+//           message.react(states.south.tamilNadu.emoji);
+//           message.react(states.south.puduchery.emoji);
+//           message.react(states.south.kerala.emoji);
+//       };
   
-      if (message.channel == northeastRegion) {
-          message.react(states.northeast.sikkim.emoji);
-          message.react(states.northeast.assam.emoji);
-          message.react(states.northeast.nagaland.emoji);
-          message.react(states.northeast.meghalaya.emoji);
-          message.react(states.northeast.manipur.emoji);
-          message.react(states.northeast.mizoram.emoji);
-          message.react(states.northeast.tripura.emoji);
-      };
+//       if (message.channel == northeastRegion) {
+//           message.react(states.northeast.sikkim.emoji);
+//           message.react(states.northeast.assam.emoji);
+//           message.react(states.northeast.nagaland.emoji);
+//           message.react(states.northeast.meghalaya.emoji);
+//           message.react(states.northeast.manipur.emoji);
+//           message.react(states.northeast.mizoram.emoji);
+//           message.react(states.northeast.tripura.emoji);
+//       };
   
-      if (message.channel == northRegion) {
-          message.react(states.north.ladhak.emoji);
-          message.react(states.north.jammuandkashmir.emoji);
-          message.react(states.north.himachalPradesh.emoji);
-          message.react(states.north.punjab.emoji);
-          message.react(states.north.chandigarh.emoji);
-          message.react(states.north.haryana.emoji);
-          message.react(states.north.delhi.emoji);
-          message.react(states.north.rajasthan.emoji);
-      };
+//       if (message.channel == northRegion) {
+//           message.react(states.north.ladhak.emoji);
+//           message.react(states.north.jammuandkashmir.emoji);
+//           message.react(states.north.himachalPradesh.emoji);
+//           message.react(states.north.punjab.emoji);
+//           message.react(states.north.chandigarh.emoji);
+//           message.react(states.north.haryana.emoji);
+//           message.react(states.north.delhi.emoji);
+//           message.react(states.north.rajasthan.emoji);
+//       };
   
-      if (message.channel == centralRegion) {
-          message.react(states.central.uttarakhand.emoji);
-          message.react(states.central.uttarPradesh.emoji);
-          message.react(states.central.madhyaPradesh.emoji);
-          message.react(states.central.chhattisgarh.emoji);
-      };
+//       if (message.channel == centralRegion) {
+//           message.react(states.central.uttarakhand.emoji);
+//           message.react(states.central.uttarPradesh.emoji);
+//           message.react(states.central.madhyaPradesh.emoji);
+//           message.react(states.central.chhattisgarh.emoji);
+//       };
   
-      if (message.channel == eastRegion) {
-          message.react(states.east.bihar.emoji);
-          message.react(states.east.jharkhand.emoji);
-          message.react(states.east.westBengal.emoji);
-          message.react(states.east.odisha.emoji);
-      };
+//       if (message.channel == eastRegion) {
+//           message.react(states.east.bihar.emoji);
+//           message.react(states.east.jharkhand.emoji);
+//           message.react(states.east.westBengal.emoji);
+//           message.react(states.east.odisha.emoji);
+//       };
   
-      if (message.channel == westRegion) {
-          message.react(states.west.gujarat.emoji);
-          message.react(states.west.maharashtra.emoji);
-          message.react(states.west.goa.emoji);
-          message.react(states.west.DNH_DnD.emoji);
-      };
+//       if (message.channel == westRegion) {
+//           message.react(states.west.gujarat.emoji);
+//           message.react(states.west.maharashtra.emoji);
+//           message.react(states.west.goa.emoji);
+//           message.react(states.west.DNH_DnD.emoji);
+//       };
   
-      if (message.channel == islandRegion) {
-          message.react(states.islands.andamanNicobar.emoji);
-          message.react(states.islands.lakshadweep.emoji);
-      };
-    });
+//       if (message.channel == islandRegion) {
+//           message.react(states.islands.andamanNicobar.emoji);
+//           message.react(states.islands.lakshadweep.emoji);
+//       };
+//     });
 
 
 bot.login(config.discord_bot.mainBot);
