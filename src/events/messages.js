@@ -1,4 +1,4 @@
-const states = require('../collections/Roles/stateTags.json');
+// const states = require('../collections/Roles/stateTags.json');
 
 module.exports = bot => {
     bot.on('message', message =>{
@@ -20,10 +20,6 @@ module.exports = bot => {
                     message.channel.send(`Hi there, ${message.author}`);
             
                 };
-            } else if (message.content.startsWith('country')){{
-                    message.react(states.test1.emote);
-                    message.react(states.test2.emote);
-                }
             } else {
                 // message.channel.send(`I'm currently under development. But you can always tell me hi and I'll say hi back. See, I'm a nice bot.`)
                 return;
