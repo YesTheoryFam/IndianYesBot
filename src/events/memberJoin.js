@@ -296,7 +296,6 @@ module.exports = bot => {
           // delhi
           if(reaction.emoji.name === states.north.delhi.emoji){
             await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.delhi.role);
-            await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.chandigarh.role);
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
@@ -325,7 +324,6 @@ module.exports = bot => {
           // haryana
           if(reaction.emoji.name === states.north.haryana.emoji){
             await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.haryana.role);
-            await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.chandigarh.role);
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
@@ -354,7 +352,6 @@ module.exports = bot => {
           // himachal pradesh
           if(reaction.emoji.name === states.north.himachalPradesh.emoji){
             await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.himachalPradesh.role);
-            await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.chandigarh.role);
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
@@ -383,7 +380,6 @@ module.exports = bot => {
           // Jammu and Kashmir
           if(reaction.emoji.name === states.north.jammuandkashmir.emoji){
             await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.jammuandkashmir.role);
-            await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.chandigarh.role);
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
@@ -440,7 +436,6 @@ module.exports = bot => {
           // rejasthan
           if(reaction.emoji.name === states.north.rajasthan.emoji){
             await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.rajasthan.role);
-            await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.chandigarh.role);
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
