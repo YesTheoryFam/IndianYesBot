@@ -82,19 +82,19 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
             northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
-            const emoji2 = reaction.message.reactions.cache.get(states.central.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
+x            // const emoji2 = reaction.message.reactions.cache.get(states.central.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
       
             return;
           };
@@ -105,19 +105,19 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
             centralRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
-            const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
       
             return;
           };
@@ -129,19 +129,19 @@ module.exports = bot => {
             eastRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
       
-            const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.central.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.central.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
       
             return;
           };
@@ -153,19 +153,19 @@ module.exports = bot => {
             westRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
       
-            const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.central.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.central.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
       
             return;
           };
@@ -177,19 +177,19 @@ module.exports = bot => {
             southRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
       
-            const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.central.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.central.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
       
             return;
           };
@@ -201,19 +201,19 @@ module.exports = bot => {
             islandRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
       
-            const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.central.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.central.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.northeast.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
       
             return;
           };
@@ -225,19 +225,19 @@ module.exports = bot => {
             northeastRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
       
-            const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.central.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.islands.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.central.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
       
             return;
           };
@@ -258,21 +258,21 @@ module.exports = bot => {
             welcomeChat.send(welcomMessage);
       
       
-            const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
-            const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+            // const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
-            emoji8.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
+            // emoji8.users.remove(user.id);
       
             return;
           };
@@ -286,21 +286,21 @@ module.exports = bot => {
       
             welcomeChat.send(welcomMessage);
 
-            const emoji2 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
-            const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+            // const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
-            emoji8.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
+            // emoji8.users.remove(user.id);
       
             return;
           };
@@ -314,21 +314,21 @@ module.exports = bot => {
       
             welcomeChat.send(welcomMessage);
 
-            const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
-            const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+            // const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
-            emoji8.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
+            // emoji8.users.remove(user.id);
       
             return;
           };
@@ -342,21 +342,21 @@ module.exports = bot => {
       
             welcomeChat.send(welcomMessage);
 
-            const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
-            const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+            // const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
-            emoji8.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
+            // emoji8.users.remove(user.id);
       
             return;
           };
@@ -370,21 +370,21 @@ module.exports = bot => {
       
             welcomeChat.send(welcomMessage);
 
-            const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
-            const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+            // const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
-            emoji8.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
+            // emoji8.users.remove(user.id);
       
             return;
           };
@@ -398,21 +398,21 @@ module.exports = bot => {
      
             welcomeChat.send(welcomMessage);
  
-            const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
-            const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+            // const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
-            emoji8.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
+            // emoji8.users.remove(user.id);
       
             return;
           };
@@ -426,21 +426,21 @@ module.exports = bot => {
   
             welcomeChat.send(welcomMessage);
     
-            const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
-            const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+            // const emoji8 = reaction.message.reactions.cache.get(states.north.rajasthan.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
-            emoji8.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
+            // emoji8.users.remove(user.id);
       
             return;
           };
@@ -454,21 +454,21 @@ module.exports = bot => {
  
             welcomeChat.send(welcomMessage);
      
-            const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
-            const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
-            const emoji8 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.north.himachalPradesh.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.north.jammuandkashmir.emoji);
+            // const emoji7 = reaction.message.reactions.cache.get(states.north.punjab.emoji);
+            // const emoji8 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
-            emoji7.users.remove(user.id);
-            emoji8.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
+            // emoji7.users.remove(user.id);
+            // emoji8.users.remove(user.id);
       
             return;
           };
@@ -487,17 +487,17 @@ module.exports = bot => {
       
             welcomeChat.send(welcomMessage);
 
-            const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.south.puduchery.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.south.puduchery.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
       
             return;
           };
@@ -511,17 +511,17 @@ module.exports = bot => {
 
             welcomeChat.send(welcomMessage);
 
-            const emoji2 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.south.puduchery.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.south.puduchery.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
       
             return;
           };
@@ -535,17 +535,17 @@ module.exports = bot => {
    
             welcomeChat.send(welcomMessage);
    
-            const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.south.puduchery.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.south.puduchery.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
       
             return;
           };
@@ -559,17 +559,17 @@ module.exports = bot => {
      
             welcomeChat.send(welcomMessage);
  
-            const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
       
             return;
           };
@@ -583,17 +583,17 @@ module.exports = bot => {
     
             welcomeChat.send(welcomMessage);
   
-            const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.south.telengana.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
       
             return;
           };
@@ -607,17 +607,17 @@ module.exports = bot => {
 
             welcomeChat.send(welcomMessage);
       
-            const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
-            const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
-            const emoji4 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
-            const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
-            const emoji6 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
+            // const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
+            // const emoji4 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
+            // const emoji5 = reaction.message.reactions.cache.get(states.south.tamilNadu.emoji);
+            // const emoji6 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
       
-            emoji2.users.remove(user.id);
-            emoji3.users.remove(user.id);
-            emoji4.users.remove(user.id);
-            emoji5.users.remove(user.id);
-            emoji6.users.remove(user.id);
+            // emoji2.users.remove(user.id);
+            // emoji3.users.remove(user.id);
+            // emoji4.users.remove(user.id);
+            // emoji5.users.remove(user.id);
+            // emoji6.users.remove(user.id);
       
             return;
           };
