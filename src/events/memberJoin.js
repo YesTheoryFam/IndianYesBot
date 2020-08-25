@@ -1,5 +1,9 @@
+const Chance = require('chance');
+const chanceObj = new Chance();
+
 const states = require('../collections/Roles/stateTags.json');
 const serverRoles = require('../collections/Roles/Roles.json');
+
 
 
 module.exports = bot => {
@@ -14,6 +18,19 @@ module.exports = bot => {
         const eastRegion = reaction.message.guild.channels.cache.get('747508785115037828');
         const westRegion = reaction.message.guild.channels.cache.get('747508857726566460');
         const islandRegion = reaction.message.guild.channels.cache.get('747508979931939038');
+        const welcomeChat = reaction.message.guild.channels.cache.get('721050178794291292');
+
+        const welcomMessage = chanceObj.pickone([`
+        A wild ${user} appeared.`,
+       `${user} joined the party.`,
+       `${user} just landed.`,
+       `${user} just *sliiid* into the server.`,
+       `${user} is here.`,
+       `Welcome, ${user}. We hope you brought pizza 🍕.`,
+       `${user} just showed up!`,
+       `Everyone welcome ${user}`,
+       `Good to see you, ${user}`
+     ]);
         
           if(reaction.message.partial) await reaction.message.fetch();
           if (reaction.partial) await reaction.fetch();
@@ -225,6 +242,8 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
+
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
       
       
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
@@ -253,6 +272,8 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+
             const emoji2 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
             const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
@@ -280,6 +301,8 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
             const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
@@ -307,6 +330,8 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
             const emoji4 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
@@ -334,6 +359,8 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
             const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
@@ -360,7 +387,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+     
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+ 
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
             const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
@@ -386,7 +415,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+  
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+    
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
             const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
@@ -413,7 +444,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.north.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+ 
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+     
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
             const emoji4 = reaction.message.reactions.cache.get(states.north.haryana.emoji);
@@ -445,6 +478,8 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+
             const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
             const emoji4 = reaction.message.reactions.cache.get(states.south.puduchery.emoji);
@@ -466,7 +501,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.south.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+
             const emoji2 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
             const emoji4 = reaction.message.reactions.cache.get(states.south.puduchery.emoji);
@@ -488,7 +525,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.south.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+   
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+   
             const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
             const emoji4 = reaction.message.reactions.cache.get(states.south.puduchery.emoji);
@@ -510,7 +549,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.south.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+     
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+ 
             const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
             const emoji4 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
@@ -532,7 +573,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.south.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+    
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+  
             const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
             const emoji4 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
@@ -554,6 +597,8 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.south.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
+
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
       
             const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
@@ -581,6 +626,8 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+
             return;
           };
           if (reaction.emoji.name === states.northeast.assam.emoji) {
@@ -588,7 +635,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.northeast.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+  
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+    
             return;
           };
           if (reaction.emoji.name === states.northeast.manipur.emoji) {
@@ -596,7 +645,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.northeast.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+  
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+    
             return;
           };
           if (reaction.emoji.name === states.northeast.meghalaya.emoji) {
@@ -604,7 +655,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.northeast.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+  
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+    
             return;
           };
           if (reaction.emoji.name === states.northeast.sikkim.emoji) {
@@ -612,7 +665,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.northeast.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+   
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+   
             return;
           };
           if (reaction.emoji.name === states.northeast.tripura.emoji) {
@@ -620,7 +675,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.northeast.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+    
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+  
             return;
           };
         };
@@ -633,6 +690,8 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+
             return;
           };
           if (reaction.emoji.name === states.central.madhyaPradesh.emoji) {
@@ -640,7 +699,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.central.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+ 
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+     
             return;
           };
           if (reaction.emoji.name === states.central.uttarPradesh.emoji) {
@@ -648,7 +709,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.central.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+     
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+ 
             return;
           };
           if (reaction.emoji.name === states.central.uttarakhand.emoji) {
@@ -656,7 +719,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.central.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+  
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+    
             return;
           };
         };
@@ -668,7 +733,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.east.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+   
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+   
             return;
           };
           if (reaction.emoji.name === states.east.jharkhand.emoji) {
@@ -676,7 +743,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.east.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+   
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+   
             return;
           };
           if (reaction.emoji.name === states.east.odisha.emoji) {
@@ -684,7 +753,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.east.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+  
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+    
             return;
           };
           if (reaction.emoji.name === states.east.westBengal.emoji) {
@@ -692,7 +763,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.east.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+   
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+   
             return;
           };
         };
@@ -704,7 +777,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.west.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+    
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+  
             return;
           };
           if (reaction.emoji.name === states.west.goa.emoji) {
@@ -712,7 +787,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.west.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+     
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+ 
             return;
           };
           if (reaction.emoji.name === states.west.gujarat.emoji) {
@@ -720,7 +797,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.west.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+     
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+ 
             return;
           };
           if (reaction.emoji.name === states.west.maharashtra.emoji) {
@@ -728,7 +807,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.west.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+     
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+ 
             return;
           };
         };
@@ -741,6 +822,8 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+
             return;
           };
           if (reaction.emoji.name === states.islands.lakshadweep.emoji) {
@@ -748,7 +831,9 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(states.islands.role);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
-      
+   
+            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+   
             return;
           };
         };
