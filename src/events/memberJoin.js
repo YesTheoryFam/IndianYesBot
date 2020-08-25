@@ -13,10 +13,10 @@ module.exports = bot => {
       });
   
      bot.on('guildMemberRemove', member => {
-      const serverLogs = member.guild.channels.cache.get('747121287381516399');
+      const serverEntryLog = member.guild.channels.cache.get('715183025607934033');
   
-      serverLogs.send(`${member} just left the server.`);
-  })
+      serverEntryLog.send(`${member} just left the server.`);
+  });
 
 
     bot.on('messageReactionAdd', async (reaction, user) =>{
