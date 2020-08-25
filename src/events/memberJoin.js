@@ -243,7 +243,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
 
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
       
       
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
@@ -272,7 +272,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
 
             const emoji2 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -300,7 +300,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
 
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.ladhak.emoji);
@@ -328,7 +328,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
 
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -356,7 +356,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
 
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -384,7 +384,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
      
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
  
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -412,7 +412,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
   
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
     
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -440,7 +440,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
  
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
      
             const emoji2 = reaction.message.reactions.cache.get(states.north.chandigarh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.north.delhi.emoji);
@@ -473,7 +473,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
 
             const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
@@ -497,7 +497,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
 
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
 
             const emoji2 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
@@ -521,7 +521,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
    
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
    
             const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.south.andraPradesh.emoji);
@@ -545,7 +545,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
      
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
  
             const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
@@ -569,7 +569,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
     
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
   
             const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
@@ -593,7 +593,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
 
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
       
             const emoji2 = reaction.message.reactions.cache.get(states.south.karnataka.emoji);
             const emoji3 = reaction.message.reactions.cache.get(states.south.kerala.emoji);
@@ -621,7 +621,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
 
             return;
           };
@@ -631,7 +631,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
   
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
     
             return;
           };
@@ -641,7 +641,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
   
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
     
             return;
           };
@@ -651,7 +651,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
   
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
     
             return;
           };
@@ -661,7 +661,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
    
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
    
             return;
           };
@@ -671,7 +671,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
     
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
   
             return;
           };
@@ -685,7 +685,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
 
             return;
           };
@@ -695,7 +695,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
  
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
      
             return;
           };
@@ -705,7 +705,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
      
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
  
             return;
           };
@@ -715,7 +715,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
   
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
     
             return;
           };
@@ -729,7 +729,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
    
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
    
             return;
           };
@@ -739,7 +739,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
    
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
    
             return;
           };
@@ -749,7 +749,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
   
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
     
             return;
           };
@@ -759,7 +759,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
    
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
    
             return;
           };
@@ -773,7 +773,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
     
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
   
             return;
           };
@@ -783,7 +783,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
      
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
  
             return;
           };
@@ -793,7 +793,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
      
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
  
             return;
           };
@@ -803,7 +803,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
      
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
  
             return;
           };
@@ -817,7 +817,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
       
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
 
             return;
           };
@@ -827,7 +827,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
             await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
    
-            welcomeChat.send(welcomMessage).then(m => m.delete({timeout: 5000}));
+            welcomeChat.send(welcomMessage);
    
             return;
           };
