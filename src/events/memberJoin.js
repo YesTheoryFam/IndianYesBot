@@ -7,6 +7,12 @@ const serverRoles = require('../collections/Roles/Roles.json');
 
 
 module.exports = bot => {
+
+    bot.on('guildMemberAdd', member => {
+      member.roles.add(serverRoles.beta1);
+     });
+
+
     bot.on('messageReactionAdd', async (reaction, user) =>{
         // console.log('reacted');
       
@@ -30,7 +36,7 @@ module.exports = bot => {
        `${user} just showed up!`,
        `Everyone welcome ${user}`,
        `Good to see you, ${user}`
-     ]);
+       ]);
         
           if(reaction.message.partial) await reaction.message.fetch();
           if (reaction.partial) await reaction.fetch();
