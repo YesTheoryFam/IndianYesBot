@@ -56,7 +56,5 @@ const serverLogs = message.guild.channels.cache.get('747121287381516399');
 
 
 
-
-
 bot.login(config.discord_bot.mainBot);
 betabot.login(config.discord_bot.secondaryBot);

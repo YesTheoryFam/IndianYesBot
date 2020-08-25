@@ -8,9 +8,15 @@ const serverRoles = require('../collections/Roles/Roles.json');
 
 module.exports = bot => {
 
-    bot.on('guildMemberAdd', member => {
-      member.roles.add(serverRoles.beta1);
-     });
+      bot.on('guildMemberAdd', member => {
+        member.roles.add(serverRoles.beta1);
+      });
+  
+     bot.on('guildMemberRemove', member => {
+      const serverLogs = member.guild.channels.cache.get('747121287381516399');
+  
+      serverLogs.send(`${member} just left the server.`);
+  })
 
 
     bot.on('messageReactionAdd', async (reaction, user) =>{
