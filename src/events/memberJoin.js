@@ -32,7 +32,7 @@ module.exports = bot => {
         const islandRegion = reaction.message.guild.channels.cache.get('747508979931939038');
         const welcomeChat = reaction.message.guild.channels.cache.get('721050178794291292');
 
-        const welcomMessage = chanceObj.pickone([`
+        var welcomMessage = chanceObj.pickone([`
         A wild ${user} appeared.`,
        `${user} joined the party.`,
        `${user} just landed.`,
