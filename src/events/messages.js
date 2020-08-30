@@ -47,12 +47,17 @@ module.exports = bot => {
         
       // Reaction in #polls
         if (message.channel == pollsChannel){
-          message.react('🇦').then(() => message.react('🅱️'));
+            message.react('🇦').then(() => message.react('🅱️'));
         };
       
         // Reaction in #feature-request
         if (message.channel == featureRequestChannel){
-          message.react('👍').then(() => message.react('👎'));
+            message.react('👍').then(() => message.react('👎'));
+        };
+
+        //deleting server invites
+        if(message.content.includes(`https://discord.gg`)) {
+            message.delete();
         };
 
 })};

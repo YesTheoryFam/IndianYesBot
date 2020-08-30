@@ -846,4 +846,4 @@ x            // const emoji2 = reaction.message.reactions.cache.get(states.centr
         };
         
         });
-}
+};
