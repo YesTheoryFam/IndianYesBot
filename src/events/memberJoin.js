@@ -32,7 +32,7 @@ module.exports = bot => {
         const islandRegion = reaction.message.guild.channels.cache.get('747508979931939038');
         const welcomeChat = reaction.message.guild.channels.cache.get('721050178794291292');
 
-        const welcomMessage = chanceObj.pickone([`
+        var welcomMessage = chanceObj.pickone([`
         A wild ${user} appeared.`,
        `${user} joined the party.`,
        `${user} just landed.`,
@@ -82,7 +82,7 @@ module.exports = bot => {
             await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
             northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
-x            // const emoji2 = reaction.message.reactions.cache.get(states.central.emoji);
+            // const emoji2 = reaction.message.reactions.cache.get(states.central.emoji);
             // const emoji3 = reaction.message.reactions.cache.get(states.east.emoji);
             // const emoji4 = reaction.message.reactions.cache.get(states.west.emoji);
             // const emoji5 = reaction.message.reactions.cache.get(states.south.emoji);
@@ -846,4 +846,5 @@ x            // const emoji2 = reaction.message.reactions.cache.get(states.centr
         };
         
         });
+        
 };
