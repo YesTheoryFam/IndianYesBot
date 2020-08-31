@@ -45,12 +45,12 @@ const serverLogs = message.guild.channels.cache.get('747121287381516399');
 
 
 
-  let args = message.content.substring(PREFIX.length).split(" ");
-  switch(args[0]) {
+//   let args = message.content.substring(PREFIX.length).split(" ");
+//   switch(args[0]) {
 
 
 
-  }
+//   }
 });
 
 
