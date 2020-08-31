@@ -15,11 +15,11 @@ const chatLogs = require('./events/chatLogs.js');
 
 
 bot.on('ready', () => {
-// const botOnNotificationChannel = bot.channels.cache.get('746764608890470470');
+const botOnNotificationChannel = bot.channels.cache.get('746764608890470470');
 
     console.log('IndianYesBot is online.');
-    // if(!botOnNotificationChannel) return;
-    // botOnNotificationChannel.send('restart_success');
+    if(!botOnNotificationChannel) return;
+    botOnNotificationChannel.send('restart_success');
     
 });
 
