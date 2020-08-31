@@ -1,7 +1,7 @@
 // const Discord = require('discord.js');
 // const bot = new Discord.Client({partials: ["MESSAGE", "REACTION", "CHANNEL"]});
 
-// const states = require('../collections/Roles/stateTags.json')
+const serverRoles = require('../collections/Roles/Roles.json')
 const PREFIX = "!";
 
 
@@ -37,9 +37,8 @@ module.exports = bot => {
                 if(person.hasPermission('MANAGE_NICKNAMES'))
                     return message.react('👎').then(message.delete({timeout: 5000}).catch(err => console.log(err)));
         
-                var timeOutRole = person.guild.roles.cache.get("749267183015559219");
         
-                person.roles.add(timeOutRole);
+                person.roles.add(serverRoles.timeOut);
                 message.react('👍');
                 serverLogs.send("<@" + message.author.id + "> just put <@" + person + "> on Time Out from the <#"+ message.channel.id + "> channel.");
                 message.delete({timeout: 5000}).catch(err => console.log(err));
@@ -68,9 +67,8 @@ module.exports = bot => {
                     if(person.hasPermission('MANAGE_NICKNAMES'))
                         return message.react('👎').then(message.delete({timeout: 5000}).catch(err => console.log(err)));
             
-                    var timeOutRole = person.guild.roles.cache.get("749267183015559219");
             
-                    person.roles.remove(timeOutRole);
+                    person.roles.remove(serverRoles.timeOut);
                     message.react('👍');
                     serverLogs.send("<@" + message.author.id + "> just took out <@" + person + "> from Time Out");
                     message.delete({timeout: 5000}).catch(err => console.log(err));
