@@ -2,13 +2,17 @@
 /beta
 
 # configuration files
-# /src/config
+/config
 
 # node modules
-# /node_modules
+/node_modules
+package-lock.json
 
 # VS Code Files
 *.code-workspace
+
+# gitpod files
+.theia
 
 # MAC Files
 .DS_Store
