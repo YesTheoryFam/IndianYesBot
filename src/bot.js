@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 const bot = new Discord.Client({partials: ["MESSAGE", "REACTION", "CHANNEL"]});
 const betabot = new Discord.Client({partials: ["MESSAGE", "REACTION", "CHANNEL"]});
 
-const config = require('./config/config.json');
-
 const states = require('./collections/Roles/stateTags.json');
 const serverRoles = require('./collections/Roles/Roles.json');
 
@@ -56,5 +54,5 @@ const serverLogs = message.guild.channels.cache.get('747121287381516399');
 
 
 
-bot.login(config.discord_bot.mainBot);
-betabot.login(config.discord_bot.secondaryBot);
+bot.login(process.env.mainBot);
+betabot.login(process.env.secondaryBot);

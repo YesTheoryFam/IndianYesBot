@@ -1,10 +1,8 @@
-const mongoCred = require('./config.json');
-
 const mongooseTest = require('mongoose');
-const mongoTestCred = mongoCred.mongoDB.testDB;
+const mongoCred = process.env.mongoDBCred;
 
 module.exports = async () => {
-    await mongooseTest.connect(mongoTestCred, {
+    await mongooseTest.connect(mongoCred, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
