@@ -38,7 +38,7 @@ chatLogs(bot)
 
 // commandtest
 bot.on('message', message => {
-// const PREFIX = "!";
+const PREFIX = "!";
 const serverLogs = message.guild.channels.cache.get('747121287381516399');
 
 

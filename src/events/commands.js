@@ -15,7 +15,7 @@ module.exports = bot => {
     const timeOutChannel = message.guild.channels.cache.get('749988359471890563');
     const archiveCategory = '747111680168820766';
 
-        
+        if(message.content.startsWith(PREFIX)){
         let args = message.content.substring(PREFIX.length).split(" ");
         switch(args[0]) {
 
@@ -120,6 +120,7 @@ module.exports = bot => {
             break;
 
           };
+        }
         })
 
 };
