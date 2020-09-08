@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client({partials: ["MESSAGE", "REACTION", "CHANNEL"]});
 const betabot = new Discord.Client({partials: ["MESSAGE", "REACTION", "CHANNEL"]});
+const mongo = require('./config/databaseConnect');
 
 const states = require('./collections/Roles/stateTags.json');
 const serverRoles = require('./collections/Roles/Roles.json');
@@ -9,6 +10,7 @@ const messageEvent = require('./events/messages.js');
 const memberJoinEvent = require('./events/memberJoin.js');
 const customCommands = require('./events/commands.js');
 const chatLogs = require('./events/chatLogs.js');
+const messageCounter = require('./database/events/messageCounter.js');
 
 
 
@@ -25,6 +27,7 @@ messageEvent(bot);
 memberJoinEvent(bot);
 customCommands(bot);
 chatLogs(bot)
+messageCounter(bot)
 
 
 
@@ -32,26 +35,30 @@ chatLogs(bot)
 
 // ===========================================================================!|
 // ===========================================================================!|
-//                               BETA TEST ZONE
+//                               BETA TEST ZONE                               ||
 // ==========================================================================÷!|
 // ==========================================================================÷!|
 
 // commandtest
-bot.on('message', message => {
-const PREFIX = "!";
+bot.on('message', async (message) => {
 const serverLogs = message.guild.channels.cache.get('747121287381516399');
 
-
-
-//   let args = message.content.substring(PREFIX.length).split(" ");
-//   switch(args[0]) {
+//message counter
 
 
 
-//   }
+// =======================================
+
+// const PREFIX = "!";
+// if(message.content.startsWith(PREFIX)){
+// let args = message.content.substring(PREFIX.length).split(" ");
+// switch(args[0]) {
+
+
+
+// }
+// }
 });
-
-
 
 
 bot.login(process.env.mainBot);
