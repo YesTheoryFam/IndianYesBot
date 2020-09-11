@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client({partials: ["MESSAGE", "REACTION", "CHANNEL"]});
 const betabot = new Discord.Client({partials: ["MESSAGE", "REACTION", "CHANNEL"]});
 const mongo = require('./config/databaseConnect');
+require('dotenv').config();
 
 const states = require('./collections/Roles/stateTags.json');
 const serverRoles = require('./collections/Roles/Roles.json');
