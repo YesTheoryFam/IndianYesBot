@@ -1,23 +1,19 @@
-const mongo = require('../../config/databaseConnect.js');
 const messageCounterSchema = require('../Schemas/messageCounter.js');
 
 module.exports = (bot) => {
 
-bot.on('message', async (message) => {
-
-const memerBotChannel = message.guild.channels.cache.get('715171228046065775');
-
-if(message.channel === memerBotChannel) return;
-if(message.author.bot) return;
-
-const { author } = message;
-const { id } = author
-const { username } = author
-const displayName = message.member.displayName;
-
-
-await mongo().then( async(mongoose) => {
-    try {
+    bot.on('message', async (message) => {
+        const memerBotChannel = message.guild.channels.cache.get('715171228046065775');
+        
+        if(message.channel === memerBotChannel) return;
+        if(message.author.bot) return;
+        
+        const { author } = message;
+        const { id } = author
+        const { username } = author
+        const displayName = message.member.displayName;
+        
+        
         await messageCounterSchema.findOneAndUpdate({
             _id: id
         }, {
@@ -34,10 +30,7 @@ await mongo().then( async(mongoose) => {
         }, {
             upsert: true
         })
-    } finally {
-        mongoose.connection.close();
-    }
-});
-});
+        });
+    
 
 };

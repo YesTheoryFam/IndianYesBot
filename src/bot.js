@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client({partials: ["MESSAGE", "REACTION", "CHANNEL"]});
 const betabot = new Discord.Client({partials: ["MESSAGE", "REACTION", "CHANNEL"]});
-const mongo = require('./config/databaseConnect');
+const mongo = require('./config/databaseConnect.js');
 require('dotenv').config();
 
 const states = require('./collections/Roles/stateTags.json');
@@ -15,12 +15,14 @@ const messageCounter = require('./database/events/messageCounter.js');
 
 
 
-bot.on('ready', () => {
-const botOnNotificationChannel = bot.channels.cache.get('746764608890470470');
+bot.on('ready', async () => {
+
+await mongo()
+// const botOnNotificationChannel = bot.channels.cache.get('746764608890470470');
 
     console.log('IndianYesBot is online.');
-    if(!botOnNotificationChannel) return;
-    botOnNotificationChannel.send('restart_success');
+    // if(!botOnNotificationChannel) return;
+    // botOnNotificationChannel.send('restart_success');
     
 });
 
@@ -41,25 +43,27 @@ messageCounter(bot)
 // ==========================================================================÷!|
 
 // commandtest
-bot.on('message', async (message) => {
-const serverLogs = message.guild.channels.cache.get('747121287381516399');
+// bot.on('message', async (message) => {
+// const serverLogs = message.guild.channels.cache.get('747121287381516399');
 
-//message counter
-
-
-
-// =======================================
-
-// const PREFIX = "!";
-// if(message.content.startsWith(PREFIX)){
-// let args = message.content.substring(PREFIX.length).split(" ");
-// switch(args[0]) {
+// //message counter
 
 
 
-// }
-// }
-});
+// // =======================================
+
+// // const PREFIX = "!";
+// // if(message.content.startsWith(PREFIX)){
+// // let args = message.content.substring(PREFIX.length).split(" ");
+// // switch(args[0]) {
+
+
+
+// // }
+// // }
+// });
+
+// ==================================
 
 
 bot.login(process.env.mainBot);
