@@ -8,7 +8,7 @@ module.exports = (bot) => {
     const [Activity] = newPresence.activities;
     if (!Activity) return;
 
-    await activityGroupSchema.findByIdAndUpdate(
+    await activityGroupSchema.findOneAndUpdate(
       {
         appName: Activity.name,
       },
