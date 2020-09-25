@@ -8,15 +8,14 @@ const serverRoles = require('../collections/Roles/Roles.json');
 
 module.exports = bot => {
 
-      bot.on('guildMemberAdd', member => {
-        member.roles.add(serverRoles.beta1);
-      });
-  
-     bot.on('guildMemberRemove', member => {
-      const serverEntryLog = member.guild.channels.cache.get('715183025607934033');
-  
+    bot.on('guildMemberAdd', member => {
+      member.roles.add(serverRoles.unasigned);
+    });
+
+    bot.on('guildMemberRemove', member => {
+    const serverEntryLog = member.guild.channels.cache.get('715183025607934033');
       serverEntryLog.send(`${member} just left the server.`);
-  });
+    });
 
 
     bot.on('messageReactionAdd', async (reaction, user) =>{
@@ -44,9 +43,9 @@ module.exports = bot => {
        `Good to see you, ${user}`
        ]);
         
-          if(reaction.message.partial) await reaction.message.fetch();
+          if (reaction.message.partial) await reaction.message.fetch();
           if (reaction.partial) await reaction.fetch();
-          if(user.bot) return;
+          if (user.bot) return;
       
             // Test Code
           if(reaction.message.channel.id === '746755589895487488') {
@@ -79,7 +78,7 @@ module.exports = bot => {
           if(reaction.emoji.name === states.north.emoji) {
             // console.log('north emote');
             await reaction.message.guild.members.cache.get(user.id).roles.add(states.north.role);
-            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
+            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.unasigned)
             northRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
             // const emoji2 = reaction.message.reactions.cache.get(states.central.emoji);
@@ -102,7 +101,7 @@ module.exports = bot => {
           // central
           if(reaction.emoji.name === states.central.emoji) {
             await reaction.message.guild.members.cache.get(user.id).roles.add(states.central.role);
-            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
+            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.unasigned)
             centralRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
             // const emoji2 = reaction.message.reactions.cache.get(states.north.emoji);
@@ -125,7 +124,7 @@ module.exports = bot => {
           // east
           if(reaction.emoji.name === states.east.emoji) {
             await reaction.message.guild.members.cache.get(user.id).roles.add(states.east.role);
-            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
+            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.unasigned)
             eastRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
       
@@ -149,7 +148,7 @@ module.exports = bot => {
           // west
           if(reaction.emoji.name === states.west.emoji) {
             await reaction.message.guild.members.cache.get(user.id).roles.add(states.west.role);
-            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
+            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.unasigned)
             westRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
       
@@ -173,7 +172,7 @@ module.exports = bot => {
           // south
           if(reaction.emoji.name === states.south.emoji) {
             await reaction.message.guild.members.cache.get(user.id).roles.add(states.south.role);
-            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
+            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.unasigned)
             southRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
       
@@ -197,7 +196,7 @@ module.exports = bot => {
           // islands 
           if(reaction.emoji.name === states.islands.emoji) {
             await reaction.message.guild.members.cache.get(user.id).roles.add(states.islands.role);
-            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
+            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.unasigned)
             islandRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
       
@@ -221,7 +220,7 @@ module.exports = bot => {
           // northeast 
           if(reaction.emoji.name === states.northeast.emoji) {
             await reaction.message.guild.members.cache.get(user.id).roles.add(states.northeast.role);
-            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.beta1)
+            await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.unasigned)
             northeastRegion.send(`Great! Now select your state, ${user}.`).then(m => m.delete());
       
       

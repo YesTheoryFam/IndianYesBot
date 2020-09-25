@@ -4,7 +4,7 @@
   "description": "A moderation bot for the Yes Fam India Discrod Server",
   "main": "src/bot.js",
   "scripts": {
-    "test": "node beta/BetaBot/index.js",
+    "test": "node test.js",
     "start": "node src/bot.js"
   },
   "repository": {

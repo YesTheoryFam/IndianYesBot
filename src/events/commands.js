@@ -19,39 +19,12 @@ module.exports = bot => {
         let args = message.content.substring(PREFIX.length).split(" ");
         switch(args[0]) {
 
-          case 'timeout':
-    
-            if (message.member.hasPermission('ADMINISTRATOR')) {
-                var person = message.mentions.members.first();
-                if(!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({timeout: 5000}))
-                  .then(message.delete({timeout: 5000}).catch(err => console.log(err)));
-        
-                if(person.id === bot.user.id) 
-                  return message.react('👎')
-                  .then(message.delete({timeout: 5000}).catch(err => console.log(err)));
-        
-                if(person.id === message.author.id) 
-                    return message.react('👎')
-                    .then(message.delete({timeout: 5000}).catch(err => console.log(err)));
-        
-                if(person.hasPermission('MANAGE_NICKNAMES'))
-                    return message.react('👎').then(message.delete({timeout: 5000}).catch(err => console.log(err)));
-        
-        
-                person.roles.add(serverRoles.timeOut);
-                message.react('👍');
-                serverLogs.send("<@" + message.author.id + "> just put <@" + person + "> on Time Out from the <#"+ message.channel.id + "> channel.");
-                message.delete({timeout: 5000}).catch(err => console.log(err));
-        
-            };
-        
-            break;
         
             case 'permit':
         
             if (message.channel == timeOutChannel) {
         
-                if (message.member.hasPermission('ADMINISTRATOR')) {
+                if (message.member.hasPermission('MANAGE_NICKNAMES')) {
                     var person = message.mentions.members.first();
                     if(!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({timeout: 5000}))
                       .then(message.delete({timeout: 5000}).catch(err => console.log(err)));
@@ -104,7 +77,6 @@ module.exports = bot => {
             };
               break;
 
-            
             case 'archive':
 
                 if (message.member.hasPermission('ADMINISTRATOR')){

@@ -18,11 +18,7 @@ module.exports = bot => {
 
                 if (message.member.hasPermission('KICK_MEMBERS')){
                     message.channel.send(`Hi there, ${message.author}`);
-            
                 };
-            } else {
-                // message.channel.send(`I'm currently under development. But you can always tell me hi and I'll say hi back. See, I'm a nice bot.`)
-                return;
             };
         
             
@@ -56,7 +52,7 @@ module.exports = bot => {
         };
 
         //deleting server invites
-        if(message.content.includes(`https://discord.gg`)) {
+        if(message.content.includes(`https://discord.gg/`)) {
             message.delete();
         };
 
