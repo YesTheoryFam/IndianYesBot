@@ -5,11 +5,11 @@ const reqString = {
     required: true
 }
 
-const presenceGroupSchema = mongoose.Schema({
+const activityGroupSchema = mongoose.Schema({
     appName: String,
     userIDs: [String],
 
 })
 
 
-module.exports = mongoose.model("presenceGroup", presenceGroupSchema);
+module.exports = mongoose.model("presenceGroup", activityGroupSchema);

@@ -1,5 +1,5 @@
 module.exports = (bot) => {
-  const activityUpdateSchema = require("../Schemas/activityGroupSchema");
+  const activityGroupSchema = require("../Schemas/activityGroupSchema");
 
   bot.on("presenceUpdate", async (oldPresence, newPresence) => {
     if (newPresence.user.bot) return;
@@ -8,7 +8,7 @@ module.exports = (bot) => {
     const [Activity] = newPresence.activities;
     if (!Activity) return;
 
-    await activityUpdateSchema.findByIdAndUpdate(
+    await activityGroupSchema.findByIdAndUpdate(
       {
         appName: Activity.name,
       },
