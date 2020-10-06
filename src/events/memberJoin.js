@@ -244,6 +244,8 @@ module.exports = bot => {
           if(reaction.emoji.name === states.foreigner.emoji) {
             await reaction.message.guild.members.cache.get(user.id).roles.add(states.foreigner.role);
             await reaction.message.guild.members.cache.get(user.id).roles.remove(serverRoles.unasigned)
+            await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
+            await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
 
             welcomeChat.send(welcomMessage);
       
