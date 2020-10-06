@@ -108,7 +108,6 @@ module.exports = bot => {
                 if (message.member.hasPermission('ADMINISTRATOR')){
 
                     message.channel.setParent(archiveCategory);
-                    message.channel.lockPermissions();
                     message.react('👍');
                     message.channel.setPosition(0);
                     serverLogs.send(`${message.author} has archived ${message.channel} channel.`);
