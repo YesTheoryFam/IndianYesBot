@@ -19,7 +19,35 @@ module.exports = bot => {
         let args = message.content.substring(PREFIX.length).split(" ");
         switch(args[0]) {
 
+          case 'timeout':
         
+            if (message.member.hasPermission('ADMINISTRATOR') || message.member.hasPermission('MANAGE_NICKNAMES')) {
+                var person = message.mentions.members.first();
+                if(!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({timeout: 5000}))
+                  .then(message.delete({timeout: 5000}).catch(err => console.log(err)));
+        
+                if(person.id === bot.user.id) 
+                  return message.react('👎')
+                  .then(message.delete({timeout: 5000}).catch(err => console.log(err)));
+        
+                if(person.id === message.author.id) 
+                    return message.react('👎')
+                    .then(message.delete({timeout: 5000}).catch(err => console.log(err)));
+        
+                if(person.hasPermission('MANAGE_NICKNAMES'))
+                    return message.react('👎').then(message.delete({timeout: 5000}).catch(err => console.log(err)));
+        
+        
+                person.roles.add(serverRoles.timeOut);
+                message.react('👍');
+                serverLogs.send("<@" + message.author.id + "> just put <@" + person + "> on Time Out from the <#"+ message.channel.id + "> channel.");
+                message.delete({timeout: 5000}).catch(err => console.log(err));
+        
+            };
+        
+            break;
+
+
             case 'permit':
         
             if (message.channel == timeOutChannel) {
@@ -59,8 +87,7 @@ module.exports = bot => {
                 resultMessage.delete();
                 message.channel.send("```Latency = " + pong + "ms``````API Latency = " + bot.ws.ping + "ms```");
               })
-            } else {
-              if (message.member.hasPermission('ADMINISTRATOR')){
+            } else if (message.channel !== betaTestChannel && message.member.hasPermission('ADMINISTRATOR')){
                 message.channel.send('calculating ping ...').then(resultMessage => {
                   const pong = resultMessage.createdTimestamp - message.createdTimestamp;
                 
@@ -73,7 +100,6 @@ module.exports = bot => {
                 })
               } else {
                 return;
-              }
             };
               break;
 
