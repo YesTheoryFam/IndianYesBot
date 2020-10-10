@@ -42,7 +42,6 @@ activityGroups(bot);
 
 
 
-
 // ==================================
 
 bot.login(process.env.mainBot);

@@ -8,8 +8,19 @@ const serverRoles = require('../collections/Roles/Roles.json');
 
 module.exports = bot => {
 
-    bot.on('guildMemberAdd', member => {
-      member.roles.add(serverRoles.unasigned);
+    bot.on('guildMemberAdd', async (member) => {
+        const messageCounterSchema = require('./database/Schemas/messageCounter');
+        const oldMemberRoles = await messageCounterSchema.find({
+            _id: member.id
+        });
+
+        if(oldMemberRoles.length > 0) {
+            const [{ userRoles }] = oldMemberRoles;
+
+            member.roles.add(userRoles);
+        } else {
+            member.roles.add(serverRoles.unasigned);
+        }
     });
 
     bot.on('guildMemberRemove', member => {
