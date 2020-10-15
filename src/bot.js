@@ -1,10 +1,6 @@
 const Discord = require("discord.js");
-const bot = new Discord.Client({
-  partials: ["MESSAGE", "REACTION", "CHANNEL"],
-});
-const betabot = new Discord.Client({
-  partials: ["MESSAGE", "REACTION", "CHANNEL"],
-});
+const bot = new Discord.Client({ partials: ["MESSAGE", "REACTION", "CHANNEL"] });
+const betabot = new Discord.Client({ partials: ["MESSAGE", "REACTION", "CHANNEL"] });
 const mongo = require("./config/databaseConnect.js");
 require("dotenv").config();
 
@@ -17,6 +13,7 @@ const customCommands = require("./events/commands.js");
 const chatLogs = require("./events/chatLogs.js");
 const messageCounter = require("./database/events/messageCounter.js");
 const activityGroups = require('./database/events/activityGroups');
+const hobbies = require('./events/hobbies');
 
 bot.on("ready", async () => {
   await mongo();
@@ -33,6 +30,7 @@ customCommands(bot);
 chatLogs(bot);
 messageCounter(bot);
 activityGroups(bot);
+hobbies(bot);
 
 // ===========================================================================!|
 // ===========================================================================!|
@@ -45,4 +43,4 @@ activityGroups(bot);
 // ==================================
 
 bot.login(process.env.mainBot);
-betabot.login(process.env.secondaryBot);
+betabot.login(process.env.secondaryBot);  
