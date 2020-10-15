@@ -121,11 +121,11 @@ module.exports = bot => {
     
                     const hobbyGroupName = messageContent.replace('!newhobby ', '');
     
-                    const search = await hobbiesGroupSchema.find({
+                    const hobbySearch = await hobbiesGroupSchema.find({
                         groupChannelId: message.channel.id
                     })
     
-                    if (search.length > 0) return message.reply(`This channel is already assigned.`);
+                    if (hobbySearch.length > 0) return message.reply(`This channel is already assigned.`);
     
                     await hobbiesGroupSchema.findOneAndUpdate({
                         groupChannelId: message.channel.id
@@ -145,11 +145,11 @@ module.exports = bot => {
     
                     const gameGroupName = messageContent.replace('!newgame ', '');
     
-                    const search = await hobbiesGroupSchema.find({
+                    const gameSearch = await hobbiesGroupSchema.find({
                         groupChannelId: message.channel.id
                     })
     
-                    if (search.length > 0) return message.reply(`This channel is already assigned.`);
+                    if (gameSearch.length > 0) return message.reply(`This channel is already assigned.`);
     
                     await hobbiesGroupSchema.findOneAndUpdate({
                         groupChannelId: message.channel.id
