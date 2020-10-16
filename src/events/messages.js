@@ -1,3 +1,7 @@
+const Chance = require('chance');
+
+const chanceObj = new Chance();
+
 const states = require('../collections/Roles/stateTags.json');
 const serverRoles = require("../collections/Roles/Roles.json");
 
