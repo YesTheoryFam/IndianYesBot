@@ -21,6 +21,28 @@ module.exports = bot => {
       let args = message.content.substring(PREFIX.length).split(" ");
       switch (args[0]) {
 
+        case 'ss':
+          if (!message.member.hasPermission('ADMINISTRATOR')) return;
+          var person = message.mentions.members.first();
+          if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
+            .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
+
+          const secretSantaChannel = message.guild.channels.cache.get('770336913752064100');
+          const secretSantaAnnouncementChannel = message.guild.channels.cache.get('770336984341938197');
+
+          secretSantaChannel.updateOverwrite(person.id, {
+            VIEW_CHANNEL: true
+          }).then(() => {
+            secretSantaAnnouncementChannel.updateOverwrite(person.id, {
+              VIEW_CHANNEL: true
+            })
+          }).then(() => message.react('👍')
+            .then(() => message.delete({timeout: 5000}))
+          );
+
+          break;
+
+
         case 'timeout':
 
           if (message.member.hasPermission('ADMINISTRATOR') || message.member.hasPermission('MANAGE_NICKNAMES')) {
