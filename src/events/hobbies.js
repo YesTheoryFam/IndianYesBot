@@ -105,6 +105,9 @@ module.exports = bot => {
     const gamerSet = new Set();
     const gamer = new Set();
     bot.on('message', async (message) => {
+        
+        if (message.channel.type === "dm") return;
+
     
         if (message.author.bot) return;
         const messageContent = message.content.toLowerCase();
