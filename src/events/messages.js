@@ -18,7 +18,7 @@ module.exports = bot => {
         const featureRequestChannel = message.guild.channels.cache.get('715200556817317940');
         const serverLogs = message.guild.channels.cache.get('747121287381516399');
 
-
+        if(!message.guild) return;
         if (message.author.bot) return;
 
         // Beta Test Channel
