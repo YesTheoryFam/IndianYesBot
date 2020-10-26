@@ -13,6 +13,7 @@ const DIFF = 3000;
 
 module.exports = bot => {
     bot.on('message', message => {
+        console.log(message)
         if(!message.guild) return;
 
         const betaTestChannel = message.guild.channels.cache.get('746755589895487488');
