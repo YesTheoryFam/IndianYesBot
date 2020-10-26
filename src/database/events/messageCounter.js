@@ -3,6 +3,8 @@ const messageCounterSchema = require('../Schemas/messageCounter.js');
 module.exports = (bot) => {
 
     bot.on('message', async (message) => {
+        if (message.channel.type === "dm") return;
+
         const memerBotChannel = message.guild.channels.cache.get('715171228046065775');
         
         if(message.channel === memerBotChannel) return;
