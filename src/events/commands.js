@@ -8,6 +8,8 @@ const PREFIX = "!";
 module.exports = bot => {
 
   bot.on('message', message => {
+    if (message.channel.type === "dm") return;
+
     if (message.author.bot) return;
 
     const serverLogs = message.guild.channels.cache.get('747121287381516399');
