@@ -7,7 +7,7 @@ const PREFIX = "!";
 
 module.exports = bot => {
 
-    bot.on('message', message => {
+        bot.on('message', message => {
         if (message.channel.type === "dm") return;
 
         if (message.author.bot) return;
@@ -20,6 +20,41 @@ module.exports = bot => {
         if (message.content.startsWith(PREFIX)) {
             let args = message.content.substring(PREFIX.length).split(" ");
             switch (args[0]) {
+
+                case 'ssrem':
+
+                    const nisha = '572721594959659022';
+                    const niveditha = '640457436859334657';
+                    const ritika = '731818289717575770';
+                    const shreeya = '749624514425520168';
+                    const beta = '712795842083553363';
+                    if (message.author.id === nisha ||
+                        message.author.id === ritika ||
+                        message.author.id === niveditha ||
+                        message.author.id === shreeya ||
+                        message.author.id === beta ||
+                        message.member.hasPermission('MANAGE_NICKNAMES')) {
+
+                        var person = message.mentions.members.first();
+                        if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
+                            .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
+
+                        const secretSantaChannel = message.guild.channels.cache.get('770336913752064100');
+                        const secretSantaAnnouncementChannel = message.guild.channels.cache.get('770336984341938197');
+
+                        secretSantaChannel.updateOverwrite(person.id, {
+                            VIEW_CHANNEL: false
+                        }).then(() => {
+                            secretSantaAnnouncementChannel.updateOverwrite(person.id, {
+                                VIEW_CHANNEL: false
+                            })
+                        }).then(() => {
+                            message.react('👍');
+                        }).then(() => message.delete({ timeout: 5000 }))
+
+                    }
+
+                    break;
 
                 case 'ss':
 
