@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = bot => {
     //Message update logging
 bot.on("messageUpdate", async(oldMessage, newMessage) =>{
-    if (oldMessage.author.bot) return;
+    // if (oldMessage.author.bot) return;
     if (oldMessage.content === newMessage.content){
       return;
     }
@@ -26,7 +26,7 @@ bot.on("messageUpdate", async(oldMessage, newMessage) =>{
   });
   //Deleted messages logging
   bot.on("messageDelete", async(message) =>{
-    if (message.author.bot) return;
+    // if (message.author.bot) return;
   
       let logDelembed = new Discord.MessageEmbed()
       .setThumbnail(message.author.avatarURL())
