@@ -23,16 +23,16 @@ module.exports = bot => {
 
                 case 'ssrem':
 
-                    const nisha = '572721594959659022';
-                    const niveditha = '640457436859334657';
-                    const ritika = '731818289717575770';
-                    const shreeya = '749624514425520168';
-                    const beta = '712795842083553363';
-                    if (message.author.id === nisha ||
-                        message.author.id === ritika ||
-                        message.author.id === niveditha ||
-                        message.author.id === shreeya ||
-                        message.author.id === beta ||
+                    const nisha2 = '572721594959659022';
+                    const niveditha2 = '640457436859334657';
+                    const ritika2 = '731818289717575770';
+                    const shreeya2 = '749624514425520168';
+                    const beta2 = '712795842083553363';
+                    if (message.author.id === nisha2 ||
+                        message.author.id === ritika2 ||
+                        message.author.id === niveditha2 ||
+                        message.author.id === shreeya2 ||
+                        message.author.id === beta2 ||
                         message.member.hasPermission('MANAGE_NICKNAMES')) {
 
                         var person = message.mentions.members.first();
