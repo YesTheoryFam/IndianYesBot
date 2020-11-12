@@ -33,7 +33,7 @@ module.exports = bot => {
                         message.author.id === niveditha ||
                         message.author.id === shreeya ||
                         message.author.id === beta ||
-                        message.member.hasPermission('MANAGE_CHANNELS')) {
+                        message.member.hasPermission('MANAGE_NICKNAMES')) {
 
                         var person = message.mentions.members.first();
                         if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
