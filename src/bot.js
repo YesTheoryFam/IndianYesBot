@@ -16,12 +16,12 @@ const activityGroups = require('./database/events/activityGroups');
 const hobbies = require('./events/hobbies');
 
 bot.on("ready", async () => {
-  await mongo();
-  const botOnNotificationChannel = bot.channels.cache.get("746764608890470470");
+    await mongo();
+    const botOnNotificationChannel = bot.channels.cache.get("746764608890470470");
 
-  console.log("IndianYesBot is online.");
-  if (!botOnNotificationChannel) return;
-  botOnNotificationChannel.send("restart_success");
+    console.log("IndianYesBot is online.");
+    if (!botOnNotificationChannel) return;
+    botOnNotificationChannel.send("restart_success");
 });
 
 messageEvent(bot);
@@ -31,14 +31,6 @@ chatLogs(bot);
 messageCounter(bot);
 activityGroups(bot);
 hobbies(bot);
-
-// ===========================================================================!|
-// ===========================================================================!|
-//                               BETA TEST ZONE                               ||
-// ==========================================================================÷!|
-// ==========================================================================÷!|
-
-// ==================================
 
 bot.login(process.env.mainBot);
 betabot.login(process.env.secondaryBot);  
