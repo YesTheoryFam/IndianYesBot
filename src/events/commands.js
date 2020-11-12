@@ -50,7 +50,7 @@ module.exports = bot => {
                             })
                         }).then(() => {
                             message.react('👍');
-                            person.send(`Thank you for signing uup for the Secret Santa Event on Yes Fam India. You now have access to a secret channel ---> <#770336913752064100>.`);
+                            person.send(`Thank you for signing up for the Secret Santa Event on Yes Fam India. You now have access to a secret channel ---> <#770336913752064100>.`);
                         }).then(() => message.delete({ timeout: 5000 }))
 
                     }
