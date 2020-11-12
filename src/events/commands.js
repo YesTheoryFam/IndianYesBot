@@ -48,9 +48,10 @@ module.exports = bot => {
                             secretSantaAnnouncementChannel.updateOverwrite(person.id, {
                                 VIEW_CHANNEL: true
                             })
-                        }).then(() => message.react('👍')
-                            .then(() => message.delete({ timeout: 5000 }))
-                        );
+                        }).then(() => {
+                            message.react('👍');
+                            person.send(`Thank you for signing uup for the Secret Santa Event on Yes Fam India. You now have access to a secret channel ---> <#770336913752064100>.`);
+                        }).then(() => message.delete({ timeout: 5000 }))
 
                     }
 
