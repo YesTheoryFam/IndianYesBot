@@ -27,10 +27,12 @@ module.exports = bot => {
                     const niveditha = '640457436859334657';
                     const ritika = '731818289717575770';
                     const shreeya = '749624514425520168';
+                    const beta = '712795842083553363';
                     if (message.author.id === nisha ||
                         message.author.id === ritika ||
                         message.author.id === niveditha ||
                         message.author.id === shreeya ||
+                        message.author.id === beta ||
                         message.member.hasPermission('MANAGE_CHANNELS')) {
 
                         var person = message.mentions.members.first();
