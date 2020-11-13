@@ -1,11 +1,9 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client({ partials: ["MESSAGE", "REACTION", "CHANNEL"] });
 const betabot = new Discord.Client({ partials: ["MESSAGE", "REACTION", "CHANNEL"] });
-const mongo = require("./config/databaseConnect.js");
-require("dotenv").config();
 
-const states = require("./collections/Roles/stateTags.json");
-const serverRoles = require("./collections/Roles/Roles.json");
+require("dotenv").config();
+const mongo = require("./config/databaseConnect.js");
 
 const messageEvent = require("./events/messages.js");
 const memberJoinEvent = require("./events/memberJoin.js");
@@ -31,14 +29,6 @@ chatLogs(bot);
 messageCounter(bot);
 activityGroups(bot);
 hobbies(bot);
-
-// ===========================================================================!|
-// ===========================================================================!|
-//                               BETA TEST ZONE                               ||
-// ==========================================================================÷!|
-// ==========================================================================÷!|
-
-// ==================================
 
 bot.login(process.env.mainBot);
 betabot.login(process.env.secondaryBot);  

@@ -21,7 +21,7 @@ module.exports = bot => {
       let args = message.content.substring(PREFIX.length).split(" ");
       switch (args[0]) {
 
-        case 'ss':
+        case 'ss':        // temporary command
           if (!message.member.hasPermission('ADMINISTRATOR')) return;
           var person = message.mentions.members.first();
           if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
@@ -37,11 +37,10 @@ module.exports = bot => {
               VIEW_CHANNEL: true
             })
           }).then(() => message.react('👍')
-            .then(() => message.delete({timeout: 5000}))
+            .then(() => message.delete({ timeout: 5000 }))
           );
 
           break;
-
 
         case 'timeout':
 

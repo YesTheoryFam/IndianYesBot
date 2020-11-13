@@ -5,7 +5,8 @@ const hobbiesGroupSchema = mongoose.Schema({
     groupEmoji: String,
     groupChannelId: String,
     groupType: String,
-    groupMemberIds: [String]
+    groupMemberIds: [String],
+    groupStatus: String
 })
 
 

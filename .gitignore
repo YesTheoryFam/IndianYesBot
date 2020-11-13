@@ -1,6 +1,7 @@
 # BETA Test Files 
 /beta
 test.js
+/src/database/Schemas/beta
 
 # configuration files
 /config

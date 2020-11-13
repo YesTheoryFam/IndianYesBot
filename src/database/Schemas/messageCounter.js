@@ -1,23 +1,19 @@
 const mongoose = require('mongoose');
 
-const reqString = {
-    type: String,
-    required: true
-}
 
 const messageCounterSchema = mongoose.Schema({
 
-    _id: reqString,
-    name: reqString,
+    _id: String,
+    name: String,
     nameHistory: [String],
-    currentUsername: reqString,
+    currentUsername: String,
     usernameHistory: [String],
     userRoles: [String],
-    messageCount: {
-        type: Number,
-        required: true
-    }
-
+    messageCount: Number,
+    suspicion: Boolean,
+    currentWarningCount: Number,
+    totalWarningCount: Number,
+    warningIds: [String]
 })
 
 module.exports = mongoose.model('messageCount', messageCounterSchema);

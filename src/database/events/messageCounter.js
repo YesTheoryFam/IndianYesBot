@@ -11,13 +11,13 @@ module.exports = (bot) => {
         if(message.author.bot) return;
         
         const { author } = message;
-        const { id } = author
+        const { id:_id } = author
         const { username } = author
         const displayName = message.member.displayName;
         
         
         await messageCounterSchema.findOneAndUpdate({
-            _id: id
+            _id
         }, {
             name: displayName,
             currentUsername: username,

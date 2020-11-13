@@ -5,6 +5,8 @@ module.exports = bot => {
     const hobbiesGroupSchema = require('../database/Schemas/hobbiesGroupSchema');
     // const hobbiesGroupSchema = require('./src/database/Schemas/hobbiesGroupSchema');
     const PREFIX = "!";
+    const active = 'active';
+    const inactive = 'inactive';
 
     bot.on('messageReactionAdd', async (reaction, user) => {
 
@@ -15,7 +17,8 @@ module.exports = bot => {
         if (reaction.partial) await reaction.fetch();
         if (user.bot) return;
 
-        if (reaction.message.channel === gameSelectChannel || reaction.message.channel === hobbiesSelectChannel) {
+        if (reaction.message.channel === gameSelectChannel ||
+            reaction.message.channel === hobbiesSelectChannel) {
 
             const userId = user.id
 
@@ -34,7 +37,8 @@ module.exports = bot => {
                 if (reaction.emoji.name === groupEmoji) {
 
                     await hobbiesGroupSchema.findOneAndUpdate({
-                        groupEmoji
+                        groupEmoji,
+                        groupStatus: active
                     }, {
                         $addToSet: {
                             groupMemberIds: userId
@@ -81,7 +85,8 @@ module.exports = bot => {
                 if (reaction.emoji.name === groupEmoji) {
 
                     await hobbiesGroupSchema.findOneAndUpdate({
-                        groupEmoji
+                        groupEmoji,
+                        groupStatus: active
                     }, {
                         $pull: {
                             groupMemberIds: user.id
@@ -133,7 +138,8 @@ module.exports = bot => {
                         groupChannelId: message.channel.id
                     }, {
                         groupName: hobbyGroupName,
-                        groupType: 'hobby'
+                        groupType: 'hobby',
+                        groupStatus: active
                     }, {
                         upsert: true
                     }).then(() => message.reply(`this channel has now been assigned to ${hobbyGroupName}.`)).then(() => message.react('👍')).then(() => message.channel.send('Now set an emoji for this channel so people can react to gain access, by doing```!setemoji <emoji>```'));
@@ -157,7 +163,8 @@ module.exports = bot => {
                         groupChannelId: message.channel.id
                     }, {
                         groupName: gameGroupName,
-                        groupType: 'game'
+                        groupType: 'game',
+                        groupStatus: active
                     }, {
                         upsert: true
                     }).then(() => message.reply(`this channel has now been assigned to ${gameGroupName} players.`)).then(() => message.react('👍')).then(() => message.channel.send('Now set an emoji for this channel so people can react to gain access, by doing```!setemoji <emoji>```'));
