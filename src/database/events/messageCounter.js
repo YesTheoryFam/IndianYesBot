@@ -14,16 +14,17 @@ module.exports = (bot) => {
         const { id: _id } = author
         const { username } = author
         const displayName = message.member.displayName;
+        const nick = message.member.nickname || '';
 
 
         await memberSchema.findOneAndUpdate({
             _id
         }, {
-            name: displayName,
+            name: nick,
             currentUsername: username,
             $addToSet: {
                 usernameHistory: username,
-                nameHistory: displayName,
+                nameHistory: nick,
                 userRoles: message.member.roles.cache.keyArray()
             },
             $inc: {
