@@ -10,6 +10,7 @@ const memberSchema = mongoose.Schema({
     usernameHistory: [String],
     userRoles: [String],
     messageCount: Number,
+    timeout: String,
     suspicion: Boolean,
     currentWarningCount: Number,
     totalWarningCount: Number,

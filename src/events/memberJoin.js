@@ -4,20 +4,40 @@ const chanceObj = new Chance();
 const states = require('../collections/Roles/stateTags.json');
 const serverRoles = require('../collections/Roles/Roles.json');
 
+const memberSchema = require('../database/Schemas/memberSchema');
+
 
 
 module.exports = bot => {
 
     bot.on('guildMemberAdd', async (member) => {
-        const memberSchema = require('../database/Schemas/memberSchema');
+
+        const welcomeChat = member.guild.channels.cache.get('721050178794291292');
+
         const oldMemberRoles = await memberSchema.find({
             _id: member.id
         });
 
         if (oldMemberRoles.length > 0) {
-            const [{ userRoles }] = oldMemberRoles;
+            const [{ userRoles, timeout }] = oldMemberRoles;
 
-            member.roles.add(userRoles);
+            userRoles.forEach((previousRoles) => {
+                const theRole = member.guild.roles.cache.get(previousRoles);
+
+                if (theRole) {
+                    member.roles.add(previousRoles)
+                }
+
+            })
+
+            if (timeout === active) {
+                return member.roles.add(serverRoles.timeOut);
+            } else if (timeout === inactive) {
+                member.roles.remove(serverRoles.timeOut)
+            }
+
+            welcomeChat.send(`Welcome back, ${member}.`);
+
         } else {
             member.roles.add(serverRoles.unasigned);
         }
@@ -28,7 +48,6 @@ module.exports = bot => {
         const serverEntryLog = member.guild.channels.cache.get('715183025607934033');
         serverEntryLog.send(`${member}(${memberTag}) just left the server.`);
     });
-
 
     bot.on('messageReactionAdd', async (reaction, user) => {
         // console.log('reacted');

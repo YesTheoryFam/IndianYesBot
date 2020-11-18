@@ -5,7 +5,10 @@ const serverRoles = require('../collections/Roles/Roles.json')
 const PREFIX = "!";
 
 const hobbiesGroupSchema = require('../database/Schemas/hobbiesGroupSchema');
+const memberSchema = require('../database/Schemas/memberSchema');
 
+const active = 'active';
+const inactive = 'inactive';
 
 module.exports = bot => {
 
@@ -113,8 +116,23 @@ module.exports = bot => {
                         if (person.hasPermission('MANAGE_NICKNAMES'))
                             return message.react('👎').then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
 
+                        if (person.roles.cache.has(serverRoles.timeOut)) {
+                            message.react('👎').then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
+                            message.reply(`${person} is already on timeout!`).then(m => m.delete({ timeout: 5000 }))
+                            return;
+                        }
 
-                        person.roles.add(serverRoles.timeOut);
+
+                        person.roles.add(serverRoles.timeOut).then(async () => {
+                            await memberSchema.findOneAndUpdate({
+                                _id: person.id
+                            }, {
+                                timeout: active
+                            }, {
+                                upsert: true
+                            })
+                        })
+
                         message.react('👍');
                         serverLogs.send("<@" + message.author.id + "> just put <@" + person + "> on Time Out from the <#" + message.channel.id + "> channel.");
                         message.delete({ timeout: 5000 }).catch(err => console.log(err));
@@ -143,13 +161,29 @@ module.exports = bot => {
                             if (person.hasPermission('MANAGE_NICKNAMES'))
                                 return message.react('👎').then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
 
+                            if (!person.roles.cache.has(serverRoles.timeOut)) {
+                                message.react('👎').then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
+                                message.reply(`${person} is not on timeout!`).then(m => m.delete({ timeout: 5000 }))
+                                return;
+                            }
 
-                            person.roles.remove(serverRoles.timeOut);
+                            person.roles.remove(serverRoles.timeOut).then(async () => {
+
+                                await memberSchema.findOneAndUpdate({
+                                    _id: person.id
+                                }, {
+                                    timeout: inactive
+                                }, {
+                                    upsert: true
+                                })
+
+                            })
                             message.react('👍');
                             serverLogs.send("<@" + message.author.id + "> just took out <@" + person + "> from Time Out");
                             message.delete({ timeout: 5000 }).catch(err => console.log(err));
 
                         };
+
                     };
 
                     break;
