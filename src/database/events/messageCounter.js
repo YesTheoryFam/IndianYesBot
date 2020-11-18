@@ -1,4 +1,4 @@
-const messageCounterSchema = require('../Schemas/memberSchema');
+const memberSchema = require('../Schemas/memberSchema');
 
 module.exports = (bot) => {
 
@@ -16,7 +16,7 @@ module.exports = (bot) => {
         const displayName = message.member.displayName;
 
 
-        await messageCounterSchema.findOneAndUpdate({
+        await memberSchema.findOneAndUpdate({
             _id
         }, {
             name: displayName,

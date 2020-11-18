@@ -9,8 +9,8 @@ const serverRoles = require('../collections/Roles/Roles.json');
 module.exports = bot => {
 
     bot.on('guildMemberAdd', async (member) => {
-        const messageCounterSchema = require('../database/Schemas/messageCounter');
-        const oldMemberRoles = await messageCounterSchema.find({
+        const memberSchema = require('../database/Schemas/memberSchema');
+        const oldMemberRoles = await memberSchema.find({
             _id: member.id
         });
 
