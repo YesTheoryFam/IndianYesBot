@@ -4,6 +4,8 @@
 const serverRoles = require('../collections/Roles/Roles.json')
 const PREFIX = "!";
 
+const hobbiesGroupSchema = require('../database/Schemas/hobbiesGroupSchema');
+
 
 module.exports = bot => {
 
@@ -15,7 +17,12 @@ module.exports = bot => {
         const serverLogs = message.guild.channels.cache.get('747121287381516399');
         const betaTestChannel = message.guild.channels.cache.get('746755589895487488');
         const timeOutChannel = message.guild.channels.cache.get('749988359471890563');
+        const gameSelectChannel = message.guild.channels.cache.get('766246855939588127');
+        const hobbiesSelectChannel = message.guild.channels.cache.get('766284120497717249');
+
         const archiveCategory = '747111680168820766';
+        const hobbiesParent = '766283162468614144';
+        const gamesParent = '766246748049637386';
 
         const nisha = '572721594959659022';
         const niveditha = '640457436859334657';
@@ -175,9 +182,48 @@ module.exports = bot => {
 
                     if (message.member.hasPermission('ADMINISTRATOR')) {
 
-                        message.channel.setParent(archiveCategory);
+                        if (message.channel.parentID === hobbiesParent ||
+                            message.channel.parentID === gamesParent) {
+
+                            const findHobby = await hobbiesGroupSchema.find({
+                                groupChannelId: message.channel.id
+                            })
+
+                            if (findHobby.length > 0) {
+
+                                const [{ groupEmoji }] = findHobby
+
+                                await hobbiesGroupSchema.findOneAndUpdate({
+                                    groupChannelId: message.channel.id
+                                }, {
+                                    groupStatus: inactive
+                                }).then(() => {
+
+                                    if (message.channel.parentID === hobbiesParent) {
+
+                                        hobbiesSelectChannel.messages.fetch({ limit: 1 }).then(m => {
+                                            let lastMessage = m.first();
+
+                                            lastMessage.reactions.cache.get(groupEmoji).remove()
+                                        })
+
+                                    }
+
+                                    if (message.channel.parentID === gamesParent) {
+
+                                        gameSelectChannel.messages.fetch({ limit: 1 }).then(m => {
+                                            let lastMessage = m.first();
+
+                                            lastMessage.reactions.cache.get(groupEmoji).remove()
+                                        })
+
+                                    }
+                                });
+                            }
+                        }
+
+                        message.channel.setParent(archiveCategory)
                         message.react('👍');
-                        message.channel.setPosition(0);
                         serverLogs.send(`${message.author} has archived ${message.channel} channel.`);
 
                     };

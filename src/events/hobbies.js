@@ -126,7 +126,7 @@ module.exports = bot => {
                     if (!message.member.hasPermission('ADMINISTRATOR')) return;
                     if (!message.channel.parentID === hobbiesParent) return;
 
-                    const hobbyGroupName = messageContent.replace('!newhobby ', '');
+                    const hobbyGroupName = messageContent.split(' ').slice(1).join(' ');
 
                     const hobbySearch = await hobbiesGroupSchema.find({
                         groupChannelId: message.channel.id
@@ -151,7 +151,7 @@ module.exports = bot => {
                     if (!message.channel.parentID === gamesParent) return;
 
 
-                    const gameGroupName = messageContent.replace('!newgame ', '');
+                    const gameGroupName = messageContent.split(' ').slice(1).join(' ');
 
                     const gameSearch = await hobbiesGroupSchema.find({
                         groupChannelId: message.channel.id
