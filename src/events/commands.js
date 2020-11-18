@@ -9,7 +9,7 @@ const hobbiesGroupSchema = require('../database/Schemas/hobbiesGroupSchema');
 
 module.exports = bot => {
 
-    bot.on('message', message => {
+    bot.on('message', async (message) => {
         if (message.channel.type === "dm") return;
 
         if (message.author.bot) return;
