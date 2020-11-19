@@ -14,10 +14,10 @@ const activityGroups = require('./database/events/activityGroups');
 const hobbies = require('./events/hobbies');
 
 bot.on("ready", async () => {
-    await mongo();
+    console.log("IndianYesBot is online.");
+    await mongo().then(() => console.log('DAtabase connected.'))
     const botOnNotificationChannel = bot.channels.cache.get("746764608890470470");
 
-    console.log("IndianYesBot is online.");
     if (!botOnNotificationChannel) return;
     botOnNotificationChannel.send("restart_success");
 });

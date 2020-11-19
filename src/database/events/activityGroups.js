@@ -6,7 +6,6 @@ module.exports = (bot) => {
 
   bot.on('presenceUpdate', async (oldPresence, newPresence) => {
     if (newPresence.user.bot) return;
-    if (newPresence.guild.id !== "701088725605548133") return;
 
     const activities = newPresence.activities
     const [Activity] = newPresence.activities;
@@ -71,7 +70,7 @@ module.exports = (bot) => {
 
         if (newPresence.status === 'offline' ||
           newPresence.status === 'invisible') {
-          console.log(newPresence.member.displayName, 'went offline')
+          // console.log(newPresence.member.displayName, 'went offline')
           userOffline();
         }
 
@@ -84,12 +83,12 @@ module.exports = (bot) => {
         if (newPresence.status === 'online' ||
           newPresence.status === 'dnd' ||
           newPresence.status === 'idle') {
-          console.log(newPresence.member.displayName, 'is online')
+          // console.log(newPresence.member.displayName, 'is online')
           userOnline();
         }
 
       } else {
-        console.log(newPresence.member.displayName, 'is also online')
+        // console.log(newPresence.member.displayName, 'is also online')
         userOnline();
       }
 

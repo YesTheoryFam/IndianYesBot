@@ -5,9 +5,6 @@ module.exports = (bot) => {
     bot.on('message', async (message) => {
         if (message.channel.type === "dm") return;
 
-        const memerBotChannel = message.guild.channels.cache.get('715171228046065775');
-
-        if (message.channel === memerBotChannel) return;
         if (message.author.bot) return;
 
         const { author } = message;
@@ -25,7 +22,8 @@ module.exports = (bot) => {
             $addToSet: {
                 usernameHistory: username,
                 nameHistory: nick,
-                userRoles: message.member.roles.cache.keyArray()
+                userRoles: message.member.roles.cache.keyArray(),
+                servers: message.guild.id
             },
             $inc: {
                 "messageCount": 1
