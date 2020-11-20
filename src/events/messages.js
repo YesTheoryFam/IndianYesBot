@@ -116,6 +116,7 @@ module.exports = bot => {
             }
         }
         else {
+            if (message.author.bot) return;
             let fn = setTimeout(() => {
                 usersMap.delete(message.author.id);
                 // console.log('Removed from map.');

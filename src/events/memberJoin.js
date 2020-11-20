@@ -8,7 +8,6 @@ const memberSchema = require('../database/Schemas/memberSchema');
 const serverSchema = require('../database/Schemas/serverSchema')
 
 
-
 module.exports = bot => {
 
     bot.on('guildMemberAdd', async (member) => {
@@ -35,9 +34,9 @@ module.exports = bot => {
                 return member.roles.add(serverRoles.timeOut);
             } else if (timeout === inactive) {
                 member.roles.remove(serverRoles.timeOut)
+                welcomeChat.send(`Welcome back, ${member}.`);
+                return;
             }
-
-            welcomeChat.send(`Welcome back, ${member}.`);
 
         } else {
             member.roles.add(serverRoles.unasigned);

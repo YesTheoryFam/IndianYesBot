@@ -20,12 +20,22 @@ module.exports = bot => {
         if (reaction.message.channel === gameSelectChannel ||
             reaction.message.channel === hobbiesSelectChannel) {
 
+            let groupType
+
+            if (reaction.message.channel === gameSelectChannel) {
+                groupType = 'game'
+            }
+            if (reaction.message.channel === hobbiesSelectChannel) {
+                groupType = 'hobby'
+            }
+
             const userId = user.id
 
             const reactionEmoji = reaction.emoji.name;
 
             const dbGroupLookup = await hobbiesGroupSchema.find({
-                groupEmoji: reactionEmoji
+                groupEmoji: reactionEmoji,
+                groupType
             });
 
             if (dbGroupLookup.length > 0) {
