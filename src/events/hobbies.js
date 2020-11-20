@@ -35,7 +35,8 @@ module.exports = bot => {
 
             const dbGroupLookup = await hobbiesGroupSchema.find({
                 groupEmoji: reactionEmoji,
-                groupType
+                groupType,
+                groupStatus: active
             });
 
             if (dbGroupLookup.length > 0) {
