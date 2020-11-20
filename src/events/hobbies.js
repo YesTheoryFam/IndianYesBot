@@ -79,12 +79,24 @@ module.exports = bot => {
         if (reaction.partial) await reaction.fetch();
         if (user.bot) return;
 
-        if (reaction.message.channel === gameSelectChannel || reaction.message.channel === hobbiesSelectChannel) {
+        if (reaction.message.channel === gameSelectChannel ||
+            reaction.message.channel === hobbiesSelectChannel) {
+
+            let groupType
+
+            if (reaction.message.channel === gameSelectChannel) {
+                groupType = 'game'
+            }
+            if (reaction.message.channel === hobbiesSelectChannel) {
+                groupType = 'hobby'
+            }
 
             const reactionEmoji = reaction.emoji.name;
 
             const dbGroupLookup = await hobbiesGroupSchema.find({
-                groupEmoji: reactionEmoji
+                groupEmoji: reactionEmoji,
+                groupType,
+                groupStatus: active
             });
 
             if (dbGroupLookup.length > 0) {
