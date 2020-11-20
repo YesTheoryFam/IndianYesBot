@@ -67,7 +67,7 @@ module.exports = bot => {
                         await serverSchema.findOneAndUpdate({
                             _id: message.guild.id
                         }, {
-                            $addToSet: {
+                            $pull: {
                                 mainChannels: removeChannelId
                             },
                             serverName: message.guild.name
