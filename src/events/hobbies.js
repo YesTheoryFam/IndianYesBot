@@ -151,6 +151,8 @@ module.exports = bot => {
 
                     const hobbyGroupName = messageContent.split(' ').slice(1).join(' ');
 
+                    if (hobbyGroupName.length < 1) return message.reply(`Please specify a name for this hobby. Here's an example` + "```\n!newhobby <hobby name>\n```");
+
                     const hobbySearch = await hobbiesGroupSchema.find({
                         groupChannelId: message.channel.id
                     })
@@ -176,6 +178,8 @@ module.exports = bot => {
 
                     const gameGroupName = messageContent.split(' ').slice(1).join(' ');
 
+                    if (gameGroupName.length < 1) return message.reply(`Please specify a name for this game. Here's an example` + "```\n!newgame <game name>\n```");
+
                     const gameSearch = await hobbiesGroupSchema.find({
                         groupChannelId: message.channel.id
                     })
@@ -200,6 +204,8 @@ module.exports = bot => {
                     if (message.channel.parentID === hobbiesParent || message.channel.parentID === gamesParent) {
 
                         const channelEmoji = messageContent.replace('!setemoji ', '');
+
+                        if (channelEmoji.length < 1) return message.reply(`Please specify aa emoji for this channel. Here's an example` + "```\n!setemoji 🔫\n```");
 
                         console.log(/\p{Emoji}/u.test(channelEmoji))
 
