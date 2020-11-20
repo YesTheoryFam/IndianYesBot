@@ -330,7 +330,7 @@ module.exports = bot => {
 
                 case 'setarchivecategory':
 
-                    const getArchiveId = messageContent.split(' ').slice(1).join(' ')
+                    const getArchiveId = message.content.split(' ').slice(1).join(' ')
 
                     if (getArchiveId) {
 
