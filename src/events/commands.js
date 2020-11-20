@@ -332,22 +332,25 @@ module.exports = bot => {
 
                     const getArchiveId = message.content.split(' ').slice(1).join(' ')
 
-                    if (getArchiveId) {
+                    if (message.member.hasPermission('ADMINISTRATOR')) {
 
-                        await serverSchema.findOneAndUpdate({
-                            _id: message.guild.id
-                        }, {
-                            channelArchiveCategory: getArchiveId,
-                            serverName: message.guild.name
-                        }, {
-                            upsert: true
-                        }).then(() => {
-                            message.react('👍');
-                            message.delete({ timeout: 5000 });
-                        })
+                        if (getArchiveId) {
 
-                    } else {
-                        message.reply('the command is, ```\n!setarchivecategory <categoryId>\n```');
+                            await serverSchema.findOneAndUpdate({
+                                _id: message.guild.id
+                            }, {
+                                channelArchiveCategory: getArchiveId,
+                                serverName: message.guild.name
+                            }, {
+                                upsert: true
+                            }).then(() => {
+                                message.react('👍');
+                                message.delete({ timeout: 5000 });
+                            })
+
+                        } else {
+                            message.reply('the command is, ```\n!setarchivecategory <categoryId>\n```');
+                        }
                     }
 
                     break;
