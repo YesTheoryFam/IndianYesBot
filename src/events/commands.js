@@ -259,12 +259,12 @@ module.exports = bot => {
 
                     if (message.member.hasPermission('ADMINISTRATOR')) {
 
-                        await serverSchema.find({
+                        const findaChannelToArchive = await serverSchema.find({
                             _id: message.guild.id,
                             mainChannels: message.channel.id
                         })
 
-                        if (serverSchema.length > 0) return message.reply('you cannot archive a mainchannel').then(m => m.delete({ timeout: 10000 }));
+                        if (findaChannelToArchive.length > 0) return message.reply('you cannot archive a mainchannel').then(m => m.delete({ timeout: 10000 }));
 
                         if (message.channel.parentID === hobbiesParent ||
                             message.channel.parentID === gamesParent) {
