@@ -6,6 +6,7 @@ const PREFIX = "!";
 
 const hobbiesGroupSchema = require('../database/Schemas/hobbiesGroupSchema');
 const memberSchema = require('../database/Schemas/memberSchema');
+const serverSchema = require('../database/Schemas/serverSchema');
 
 const active = 'active';
 const inactive = 'inactive';
@@ -36,6 +37,48 @@ module.exports = bot => {
         if (message.content.startsWith(PREFIX)) {
             let args = message.content.substring(PREFIX.length).split(" ");
             switch (args[0]) {
+
+                case 'setmainchannel':
+                    if (message.member.hasPermission('ADMINISTRATOR')) {
+
+                        const setChannelId = message.channel.id
+
+                        await serverSchema.findOneAndUpdate({
+                            _id: message.guild.id
+                        }, {
+                            $addToSet: {
+                                mainChannels: setChannelId
+                            },
+                            serverName: message.guild.name
+                        }, {
+                            upsert: true
+                        }).then(() => {
+                            message.react('👍')
+                            message.delete({ timeout: 5000 });
+                        })
+                    }
+                    break;
+
+                case 'removemainchannel':
+                    if (message.member.hasPermission('ADMINISTRATOR')) {
+
+                        const removeChannelId = message.channel.id
+
+                        await serverSchema.findOneAndUpdate({
+                            _id: message.guild.id
+                        }, {
+                            $addToSet: {
+                                mainChannels: removeChannelId
+                            },
+                            serverName: message.guild.name
+                        }, {
+                            upsert: true
+                        }).then(() => {
+                            message.react('👍')
+                            message.delete({ timeout: 5000 });
+                        })
+                    }
+                    break;
 
                 case 'ssrem':
 
@@ -215,6 +258,13 @@ module.exports = bot => {
                 case 'archive':
 
                     if (message.member.hasPermission('ADMINISTRATOR')) {
+
+                        await serverSchema.find({
+                            _id: message.guild.id,
+                            mainChannels: message.channel.id
+                        })
+
+                        if (serverSchema.length > 0) return message.reply('you cannot archive a mainchannel').then(m => m.delete({ timeout: 10000 }));
 
                         if (message.channel.parentID === hobbiesParent ||
                             message.channel.parentID === gamesParent) {
