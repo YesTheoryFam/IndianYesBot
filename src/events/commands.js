@@ -28,6 +28,7 @@ module.exports = bot => {
         const hobbiesParent = '766283162468614144';
         const gamesParent = '766246748049637386';
 
+        const secretSantaChannel = message.guild.channels.cache.get('770336913752064100');
         const nisha = '572721594959659022';
         const niveditha = '640457436859334657';
         const ritika = '731818289717575770';
@@ -39,20 +40,24 @@ module.exports = bot => {
             switch (args[0]) {
 
                 case 'sssuc':
-                    if (message.member.roles.cache.has('780457639485243422') ||
-                        message.member.hasPermission('ADMINISTRATOR')) {
+                    const secretSantaChannel
+                    if (message.channel === secretSantaChannel) {
 
-                        var person = message.mentions.members.first();
-                        if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
-                            .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
+                        if (message.member.roles.cache.has('780457639485243422') ||
+                            message.member.hasPermission('ADMINISTRATOR')) {
 
-                        person.roles.add('781061710542274560');
-                        message.react('👍').then(() => {
-                            serverLogs.send(`${message.author} has confirmed that ${person} is a secret santa.`)
-                            message.delete({ timeout: 10000 });
-                        })
+                            var person = message.mentions.members.first();
+                            if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
+                                .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
+
+                            person.roles.add('781061710542274560');
+                            message.react('👍').then(() => {
+                                serverLogs.send(`${message.author} has confirmed that ${person} is a secret santa.`)
+                                message.delete({ timeout: 10000 });
+                            })
+                        }
+
                     }
-
                     break;
 
                 case 'setmainchannel':
@@ -110,7 +115,6 @@ module.exports = bot => {
                         if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
                             .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
 
-                        const secretSantaChannel = message.guild.channels.cache.get('770336913752064100');
                         const secretSantaAnnouncementChannel = message.guild.channels.cache.get('770336984341938197');
 
                         secretSantaChannel.updateOverwrite(person.id, {
@@ -140,7 +144,6 @@ module.exports = bot => {
                         if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
                             .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
 
-                        const secretSantaChannel = message.guild.channels.cache.get('770336913752064100');
                         const secretSantaAnnouncementChannel = message.guild.channels.cache.get('770336984341938197');
 
                         secretSantaChannel.updateOverwrite(person.id, {
