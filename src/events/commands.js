@@ -40,7 +40,6 @@ module.exports = bot => {
             switch (args[0]) {
 
                 case 'sssuc':
-                    const secretSantaChannel
                     if (message.channel === secretSantaChannel) {
 
                         if (message.member.roles.cache.has('780457639485243422') ||
