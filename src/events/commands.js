@@ -52,7 +52,7 @@ module.exports = bot => {
                             person.roles.add('781061710542274560');
                             message.react('👍').then(() => {
                                 serverLogs.send(`${message.author} has confirmed that ${person} is a secret santa.`)
-                                message.delete({ timeout: 10000 });
+                                message.delete({ timeout: 5000 });
                             })
                         }
 
