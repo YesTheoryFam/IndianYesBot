@@ -38,6 +38,23 @@ module.exports = bot => {
             let args = message.content.substring(PREFIX.length).split(" ");
             switch (args[0]) {
 
+                case 'sssuc':
+                    if (message.member.roles.cache.has('780457639485243422') ||
+                        message.member.hasPermission('ADMINISTRATOR')) {
+
+                        var person = message.mentions.members.first();
+                        if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
+                            .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
+
+                        person.roles.add('781061710542274560');
+                        message.react('👍').then(() => {
+                            serverLogs.send(`${message.author} has confirmed that ${person} is a secret santa.`)
+                            message.delete({ timeout: 10000 });
+                        })
+                    }
+
+                    break;
+
                 case 'setmainchannel':
                     if (message.member.hasPermission('ADMINISTRATOR')) {
 
