@@ -66,7 +66,8 @@ module.exports = bot => {
         };
 
         //deleting server invites
-        if (message.content.includes(`https://discord.gg/`)) {
+        if (message.content.toLowerCase().includes(`https://discord.gg/`) ||
+            message.content.toLowerCase().includes('discord.gg')) {
             message.delete();
         };
 
