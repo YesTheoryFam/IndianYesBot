@@ -25,9 +25,18 @@ module.exports = bot => {
         const gameSelectChannel = message.guild.channels.cache.get('766246855939588127');
         const hobbiesSelectChannel = message.guild.channels.cache.get('766284120497717249');
 
-        const archiveCategory = '747111680168820766';
         const hobbiesParent = '766283162468614144';
         const gamesParent = '766246748049637386';
+
+        const currentMoment = Moment().tz('Asia/Kolkata');
+        const currentHoour = currentMoment.hour();
+        const currentMinute = currentMoment.minute();
+        const currentSecond = currentMoment.second();
+        const currentDate = currentMoment.date();
+        const currentMonth = currentMoment.month() + 1;
+        const currentYear = currentMoment.year();
+        const currentDay = currentMoment.day();
+        const rightNow = `${currentDate}/${currentMonth}/${currentYear} ${currentHoour}:${currentMinute}:${currentSecond}`;
 
         const nisha = '572721594959659022';
         const niveditha = '640457436859334657';
