@@ -3,15 +3,15 @@ const bot = new Discord.Client({ partials: ["MESSAGE", "REACTION", "CHANNEL"] })
 const betabot = new Discord.Client({ partials: ["MESSAGE", "REACTION", "CHANNEL"] });
 
 require("dotenv").config();
-const mongo = require("./config/databaseConnect.js");
+const mongo = require("./database/databaseConnect.js");
 
-const messageEvent = require("./events/messages.js");
-const memberJoinEvent = require("./events/memberJoin.js");
-const customCommands = require("./events/commands.js");
-const chatLogs = require("./events/chatLogs.js");
-const messageCounter = require("./database/events/messageCounter.js");
-const activityGroups = require('./database/events/activityGroups');
-const hobbies = require('./events/hobbies');
+const message = require("./events/messages.js");
+const guildMemberAdd = require('./events/guildMemberAdd');
+const guildMemberRemove = require('./events/guildMemberRemove');
+const messageReactionAdd = require('./events/messageReactionAdd');
+const messageUpdate = require('./events/messageUpdate');
+const messageDelete = require('./events/messageDelete');
+const presenceUpdate = require('./events/presenceUpdate');
 
 bot.on("ready", async () => {
     console.log("IndianYesBot is online.");
@@ -22,13 +22,13 @@ bot.on("ready", async () => {
     botOnNotificationChannel.send("restart_success");
 });
 
-messageEvent(bot);
-memberJoinEvent(bot);
-customCommands(bot);
-chatLogs(bot);
-messageCounter(bot);
-activityGroups(bot);
-hobbies(bot);
+message(bot);
+guildMemberAdd(bot);
+guildMemberRemove(bot);
+messageReactionAdd(bot);
+messageUpdate(bot);
+messageDelete(bot);
+presenceUpdate(bot);
 
 bot.login(process.env.mainBot);
 betabot.login(process.env.secondaryBot);  

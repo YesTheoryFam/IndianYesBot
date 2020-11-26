@@ -1,4 +1,5 @@
 const Chance = require('chance');
+
 const chanceObj = new Chance();
 
 const states = require('../collections/Roles/stateTags.json');
@@ -6,61 +7,18 @@ const serverRoles = require('../collections/Roles/Roles.json');
 
 const memberSchema = require('../database/Schemas/memberSchema');
 const serverSchema = require('../database/Schemas/serverSchema')
+const hobbiesGroupSchema = require('../database/Schemas/hobbiesGroupSchema');
 
+const active = 'active';
+const inactive = 'inactive';
 
 module.exports = bot => {
 
-    bot.on('guildMemberAdd', async (member) => {
-
-        const welcomeChat = member.guild.channels.cache.get('721050178794291292');
-
-        const oldMemberRoles = await memberSchema.find({
-            _id: member.id
-        });
-
-        if (oldMemberRoles.length > 0) {
-            const [{ userRoles, timeout }] = oldMemberRoles;
-
-            userRoles.forEach((previousRoles) => {
-                const theRole = member.guild.roles.cache.get(previousRoles);
-
-                if (theRole) {
-                    member.roles.add(previousRoles)
-                }
-
-            })
-
-            if (timeout === active) {
-                return member.roles.add(serverRoles.timeOut);
-            } else if (timeout === inactive) {
-                member.roles.remove(serverRoles.timeOut)
-                welcomeChat.send(`Welcome back, ${member}.`);
-                return;
-            }
-
-        } else {
-            member.roles.add(serverRoles.unasigned);
-        }
-    });
-
-    bot.on('guildMemberRemove', async (member) => {
-        const serverEntryLog = bot.channels.cache.get('715183025607934033');
-        serverEntryLog.send(`${member}(${member.user.tag}) just left ${member.guild.name} Server.`);
-
-        await serverSchema.findOneAndUpdate({
-            _id: member.guild.id
-        }, {
-            $pull: {
-                activeUsers: member.id
-            }
-        }, {
-            upsert: true
-        })
-
-    });
-
     bot.on('messageReactionAdd', async (reaction, user) => {
         // console.log('reacted');
+
+        // server Join Event
+        // ====================================
 
         const regionSelectChannel = reaction.message.guild.channels.cache.get('746849042197118987');
         const southRegion = reaction.message.guild.channels.cache.get('747508674205057145');
@@ -1018,6 +976,63 @@ module.exports = bot => {
                 return;
             };
 
+        };
+
+        // =======================================
+
+        const gameSelectChannel = reaction.message.guild.channels.cache.get('766246855939588127');
+        const hobbiesSelectChannel = reaction.message.guild.channels.cache.get('766284120497717249');
+
+        if (reaction.message.channel === gameSelectChannel ||
+            reaction.message.channel === hobbiesSelectChannel) {
+
+            let groupType
+
+            if (reaction.message.channel === gameSelectChannel) {
+                groupType = 'game'
+            }
+            if (reaction.message.channel === hobbiesSelectChannel) {
+                groupType = 'hobby'
+            }
+
+            const userId = user.id
+
+            const reactionEmoji = reaction.emoji.name;
+
+            const dbGroupLookup = await hobbiesGroupSchema.find({
+                groupEmoji: reactionEmoji,
+                groupType,
+                groupStatus: active
+            });
+
+            if (dbGroupLookup.length > 0) {
+
+                const [{ groupChannelId, groupEmoji }] = dbGroupLookup
+
+                const dbResulChannel = reaction.message.guild.channels.cache.get(groupChannelId);
+
+                if (reaction.emoji.name === groupEmoji) {
+
+                    await hobbiesGroupSchema.findOneAndUpdate({
+                        groupEmoji,
+                        groupStatus: active
+                    }, {
+                        $addToSet: {
+                            groupMemberIds: userId
+                        }
+                    }, {
+                        upsert: true
+                    })
+
+                    dbResulChannel.updateOverwrite(user.id, {
+                        VIEW_CHANNEL: true
+                    });
+
+                }
+
+            } else {
+                return console.log('That group does not exist');
+            };
         };
 
     });

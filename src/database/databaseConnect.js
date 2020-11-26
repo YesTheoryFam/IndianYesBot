@@ -9,4 +9,4 @@ module.exports = async () => {
         useFindAndModify: false,
     })
     return mongoose;
-    };
+};
