@@ -388,6 +388,8 @@ module.exports = bot => {
                             message.author.send(profileEmbedAdmin);
                             message.channel.send(profileEmbed)
 
+                        } else {
+                            message.reply(`this member has not started messaging on this server, yet.`);
                         }
                     }
                     break;

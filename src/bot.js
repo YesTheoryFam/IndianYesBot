@@ -13,6 +13,7 @@ const messageUpdate = require('./events/messageUpdate');
 const messageDelete = require('./events/messageDelete');
 const presenceUpdate = require('./events/presenceUpdate');
 
+
 bot.on("ready", async () => {
     console.log("IndianYesBot is online.");
     await mongo().then(() => console.log('DAtabase connected.'))
