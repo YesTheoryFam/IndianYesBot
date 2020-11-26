@@ -13,9 +13,10 @@ const memberSchema = mongoose.Schema({
     timeout: String,
     suspicion: String,
     currentWarningCount: Number,
-    totalWarningCount: Number,
     warningIds: [String],
-    servers: [String]
+    servers: [String],
+    bdayDate: Number,
+    bdayMonth: Number
 })
 
 module.exports = mongoose.model('member', memberSchema);

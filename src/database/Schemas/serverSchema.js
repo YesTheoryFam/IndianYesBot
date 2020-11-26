@@ -5,7 +5,8 @@ const serverSchema = mongoose.Schema({
     serverName: String,
     activeUsers: [String],
     mainChannels: [String],
-    channelArchiveCategory: String
+    channelArchiveCategory: String,
+    buddyProjectStatus: String
 });
 
 module.exports = mongoose.model('server', serverSchema);

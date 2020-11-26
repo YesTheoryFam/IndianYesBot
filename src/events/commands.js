@@ -7,6 +7,7 @@ const PREFIX = "!";
 const hobbiesGroupSchema = require('../database/Schemas/hobbiesGroupSchema');
 const memberSchema = require('../database/Schemas/memberSchema');
 const serverSchema = require('../database/Schemas/serverSchema');
+const warningSchema = require('../database/Schemas/warningSchema');
 
 const active = 'active';
 const inactive = 'inactive';
@@ -37,6 +38,177 @@ module.exports = bot => {
         if (message.content.startsWith(PREFIX)) {
             let args = message.content.substring(PREFIX.length).split(" ");
             switch (args[0]) {
+
+                case 'warn':
+                    if (!message.member.hasPermission('MANAGE_NICKNAMES')) return;
+                    var person = message.mentions.members.first();
+                    if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
+                        .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
+
+                    const checkWarning = await memberSchema.find({
+                        _id: person.id
+                    })
+
+
+                    const warning = message.content.split(' ').slice(2).join(' ');
+
+                    const warningMessage = `You have been warned on the ${message.guild.name} Server for, "${warning}"\nPlease make sure that you follow the community rules, strictly.`;
+
+
+                    if (warning) {
+                        message.delete();
+
+                        const warrningId = message.createdTimestamp;
+
+                        await warningSchema.findOneAndUpdate({
+                            warrningId
+                        }, {
+                            warrningId,
+                            recipientId: person.id,
+                            warnedByName: message.member.displayName,
+                            warnedById: message.author.id,
+                            warnedAt: rightNow,
+                            warningReason: warning
+                        }, {
+                            upsert: true
+                        }).then(async () => {
+                            await memberSchema.findOneAndUpdate({
+                                _id: person.id
+                            }, {
+                                $addToSet: {
+                                    warningIds: warrningId
+                                },
+                                $inc: {
+                                    "currentWarningCount": 1
+                                }
+                            }, {
+                                upsert: true
+                            })
+                        }).then(() => {
+                            // console.log(person)
+
+                            const warn = () => {
+                                person.send(warningMessage);
+                                // console.log(warningMessage);
+                            };
+
+                            if (checkWarning.length > 0) {
+
+
+                                const [{ currentWarningCount }] = checkWarning
+
+                                if (currentWarningCount && currentWarningCount > 2) {
+                                    // console.log('There are warnings issued before.');
+
+                                    warn();
+                                    person.roles.add(serverRoles.timeOut)
+                                    serverLogs.send(`${message.author} has warned ${person} for "${warning}" and is now on timeout.`);
+
+                                    return;
+                                } else {
+                                    // console.log('There is no warning issued before.');
+
+                                    warn();
+                                    serverLogs.send(`${message.author} has warned ${person} for "${warning}".`);
+
+                                }
+                            }
+                        })
+
+                    } else {
+
+                        return message.reply('You need to specify a reason. Try ' + "`" + `!warn @member reason` + "`.").then((m) => {
+                            m.delete({ timeout: 10000 });
+                            message.delete({ timeout: 10000 });
+                        })
+
+                    }
+
+                    break;
+
+                case "bday":
+                    if (message.member.hasPermission("MANAGE_NICKNAMES")) {
+                        var person = message.mentions.members.first();
+                        if (!person)
+                            return message.channel.send("The command is `!bday @member set mmm-dd`")
+                                .then((m) => m.delete({ timeout: 5000 }))
+                                .then(message.delete({ timeout: 5000 }).catch((err) => console.log(err))
+                                );
+
+                        const content = message.content.split(' ').slice(1).join(' ');
+
+                        if (content.includes(" set ")) {
+                            if (content.includes("-")) {
+
+                                const bdayCommand = message.content
+
+                                const commandEdit = bdayCommand.toLowerCase().split(' ').slice(3).join('').split('-')
+
+                                const extractedMonth = commandEdit[0]
+
+                                let bdayDate
+
+                                let bdayMonth
+
+                                if (extractedMonth === 'jan') {
+                                    bdayMonth = '01'
+                                } else if (extractedMonth === 'feb') {
+                                    bdayMonth = '02'
+                                } else if (extractedMonth === 'mar') {
+                                    bdayMonth = '03'
+                                } else if (extractedMonth === 'apr') {
+                                    bdayMonth = '04'
+                                } else if (extractedMonth === 'may') {
+                                    bdayMonth = '05'
+                                } else if (extractedMonth === 'jun') {
+                                    bdayMonth = '06'
+                                } else if (extractedMonth === 'jul') {
+                                    bdayMonth = '07'
+                                } else if (extractedMonth === 'aug') {
+                                    bdayMonth = '08'
+                                } else if (extractedMonth === 'sep') {
+                                    bdayMonth = '09'
+                                } else if (extractedMonth === 'oct') {
+                                    bdayMonth = '10'
+                                } else if (extractedMonth === 'nov') {
+                                    bdayMonth = '11'
+                                } else if (extractedMonth === 'dec') {
+                                    bdayMonth = '12'
+                                } else {
+                                    return message.channel.send("The command is `!bday @member set mmm-dd`. For example: `" + `!bday @${person.displayName} set jun-12` + "`.")
+                                }
+
+                                bdayDate = commandEdit[1]
+
+                                if (parseFloat(bdayMonth) > 12 || parseFloat(bdayDate) > 31) {
+                                    return message.channel.send("Date is not valid.\nThe command is `!bday @member set mmm-dd`. For example: `" + `!bday @${person.displayName} set jun-12` + "`.")
+                                }
+
+                                await memberSchema.findOneAndUpdate({
+                                    _id: person.id
+                                }, {
+                                    bdayDate: parseFloat(bdayDate),
+                                    bdayMonth: parseFloat(bdayMonth)
+                                }, {
+                                    upsert: true
+                                }).then(() => {
+                                    message.react("👍");
+                                    message.channel.send(`I've noted down ${person}'s birthday.`);
+                                })
+
+                            } else {
+                                message.react("👎");
+                                message.channel.send("The command is `!bday @member set mmm-dd`. For example: `" + `!bday @${person.displayName} set jun-12` + "`.");
+                            }
+                        } else {
+                            message.react("👎");
+                            message.channel.send("The command is `!bday @member set mmm-dd`. For example: `" + `!bday @${person.displayName} set jun-12` + "`.");
+                        }
+                    } else {
+                        message.reply(`One of the support team member has been notified regarding your request.`);
+                    }
+
+                    break;
 
                 case 'setmainchannel':
                     if (message.member.hasPermission('ADMINISTRATOR')) {
