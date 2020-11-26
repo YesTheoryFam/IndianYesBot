@@ -1,5 +1,8 @@
 const Discord = require('discord.js');
+const Chance = require('chance');
 const Moment = require('moment-timezone');
+
+const chanceObj = new Chance();
 
 const serverRoles = require('../collections/Roles/Roles.json')
 const PREFIX = "!";
@@ -24,6 +27,8 @@ module.exports = bot => {
         const timeOutChannel = message.guild.channels.cache.get('749988359471890563');
         const gameSelectChannel = message.guild.channels.cache.get('766246855939588127');
         const hobbiesSelectChannel = message.guild.channels.cache.get('766284120497717249');
+        const adminBotCommands = message.guild.channels.cache.get('781499532692160522');
+        const botCommands = message.guild.channels.cache.get('781521410497576960');
 
         const hobbiesParent = '766283162468614144';
         const gamesParent = '766246748049637386';
@@ -48,6 +53,202 @@ module.exports = bot => {
         if (message.content.startsWith(PREFIX)) {
             let args = message.content.substring(PREFIX.length).split(" ");
             switch (args[0]) {
+
+                case 'profile':
+
+                    if (message.channel === botCommands ||
+                        message.channel === adminBotCommands ||
+                        message.channel === betaTestChannel) {
+
+                        var person = message.mentions.members.first();
+
+                        let profileOfId,
+                            profileUserTag,
+                            profileUserPFP,
+                            profileUserDisplayName,
+                            profileUserJoinedAt,
+                            profileUserColour,
+                            profileUserBdayDay,
+                            profileUserBdayMonth,
+                            profileTarget,
+                            groupsImin;
+                        const imfrom = []
+                        const gameIPlay = []
+                        const presenceRecord = []
+                        // const groupsImin = []
+
+                        if (person) {
+                            if (person.user.bot) return;
+                            profileTarget = person
+                            profileOfId = person.id;
+                            profileUserTag = person.user.tag;
+                            profileUserPFP = person.user.avatarURL();
+                            profileUserDisplayName = person.displayName
+                            profileUserJoinedAt = person.joinedAt.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", }) + " (IST)";
+                            profileUserColour = person.displayColor
+                        } else {
+                            profileTarget = message.author
+                            profileOfId = message.author.id;
+                            profileUserTag = message.member.user.tag;
+                            profileUserPFP = message.author.avatarURL();
+                            profileUserDisplayName = message.member.displayName;
+                            profileUserJoinedAt = message.member.joinedAt.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", }) + " (IST)";
+                            profileUserColour = message.member.displayColor
+                        }
+
+                        const findPerson = await memberSchema.find({
+                            _id: profileOfId
+                        })
+
+                        const presenceFind = await presenceSchema.find({
+                            userIDs: profileOfId
+                        })
+
+                        const gamesSchema = await hobbiesGroupSchema.find({
+                            groupMemberIds: profileOfId,
+                            groupType: 'game',
+                            groupStatus: active
+                        })
+
+                        if (presenceFind.length > 0) {
+                            presenceFind.forEach((activity) => {
+                                const { appName } = activity
+
+                                presenceRecord.push(appName)
+                            })
+                        }
+
+                        if (gamesSchema.length > 0) {
+
+                            gamesSchema.forEach((gameData) => {
+                                const { groupName } = gameData
+
+                                gameIPlay.push(groupName)
+                            })
+
+                        } else {
+                            gameIPlay.push('no games')
+                        }
+
+                        if (findPerson.length > 0) {
+
+                            const [{ timeout, userRoles, suspicion, nameHistory, usernameHistory, warningIds, bdayDate, bdayMonth }] = findPerson
+
+                            let profileEmbed,
+                                profileEmbedAdmin
+
+                            userRoles.forEach((loaclity) => {
+                                const localityRoles = message.guild.roles.cache.get(loaclity);
+
+                                // console.log(localityRoles);
+                                if (localityRoles) {
+                                    if (localityRoles.name.startsWith(`I'm`)) {
+                                        imfrom.push(localityRoles.name)
+                                    }
+                                } else {
+                                    // imfrom.push('.')
+                                    return;
+                                }
+                            })
+
+                            if (bdayDate && bdayMonth) {
+
+                                if (bdayMonth === 1) {
+                                    profileUserBdayMonth = 'Jan'
+                                } else if (bdayMonth === 2) {
+                                    profileUserBdayMonth = 'Feb'
+                                } else if (bdayMonth === 3) {
+                                    profileUserBdayMonth = 'Mar'
+                                } else if (bdayMonth === 4) {
+                                    profileUserBdayMonth = 'Apr'
+                                } else if (bdayMonth === 5) {
+                                    profileUserBdayMonth = 'May'
+                                } else if (bdayMonth === 6) {
+                                    profileUserBdayMonth = 'Jun'
+                                } else if (bdayMonth === 7) {
+                                    profileUserBdayMonth = 'Jul'
+                                } else if (bdayMonth === 8) {
+                                    profileUserBdayMonth = 'Aug'
+                                } else if (bdayMonth === 9) {
+                                    profileUserBdayMonth = 'Sep'
+                                } else if (bdayMonth === 10) {
+                                    profileUserBdayMonth = 'Oct'
+                                } else if (bdayMonth === 11) {
+                                    profileUserBdayMonth = 'Nov'
+                                } else if (bdayMonth === 12) {
+                                    profileUserBdayMonth = 'Dec'
+                                }
+
+                                profileUserBdayDay = bdayDate
+
+                            } else {
+
+                                profileUserBdayMonth = ""
+                                profileUserBdayDay = ""
+                            }
+                            groupsImin = '*coming soon*'
+
+                            if (message.member.hasPermission('ADMINISTRATOR')) {
+
+                                profileEmbedAdmin = new Discord.MessageEmbed()
+                                    .setThumbnail(profileUserPFP)
+                                    .setColor(profileUserColour)
+                                    .setTitle(`${profileUserTag}`)
+                                    .setDescription(`Here is ${profileTarget}'s profile.`)
+                                    .addField('My name is', profileUserDisplayName, true)
+                                    .addField(`Where am I from?`, chanceObj.shuffle(imfrom).join('\n'), true)
+                                    .addField(`Groups I'm in`, groupsImin, true)
+                                    .addField('Joined on', profileUserJoinedAt, true)
+                                    .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}`, true)
+                                    .addField('Games I play', gameIPlay.join(', '), true)
+                                    .addField('Usernames', usernameHistory.join(', '), true)
+                                    .addField('Nicknames', nameHistory.join(', '), true)
+                                    .addField('Time Out Status', timeout || 'inactive', true)
+                                    .addField('Warnings', `${warningIds.length}`, true)
+                                    .addField('Activity', chanceObj.shuffle(presenceRecord).join(', ') || "no activity", true)
+                                    .setFooter(`Requested by ${message.member.displayName}`, message.author.avatarURL())
+
+                                // message.author.send(`Here's an admin version of ${profileUserDisplayName}'s profile.`);
+                            } else if (message.member.hasPermission('MANAGE_NICKNAMES')) {
+
+                                profileEmbedAdmin = new Discord.MessageEmbed()
+                                    .setThumbnail(profileUserPFP)
+                                    .setColor(profileUserColour)
+                                    .setTitle(`${profileUserTag}`)
+                                    .setDescription(`Here is ${profileTarget}'s profile.`)
+                                    .addField('My name is', profileUserDisplayName, true)
+                                    .addField(`Where am I from?`, imfrom.join('\n'), true)
+                                    .addField(`Groups I'm in`, groupsImin, true)
+                                    .addField('Joined on', profileUserJoinedAt, true)
+                                    .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}`, true)
+                                    .addField('Games I play', gameIPlay.join(', '), true)
+                                    .addField('Usernames', usernameHistory.join(', '), true)
+                                    .addField('Time Out Status', timeout || 'inactive', true)
+                                    .addField('Warnings', `${warningIds.length}`, true)
+                                    .setFooter(`Requested by ${message.member.displayName}`, message.author.avatarURL())
+
+                                // message.author.send(`Here's an admin version of ${profileUserDisplayName}'s profile.`);
+                            }
+
+                            profileEmbed = new Discord.MessageEmbed()
+                                .setThumbnail(profileUserPFP)
+                                .setColor(profileUserColour)
+                                .setTitle(`${profileUserTag}`)
+                                .setDescription(`Here is ${profileTarget}'s profile.`)
+                                .addField('My name is', profileUserDisplayName, true)
+                                .addField(`Where am I from?`, imfrom.join('\n'), true)
+                                .addField(`Groups I'm in`, groupsImin, true)
+                                .addField('Joined on', profileUserJoinedAt, true)
+                                .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}`, true)
+                                .addField('Games I play', gameIPlay.join(', '), true)
+                                .setFooter(`Requested by ${message.member.displayName}`, message.author.avatarURL())
+
+                            message.author.send(profileEmbedAdmin);
+                            message.channel.send(profileEmbed)
+
+                        }
+                    }
+                    break;
 
                 case 'warn':
                     if (!message.member.hasPermission('MANAGE_NICKNAMES')) return;
