@@ -7,7 +7,7 @@ const chanceObj = new Chance();
 const states = require('../collections/Roles/stateTags.json');
 const serverRoles = require("../collections/Roles/Roles.json");
 
-const PREFIX = "!";
+const PREFIX = "?";
 
 const hobbiesGroupSchema = require('../database/Schemas/hobbiesGroupSchema');
 const memberSchema = require('../database/Schemas/memberSchema');
@@ -284,7 +284,8 @@ module.exports = bot => {
 
                                 // console.log(localityRoles);
                                 if (localityRoles) {
-                                    if (localityRoles.name.startsWith(`I'm`)) {
+                                    console.log(localityRoles.name);
+                                    if (localityRoles.name.toLowerCase().includes(`i'm from`)) {
                                         imfrom.push(localityRoles.name)
                                     }
                                 } else {
@@ -292,6 +293,10 @@ module.exports = bot => {
                                     return;
                                 }
                             })
+
+                            if (imfrom.length < 1) {
+                                return message.reply(`this member has not started messaging on this server, yet.`);
+                            }
 
                             if (bdayDate && bdayMonth) {
 
@@ -337,16 +342,16 @@ module.exports = bot => {
                                     .setColor(profileUserColour)
                                     .setTitle(`${profileUserTag}`)
                                     .setDescription(`Here is ${profileTarget}'s profile.`)
-                                    .addField('My name is', profileUserDisplayName || '1', true)
-                                    .addField(`Where am I from?`, chanceObj.shuffle(imfrom).join('\n') || '2', true)
-                                    .addField(`Groups I'm in`, groupsImin || '3', true)
-                                    .addField('Joined on', profileUserJoinedAt || '4', true)
-                                    .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}` || '5', true)
-                                    .addField('Games I play', gameIPlay.join(', ') || '5', true)
-                                    .addField('Usernames', usernameHistory.join(', ') || '6', true)
-                                    .addField('Nicknames', nameHistory.join(', ') || '7', true)
+                                    .addField('My name is', profileUserDisplayName, true)
+                                    .addField(`Where am I from?`, chanceObj.shuffle(imfrom).join('\n'), true)
+                                    .addField(`Groups I'm in`, groupsImin, true)
+                                    .addField('Joined on', profileUserJoinedAt, true)
+                                    .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}`, true)
+                                    .addField('Games I play', gameIPlay.join(', '), true)
+                                    .addField('Usernames', usernameHistory.join(', '), true)
+                                    .addField('Nicknames', nameHistory.join(', '), true)
                                     .addField('Time Out Status', timeout || 'inactive', true)
-                                    .addField('Warnings', `${warningIds.length}` || '8', true)
+                                    .addField('Warnings', `${warningIds.length}`, true)
                                     .addField('Activity', chanceObj.shuffle(presenceRecord).join(', ') || "no activity", true)
                                     .setFooter(`Requested by ${message.member.displayName}`, message.author.avatarURL())
 
@@ -357,15 +362,15 @@ module.exports = bot => {
                                     .setColor(profileUserColour)
                                     .setTitle(`${profileUserTag}`)
                                     .setDescription(`Here is ${profileTarget}'s profile.`)
-                                    .addField('My name is', profileUserDisplayName || '9', true)
-                                    .addField(`Where am I from?`, imfrom.join('\n') || '10', true)
-                                    .addField(`Groups I'm in`, groupsImin || '11', true)
-                                    .addField('Joined on', profileUserJoinedAt || '12', true)
-                                    .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}` || '13', true)
-                                    .addField('Games I play', gameIPlay.join(', ') || '14', true)
-                                    .addField('Usernames', usernameHistory.join(', ') || '15', true)
+                                    .addField('My name is', profileUserDisplayName, true)
+                                    .addField(`Where am I from?`, imfrom.join('\n'), true)
+                                    .addField(`Groups I'm in`, groupsImin, true)
+                                    .addField('Joined on', profileUserJoinedAt, true)
+                                    .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}`, true)
+                                    .addField('Games I play', gameIPlay.join(', '), true)
+                                    .addField('Usernames', usernameHistory.join(', '), true)
                                     .addField('Time Out Status', timeout || 'inactive', true)
-                                    .addField('Warnings', warningIds.length || '16', true)
+                                    .addField('Warnings', warningIds.length, true)
                                     .setFooter(`Requested by ${message.member.displayName}`, message.author.avatarURL())
 
                             }
@@ -375,12 +380,12 @@ module.exports = bot => {
                                 .setColor(profileUserColour)
                                 .setTitle(`${profileUserTag}`)
                                 .setDescription(`Here is ${profileTarget}'s profile.`)
-                                .addField('My name is', profileUserDisplayName || '17', true)
-                                .addField(`Where am I from?`, imfrom.join('\n') || '18', true)
-                                .addField(`Groups I'm in`, groupsImin || '19', true)
-                                .addField('Joined on', profileUserJoinedAt || '20', true)
-                                .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}` || '21', true)
-                                .addField('Games I play', gameIPlay.join(', ') || '22', true)
+                                .addField('My name is', profileUserDisplayName, true)
+                                .addField(`Where am I from?`, imfrom.join('\n'), true)
+                                .addField(`Groups I'm in`, groupsImin, true)
+                                .addField('Joined on', profileUserJoinedAt, true)
+                                .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}`, true)
+                                .addField('Games I play', gameIPlay.join(', '), true)
                                 .setFooter(`Requested by ${message.member.displayName}`, message.author.avatarURL())
 
                             message.author.send(profileEmbedAdmin);
