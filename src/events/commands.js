@@ -1,5 +1,4 @@
-// const Discord = require('discord.js');
-// const bot = new Discord.Client({partials: ["MESSAGE", "REACTION", "CHANNEL"]});
+const Moment = require('moment-timezone');
 
 const serverRoles = require('../collections/Roles/Roles.json')
 const PREFIX = "!";
