@@ -152,7 +152,7 @@ module.exports = bot => {
 
                     if (message.channel.parentID === hobbiesParent || message.channel.parentID === gamesParent) {
 
-                        const channelEmoji = messageContent.replace('!setemoji ', '');
+                        const channelEmoji = messageContent.split(' ').slice(1).join(' ');
 
                         if (channelEmoji.length < 1) return message.reply(`Please specify aa emoji for this channel. Here's an example` + "```\n!setemoji 🔫\n```");
 
@@ -284,7 +284,6 @@ module.exports = bot => {
 
                                 // console.log(localityRoles);
                                 if (localityRoles) {
-                                    console.log(localityRoles.name);
                                     if (localityRoles.name.toLowerCase().includes(`i'm from`)) {
                                         imfrom.push(localityRoles.name)
                                     }
