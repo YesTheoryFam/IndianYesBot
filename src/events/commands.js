@@ -217,6 +217,7 @@ module.exports = bot => {
                     } else {
                         message.reply(`One of the support team member has been notified regarding your request.`);
                     }
+                    break;
 
                 case 'sssuc':
                     if (message.channel === secretSantaChannel) {
