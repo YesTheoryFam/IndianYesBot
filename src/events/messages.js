@@ -27,12 +27,11 @@ const gamerSet = new Set();
 const gamer = new Set();
 
 module.exports = bot => {
-    bot.on('message', message => {
+    bot.on('message', async (message) => {
         if (message.channel.type === "dm") return;
         if (message.author.bot) return;
 
         const messageContent = message.content.toLowerCase();
-        const betaTestChannel = message.guild.channels.cache.get('746755589895487488');
         const pollsChannel = message.guild.channels.cache.get('720682985581707325');
         const featureRequestChannel = message.guild.channels.cache.get('715200556817317940');
         const serverLogs = message.guild.channels.cache.get('747121287381516399');
