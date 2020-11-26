@@ -11,6 +11,7 @@ const hobbiesGroupSchema = require('../database/Schemas/hobbiesGroupSchema');
 const memberSchema = require('../database/Schemas/memberSchema');
 const serverSchema = require('../database/Schemas/serverSchema');
 const warningSchema = require('../database/Schemas/warningSchema');
+const presenceSchema = require('../database/Schemas/activityGroupSchema');
 
 const active = 'active';
 const inactive = 'inactive';
