@@ -7,7 +7,7 @@ const chanceObj = new Chance();
 const states = require('../collections/Roles/stateTags.json');
 const serverRoles = require("../collections/Roles/Roles.json");
 
-const PREFIX = "?";
+const PREFIX = "!";
 
 const hobbiesGroupSchema = require('../database/Schemas/hobbiesGroupSchema');
 const memberSchema = require('../database/Schemas/memberSchema');
