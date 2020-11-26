@@ -69,6 +69,9 @@ module.exports = bot => {
 
                         const warrningId = message.createdTimestamp;
 
+                        let warningEmbed,
+                            timeoutstatus;
+
                         await warningSchema.findOneAndUpdate({
                             warrningId
                         }, {
@@ -93,7 +96,7 @@ module.exports = bot => {
                             }, {
                                 upsert: true
                             })
-                        }).then(() => {
+                        }).then(async () => {
                             // console.log(person)
 
                             const warn = () => {
@@ -109,28 +112,43 @@ module.exports = bot => {
                                 if (currentWarningCount && currentWarningCount > 2) {
                                     // console.log('There are warnings issued before.');
 
+                                    timeoutstatus = active
+
                                     warn();
-                                    person.roles.add(serverRoles.timeOut).then(async () => {
-                                        await memberSchema.findOneAndUpdate({
-                                            _id: person.id
-                                        }, {
-                                            timeout: active
-                                        }, {
-                                            upsert: true
-                                        })
-                                    }).then(() => {
-                                        serverLogs.send(`${message.author} has warned ${person} for "${warning}" and is now on timeout.`);
+                                    person.roles.add(serverRoles.timeOut)
+
+                                    await memberSchema.findOneAndUpdate({
+                                        _id: person.id
+                                    }, {
+                                        timeout: active
+                                    }, {
+                                        upsert: true
                                     })
 
-                                    return;
+
+
+
                                 } else {
                                     // console.log('There is no warning issued before.');
+                                    timeoutstatus = inactive
 
                                     warn();
-                                    serverLogs.send(`${message.author} has warned ${person} for "${warning}".`);
+
 
                                 }
                             }
+
+                            warningEmbed = new Discord.MessageEmbed()
+                                .setAuthor('🚨 New Warning Issued')
+                                .setDescription('A new warning has been issued.')
+                                .setThumbnail(message.guild.iconURL())
+                                .addField(`Warned Member`, person, true)
+                                .addField('Warned By', message.author, true)
+                                .addField('Reason', warning, true)
+                                .addField('Time Out Status', timeoutstatus, true)
+                                .setTimestamp()
+
+                            serverLogs.send(warningEmbed);
                         })
 
                     } else {
