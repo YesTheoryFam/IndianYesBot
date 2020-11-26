@@ -110,8 +110,17 @@ module.exports = bot => {
                                     // console.log('There are warnings issued before.');
 
                                     warn();
-                                    person.roles.add(serverRoles.timeOut)
-                                    serverLogs.send(`${message.author} has warned ${person} for "${warning}" and is now on timeout.`);
+                                    person.roles.add(serverRoles.timeOut).then(async () => {
+                                        await memberSchema.findOneAndUpdate({
+                                            _id: person.id
+                                        }, {
+                                            timeout: active
+                                        }, {
+                                            upsert: true
+                                        })
+                                    }).then(() => {
+                                        serverLogs.send(`${message.author} has warned ${person} for "${warning}" and is now on timeout.`);
+                                    })
 
                                     return;
                                 } else {
