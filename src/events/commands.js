@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 const Moment = require('moment-timezone');
 
 const serverRoles = require('../collections/Roles/Roles.json')
