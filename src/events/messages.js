@@ -196,6 +196,49 @@ module.exports = bot => {
 
                 // =====================================
 
+                case 'resetbadges':
+
+                    if (message.member.hasPermission('ADMINISTRATOR')) {
+
+                        if (message.member.hasPermission('MANAGE_NICKNAMES')) {
+
+                            if (person.hasPermission('MANAGE_NICKNAMES')) {
+
+                                if (person.id === message.author.id ||
+                                    person.id === bot.user.id) {
+                                    message.reply('You cannot reset badges for this user.').then(m => m.delete({ timeout: 10000 }));
+                                    message.delete();
+                                    return;
+                                }
+                            }
+
+                        }
+
+                        var person = message.mentions.members.first();
+                        if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
+                            .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
+
+                        await memberSchema.findOneAndUpdate({
+                            _id: person.id
+                        }, {
+                            userRoles: ""
+                        }, {
+                            upsert: true
+                        }).then(async () => {
+                            const personsRoles = await person.roles.cache.keyArray()
+                            personsRoles.forEach((existingRoles) => {
+                                person.roles.remove(existingRoles)
+                            })
+                            person.roles.add(serverRoles.unasigned).then(() => {
+                                person.send(`I have cleared your badges. Go ahead and choose your region, once again in ---> <>#746849042197118987>`);
+                                message.react('👍');
+                                message.delete({ timeout: 5000 });
+                            })
+                        })
+
+                    }
+                    break;
+
                 case 'profile':
 
                     if (message.channel === botCommands ||
