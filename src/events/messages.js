@@ -232,7 +232,7 @@ module.exports = bot => {
                                 person.roles.remove(existingRoles)
                             })
                             person.roles.add(serverRoles.unasigned).then(() => {
-                                person.send(`I have cleared your badges. Go ahead and choose your region, once again in ---> <>#746849042197118987>`);
+                                person.send(`I have cleared your badges. Go ahead and choose your region, once again in ---> <#746849042197118987>`);
                                 message.react('👍');
                                 message.delete({ timeout: 5000 });
                             })
