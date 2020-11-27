@@ -734,6 +734,16 @@ module.exports = bot => {
 
                 return;
             };
+            if (reaction.emoji.name === states.northeast.nagaland.emoji) {
+                await reaction.message.guild.members.cache.get(user.id).roles.add(states.northeast.nagaland.role);
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(states.northeast.role);
+                await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.YesFamMember);
+                await reaction.message.guild.members.cache.get(user.id).roles.add(serverRoles.badgeSeparator);
+
+                welcomeChat.send(welcomMessage);
+
+                return;
+            };
             if (reaction.emoji.name === states.northeast.meghalaya.emoji) {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(states.northeast.meghalaya.role);
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(states.northeast.role);
