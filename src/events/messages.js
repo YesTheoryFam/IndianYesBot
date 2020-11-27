@@ -87,13 +87,118 @@ module.exports = bot => {
         // ======================
 
         // Commands
-        // =================================
+        // =====================================================================================
         if (message.content.startsWith(PREFIX)) {
             let args = message.content.substring(PREFIX.length).split(" ");
             switch (args[0]) {
 
+
+                // Secret Santa Event Commands
+                // ==========================================
+
+                case 'sssuc':
+                    if (message.channel === secretSantaChannel) {
+
+                        if (message.member.roles.cache.has('780457639485243422') ||
+                            message.member.hasPermission('ADMINISTRATOR')) {
+
+                            var person = message.mentions.members.first();
+                            if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
+                                .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
+
+                            if (message.author.id === person.id) {
+                                message.reply(`You cannot assign yourself as a secret santa`).then(m => m.delete({ timeout: 50000 }));
+                                message.delete()
+                                return;
+                            }
+
+                            if (person.id === bot.user.id) {
+                                message.reply(`You cannot assign the bot as a secret santa`).then(m => m.delete({ timeout: 5000 }));
+                                message.delete()
+                                return;
+                            }
+
+                            if (person.roles.cache.has('781061710542274560')) {
+                                message.reply('This member has already been assigned as a Secret Santa.').then(m => m.delete({ timeout: 5000 }));
+                                message.delete()
+                                return;
+                            }
+
+                            person.roles.add('781061710542274560');
+                            message.react('👍').then(() => {
+                                person.send(`Thank you for being the santa for someone and bringing a smile on thier face this year \:)\nThe Elves are happy to have worked with you!\nHave a yourself a Merry Christmas and a Happy New Year \:) 🌟🎅🎄`);
+                                serverLogs.send(`${message.author} has confirmed that ${person} is a secret santa.`)
+                                message.delete({ timeout: 5000 });
+                            })
+                        }
+
+                    }
+                    break;
+
+                case 'ssrem':
+
+                    if (message.author.id === nisha ||
+                        message.author.id === ritika ||
+                        message.author.id === niveditha ||
+                        message.author.id === shreeya ||
+                        message.author.id === beta ||
+                        message.member.hasPermission('MANAGE_NICKNAMES')) {
+
+                        var person = message.mentions.members.first();
+                        if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
+                            .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
+
+                        const secretSantaAnnouncementChannel = message.guild.channels.cache.get('770336984341938197');
+
+                        secretSantaChannel.updateOverwrite(person.id, {
+                            VIEW_CHANNEL: false
+                        }).then(() => {
+                            secretSantaAnnouncementChannel.updateOverwrite(person.id, {
+                                VIEW_CHANNEL: false
+                            })
+                        }).then(() => {
+                            message.react('👍');
+                        }).then(() => message.delete({ timeout: 5000 }))
+
+                    }
+
+                    break;
+
+                case 'ss':
+
+                    if (message.author.id === nisha ||
+                        message.author.id === ritika ||
+                        message.author.id === niveditha ||
+                        message.author.id === shreeya ||
+                        message.author.id === beta ||
+                        message.member.hasPermission('MANAGE_NICKNAMES')) {
+
+                        var person = message.mentions.members.first();
+                        if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
+                            .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
+
+                        const secretSantaAnnouncementChannel = message.guild.channels.cache.get('770336984341938197');
+
+                        secretSantaChannel.updateOverwrite(person.id, {
+                            VIEW_CHANNEL: true
+                        }).then(() => {
+                            secretSantaAnnouncementChannel.updateOverwrite(person.id, {
+                                VIEW_CHANNEL: true
+                            })
+                        }).then(() => {
+                            message.react('👍');
+                            person.send(`Thank you for signing up for the Secret Santa Event on Yes Fam India. You now have access to a secret channel ---> <#770336913752064100>.`);
+                        }).then(() => message.delete({ timeout: 5000 }))
+
+                    }
+
+                    break;
+
+                // ==========================================
+
+
                 // games and hobbies
-                // =====================================
+                // ==========================================
                 case 'newhobby':
                     if (!message.member.hasPermission('ADMINISTRATOR')) return;
                     if (!message.channel.parentID === hobbiesParent) return;
@@ -194,8 +299,11 @@ module.exports = bot => {
                     }
                     break;
 
-                // =====================================
+                // ==========================================
 
+
+                // Server Commands
+                // ==========================================
                 case 'profile':
 
                     if (message.channel === botCommands ||
@@ -593,146 +701,6 @@ module.exports = bot => {
                     }
                     break;
 
-                case 'sssuc':
-                    if (message.channel === secretSantaChannel) {
-
-                        if (message.member.roles.cache.has('780457639485243422') ||
-                            message.member.hasPermission('ADMINISTRATOR')) {
-
-                            var person = message.mentions.members.first();
-                            if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
-                                .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
-
-                            if (message.author.id === person.id) {
-                                message.reply(`You cannot assign yourself as a secret santa`).then(m => m.delete({ timeout: 50000 }));
-                                message.delete()
-                                return;
-                            }
-
-                            if (person.id === bot.user.id) {
-                                message.reply(`You cannot assign the bot as a secret santa`).then(m => m.delete({ timeout: 50000 }));
-                                message.delete()
-                                return;
-                            }
-
-                            if (person.roles.cache.has('781061710542274560')) {
-                                message.reply('This member has already been assigned as a Secret Santa.').then(m => m.delete({ timeout: 50000 }));
-                                message.delete()
-                                return;
-                            }
-
-                            person.roles.add('781061710542274560');
-                            message.react('👍').then(() => {
-                                person.send(`Thank you for being the santa for someone and bringing a smile on thier face this year \:)\nThe Elves are happy to have worked with you!\nHave a yourself a Merry Christmas and a Happy New Year \:) 🌟🎅🎄`);
-                                serverLogs.send(`${message.author} has confirmed that ${person} is a secret santa.`)
-                                message.delete({ timeout: 5000 });
-                            })
-                        }
-
-                    }
-                    break;
-
-                case 'setmainchannel':
-                    if (message.member.hasPermission('ADMINISTRATOR')) {
-
-                        const setChannelId = message.channel.id
-
-                        await serverSchema.findOneAndUpdate({
-                            _id: message.guild.id
-                        }, {
-                            $addToSet: {
-                                mainChannels: setChannelId
-                            },
-                            serverName: message.guild.name
-                        }, {
-                            upsert: true
-                        }).then(() => {
-                            message.react('👍')
-                            message.delete({ timeout: 5000 });
-                        })
-                    }
-                    break;
-
-                case 'removemainchannel':
-                    if (message.member.hasPermission('ADMINISTRATOR')) {
-
-                        const removeChannelId = message.channel.id
-
-                        await serverSchema.findOneAndUpdate({
-                            _id: message.guild.id
-                        }, {
-                            $pull: {
-                                mainChannels: removeChannelId
-                            },
-                            serverName: message.guild.name
-                        }, {
-                            upsert: true
-                        }).then(() => {
-                            message.react('👍')
-                            message.delete({ timeout: 5000 });
-                        })
-                    }
-                    break;
-
-                case 'ssrem':
-
-                    if (message.author.id === nisha ||
-                        message.author.id === ritika ||
-                        message.author.id === niveditha ||
-                        message.author.id === shreeya ||
-                        message.author.id === beta ||
-                        message.member.hasPermission('MANAGE_NICKNAMES')) {
-
-                        var person = message.mentions.members.first();
-                        if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
-                            .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
-
-                        const secretSantaAnnouncementChannel = message.guild.channels.cache.get('770336984341938197');
-
-                        secretSantaChannel.updateOverwrite(person.id, {
-                            VIEW_CHANNEL: false
-                        }).then(() => {
-                            secretSantaAnnouncementChannel.updateOverwrite(person.id, {
-                                VIEW_CHANNEL: false
-                            })
-                        }).then(() => {
-                            message.react('👍');
-                        }).then(() => message.delete({ timeout: 5000 }))
-
-                    }
-
-                    break;
-
-                case 'ss':
-
-                    if (message.author.id === nisha ||
-                        message.author.id === ritika ||
-                        message.author.id === niveditha ||
-                        message.author.id === shreeya ||
-                        message.author.id === beta ||
-                        message.member.hasPermission('MANAGE_NICKNAMES')) {
-
-                        var person = message.mentions.members.first();
-                        if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
-                            .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
-
-                        const secretSantaAnnouncementChannel = message.guild.channels.cache.get('770336984341938197');
-
-                        secretSantaChannel.updateOverwrite(person.id, {
-                            VIEW_CHANNEL: true
-                        }).then(() => {
-                            secretSantaAnnouncementChannel.updateOverwrite(person.id, {
-                                VIEW_CHANNEL: true
-                            })
-                        }).then(() => {
-                            message.react('👍');
-                            person.send(`Thank you for signing up for the Secret Santa Event on Yes Fam India. You now have access to a secret channel ---> <#770336913752064100>.`);
-                        }).then(() => message.delete({ timeout: 5000 }))
-
-                    }
-
-                    break;
-
                 case 'timeout':
 
                     if (message.member.hasPermission('ADMINISTRATOR') || message.member.hasPermission('MANAGE_NICKNAMES')) {
@@ -920,6 +888,12 @@ module.exports = bot => {
 
                     break;
 
+                // ==========================================
+
+
+                // Server Setup Commands
+                // ==========================================
+
                 case 'setarchivecategory':
 
                     const getArchiveId = message.content.split(' ').slice(1).join(' ')
@@ -947,9 +921,53 @@ module.exports = bot => {
 
                     break;
 
+                case 'setmainchannel':
+                    if (message.member.hasPermission('ADMINISTRATOR')) {
+
+                        const setChannelId = message.channel.id
+
+                        await serverSchema.findOneAndUpdate({
+                            _id: message.guild.id
+                        }, {
+                            $addToSet: {
+                                mainChannels: setChannelId
+                            },
+                            serverName: message.guild.name
+                        }, {
+                            upsert: true
+                        }).then(() => {
+                            message.react('👍')
+                            message.delete({ timeout: 5000 });
+                        })
+                    }
+                    break;
+
+                case 'removemainchannel':
+                    if (message.member.hasPermission('ADMINISTRATOR')) {
+
+                        const removeChannelId = message.channel.id
+
+                        await serverSchema.findOneAndUpdate({
+                            _id: message.guild.id
+                        }, {
+                            $pull: {
+                                mainChannels: removeChannelId
+                            },
+                            serverName: message.guild.name
+                        }, {
+                            upsert: true
+                        }).then(() => {
+                            message.react('👍')
+                            message.delete({ timeout: 5000 });
+                        })
+                    }
+                    break;
+
+                // ==========================================
+
             };
         }
-        // =====================================
+        // =====================================================================================
 
 
         // Summon Gamers
@@ -1013,8 +1031,6 @@ module.exports = bot => {
                     message.channel.send(`Hi there, ${message.author}`);
                 };
             };
-
-
 
         };
 
