@@ -229,6 +229,7 @@ module.exports = bot => {
                         }).then(async () => {
                             const personsRoles = await person.roles.cache.keyArray()
                             personsRoles.forEach((existingRoles) => {
+                                if (existingRoles === message.guild.id) return;
                                 person.roles.remove(existingRoles)
                             })
                             person.roles.add(serverRoles.unasigned).then(() => {
