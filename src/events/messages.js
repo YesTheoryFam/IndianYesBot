@@ -198,18 +198,20 @@ module.exports = bot => {
 
                 case 'resetbadges':
 
+                    var person = message.mentions.members.first();
+                    if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
+                        .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
+
                     if (message.member.hasPermission('ADMINISTRATOR')) {
 
                         if (message.member.hasPermission('MANAGE_NICKNAMES')) {
 
-                            if (person.hasPermission('MANAGE_NICKNAMES')) {
-
-                                if (person.id === message.author.id ||
-                                    person.id === bot.user.id) {
-                                    message.reply('You cannot reset badges for this user.').then(m => m.delete({ timeout: 10000 }));
-                                    message.delete();
-                                    return;
-                                }
+                            if (person.hasPermission('MANAGE_NICKNAMES') ||
+                                person.id === message.author.id ||
+                                person.id === bot.user.id) {
+                                message.reply('You cannot reset badges for this user.').then(m => m.delete({ timeout: 10000 }));
+                                message.delete();
+                                return;
                             }
 
                         }
