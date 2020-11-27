@@ -603,6 +603,24 @@ module.exports = bot => {
                             if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
                                 .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
 
+                            if (message.author.id === person.id) {
+                                message.reply(`You cannot assign yourself as a secret santa`).then(m => m.delete({ timeout: 50000 }));
+                                message.delete()
+                                return;
+                            }
+
+                            if (person.id === bot.user.id) {
+                                message.reply(`You cannot assign the bot as a secret santa`).then(m => m.delete({ timeout: 50000 }));
+                                message.delete()
+                                return;
+                            }
+
+                            if (person.roles.cache.has('781061710542274560')) {
+                                message.reply('This member has already been assigned as a Secret Santa.').then(m => m.delete({ timeout: 50000 }));
+                                message.delete()
+                                return;
+                            }
+
                             person.roles.add('781061710542274560');
                             message.react('👍').then(() => {
                                 person.send(`Thank you for being the santa for someone and bringing a smile on thier face this year \:)\nThe Elves are happy to have worked with you!\nHave a yourself a Merry Christmas and a Happy New Year \:) 🌟🎅🎄`);
