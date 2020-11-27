@@ -4,6 +4,9 @@ const chanceObj = new Chance();
 const states = require('../collections/Roles/stateTags.json');
 const serverRoles = require('../collections/Roles/Roles.json');
 
+const active = 'active';
+const inactive = 'inactive';
+
 const memberSchema = require('../database/Schemas/memberSchema');
 const serverSchema = require('../database/Schemas/serverSchema')
 
