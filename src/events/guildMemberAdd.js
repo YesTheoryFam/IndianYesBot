@@ -25,6 +25,7 @@ module.exports = bot => {
             const [{ userRoles, timeout }] = findMember;
 
             userRoles.forEach((previousRoles) => {
+                if (previousRoles === member.guild.id) return;
                 const theRole = member.guild.roles.cache.get(previousRoles);
 
                 if (theRole) {
