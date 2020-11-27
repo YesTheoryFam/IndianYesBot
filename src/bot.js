@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
-const bot = new Discord.Client({ partials: ["MESSAGE", "REACTION", "CHANNEL"] });
-const betabot = new Discord.Client({ partials: ["MESSAGE", "REACTION", "CHANNEL"] });
+const bot = new Discord.Client({ partials: ["MESSAGE", "REACTION", "CHANNEL", "GUILD_MEMBER", "USER"] });
+const betabot = new Discord.Client({ partials: ["MESSAGE", "REACTION", "CHANNEL", "GUILD_MEMBER", "USER"] });
 
 require("dotenv").config();
 const mongo = require("./database/databaseConnect.js");
@@ -16,7 +16,7 @@ const presenceUpdate = require('./events/presenceUpdate');
 
 
 bot.on("ready", async () => {
-    console.log("IndianYesBot is online.");
+    console.log(`${bot.user.username} is online.`);
     await mongo().then(() => console.log('DAtabase connected.'))
     const botOnNotificationChannel = bot.channels.cache.get("746764608890470470");
 

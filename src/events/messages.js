@@ -605,6 +605,7 @@ module.exports = bot => {
 
                             person.roles.add('781061710542274560');
                             message.react('👍').then(() => {
+                                person.send(`Thank you for being the santa for someone and bringing a smile on thier face this year \:)\nThe Elves are happy to have worked with you!\nHave a yourself a Merry Christmas and a Happy New Year \:) 🌟🎅🎄`);
                                 serverLogs.send(`${message.author} has confirmed that ${person} is a secret santa.`)
                                 message.delete({ timeout: 5000 });
                             })
