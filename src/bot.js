@@ -13,6 +13,7 @@ const messageReactionRemove = require('./events/messageReactionRemove');
 const messageUpdate = require('./events/messageUpdate');
 const messageDelete = require('./events/messageDelete');
 const presenceUpdate = require('./events/presenceUpdate');
+const birthdays = require('./events/birthdays');
 
 
 bot.on("ready", async () => {
@@ -32,6 +33,7 @@ messageReactionRemove(bot);
 messageUpdate(bot);
 messageDelete(bot);
 presenceUpdate(bot);
+birthdays(bot);
 
 bot.login(process.env.mainBot);
 betabot.login(process.env.secondaryBot);  
