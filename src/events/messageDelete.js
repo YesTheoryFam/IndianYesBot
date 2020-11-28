@@ -4,6 +4,7 @@ module.exports = bot => {
     //Deleted messages logging
     bot.on("messageDelete", async (message) => {
         // if (message.author.bot) return;
+        if (message.channel.parentID === '747509377153368217') return; // Welcome parent
 
         let logDelembed = new Discord.MessageEmbed()
             .setThumbnail(message.author.avatarURL())
