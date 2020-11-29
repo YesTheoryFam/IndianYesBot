@@ -314,7 +314,10 @@ module.exports = (bot, betabot) => {
                             m.forEach((msg) => {
                                 person.send(msg.content)
                             })
+
                         });
+                        serverLogs.send(`${message.author} has made ${person} a Community Admin.`);
+
 
                     });
 
