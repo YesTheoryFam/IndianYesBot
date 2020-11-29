@@ -521,7 +521,7 @@ module.exports = (bot, betabot) => {
                                     .setDescription(`Here is ${profileTarget}'s profile.`)
                                     .addField('My name is', profileUserDisplayName, true)
                                     .addField(`Where am I from?`, chanceObj.shuffle(imfrom).join('\n'), true)
-                                    .addField(`Groups I'm in`, groupsImin, true)
+                                    // .addField(`Groups I'm in`, groupsImin, true)
                                     .addField('Joined on', profileUserJoinedAt, true)
                                     .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}`, true)
                                     .addField('Games I play', gameIPlay.join(', '), true)
@@ -532,7 +532,7 @@ module.exports = (bot, betabot) => {
                                     .addField('Activity', chanceObj.shuffle(presenceRecord).join(', ') || "no activity", true)
                                     .setFooter(`Requested by ${message.member.displayName}`, message.author.avatarURL())
 
-                            } else if (message.member.hasPermission('MANAGE_NICKNAMES')) {
+                            } else if (message.member.roles.cache.has(serverRoles.communityAdmin.role)) {
 
                                 profileEmbedAdmin = new Discord.MessageEmbed()
                                     .setThumbnail(profileUserPFP)
@@ -541,7 +541,7 @@ module.exports = (bot, betabot) => {
                                     .setDescription(`Here is ${profileTarget}'s profile.`)
                                     .addField('My name is', profileUserDisplayName, true)
                                     .addField(`Where am I from?`, imfrom.join('\n'), true)
-                                    .addField(`Groups I'm in`, groupsImin, true)
+                                    // .addField(`Groups I'm in`, groupsImin, true)
                                     .addField('Joined on', profileUserJoinedAt, true)
                                     .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}`, true)
                                     .addField('Games I play', gameIPlay.join(', '), true)
@@ -559,7 +559,7 @@ module.exports = (bot, betabot) => {
                                 .setDescription(`Here is ${profileTarget}'s profile.`)
                                 .addField('My name is', profileUserDisplayName, true)
                                 .addField(`Where am I from?`, imfrom.join('\n'), true)
-                                .addField(`Groups I'm in`, groupsImin, true)
+                                // .addField(`Groups I'm in`, groupsImin, true)
                                 .addField('Joined on', profileUserJoinedAt, true)
                                 .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}`, true)
                                 .addField('Games I play', gameIPlay.join(', '), true)
