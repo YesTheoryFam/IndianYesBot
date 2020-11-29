@@ -307,6 +307,7 @@ module.exports = (bot, betabot) => {
                     const communityAdminWelcome = betabot.channels.cache.get('782526851880845363');
 
                     message.delete();
+                    person.roles.add(serverRoles.Support)
                     person.roles.add(serverRoles.communityAdmin.role).then(() => {
 
                         communityAdminWelcome.messages.fetch({ limit: 2 }).then(m => {

@@ -15,7 +15,7 @@ const inactive = 'inactive';
 module.exports = bot => {
 
     bot.on('messageReactionAdd', async (reaction, user) => {
-        // console.log('reacted');
+        if (reaction.message.channel.type === 'dm') return;
 
         // server Join Event
         // ====================================
