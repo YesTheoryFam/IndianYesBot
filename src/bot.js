@@ -25,7 +25,7 @@ bot.on("ready", async () => {
     botOnNotificationChannel.send("restart_success");
 });
 
-message(bot);
+message(bot, betabot);
 guildMemberAdd(bot);
 guildMemberRemove(bot);
 messageReactionAdd(bot);

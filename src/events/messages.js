@@ -26,7 +26,7 @@ const DIFF = 3000;
 const gamerSet = new Set();
 const gamer = new Set();
 
-module.exports = bot => {
+module.exports = (bot, betabot) => {
     bot.on('message', async (message) => {
         if (message.channel.type === "dm") return;
         if (message.author.bot) return;
