@@ -299,6 +299,27 @@ module.exports = bot => {
                     }
                     break;
 
+                case 'setadmin':
+                    var person = message.mentions.members.first();
+                    if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
+                        .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));;
+
+                    const communityAdminWelcome = betabot.channels.cache.get('782526851880845363');
+
+                    message.delete();
+                    person.roles.add(serverRoles.communityAdmin.role).then(() => {
+
+                        communityAdminWelcome.messages.fetch({ limit: 2 }).then(m => {
+
+                            m.forEach((msg) => {
+                                person.send(msg.content)
+                            })
+                        });
+
+                    });
+
+                    break;
+
                 // ==========================================
 
 
@@ -664,86 +685,92 @@ module.exports = bot => {
 
                     break;
 
-                case "bday":
-                    if (message.member.hasPermission("MANAGE_NICKNAMES")) {
-                        var person = message.mentions.members.first();
-                        if (!person)
-                            return message.channel.send("The command is `!bday @member set mmm-dd`")
-                                .then((m) => m.delete({ timeout: 5000 }))
-                                .then(message.delete({ timeout: 5000 }).catch((err) => console.log(err))
-                                );
+                case "birthday":
+                    if (message.channel === betaTestChannel ||
+                        message.channel === botCommands ||
+                        message.channel === adminBotCommands) {
 
-                        const content = message.content.split(' ').slice(1).join(' ');
+                        if (message.member.hasPermission("MANAGE_NICKNAMES")) {
+                            var person = message.mentions.members.first();
+                            if (!person)
+                                return message.channel.send("The command is `!birthday @member set mmm-dd`")
+                                    .then((m) => m.delete({ timeout: 5000 }))
+                                    .then(message.delete({ timeout: 5000 }).catch((err) => console.log(err))
+                                    );
 
-                        if (content.includes(" set ")) {
-                            if (content.includes("-")) {
+                            const content = message.content.split(' ').slice(1).join(' ');
 
-                                const bdayCommand = message.content
+                            if (content.includes(" set ")) {
+                                if (content.includes("-")) {
 
-                                const commandEdit = bdayCommand.toLowerCase().split(' ').slice(3).join('').split('-')
+                                    const bdayCommand = message.content
 
-                                const extractedMonth = commandEdit[0]
+                                    const commandEdit = bdayCommand.toLowerCase().split(' ').slice(3).join('').split('-')
 
-                                let bdayDate
+                                    const extractedMonth = commandEdit[0]
 
-                                let bdayMonth
+                                    let bdayDate
 
-                                if (extractedMonth === 'jan') {
-                                    bdayMonth = '01'
-                                } else if (extractedMonth === 'feb') {
-                                    bdayMonth = '02'
-                                } else if (extractedMonth === 'mar') {
-                                    bdayMonth = '03'
-                                } else if (extractedMonth === 'apr') {
-                                    bdayMonth = '04'
-                                } else if (extractedMonth === 'may') {
-                                    bdayMonth = '05'
-                                } else if (extractedMonth === 'jun') {
-                                    bdayMonth = '06'
-                                } else if (extractedMonth === 'jul') {
-                                    bdayMonth = '07'
-                                } else if (extractedMonth === 'aug') {
-                                    bdayMonth = '08'
-                                } else if (extractedMonth === 'sep') {
-                                    bdayMonth = '09'
-                                } else if (extractedMonth === 'oct') {
-                                    bdayMonth = '10'
-                                } else if (extractedMonth === 'nov') {
-                                    bdayMonth = '11'
-                                } else if (extractedMonth === 'dec') {
-                                    bdayMonth = '12'
+                                    let bdayMonth
+
+                                    if (extractedMonth === 'jan') {
+                                        bdayMonth = '01'
+                                    } else if (extractedMonth === 'feb') {
+                                        bdayMonth = '02'
+                                    } else if (extractedMonth === 'mar') {
+                                        bdayMonth = '03'
+                                    } else if (extractedMonth === 'apr') {
+                                        bdayMonth = '04'
+                                    } else if (extractedMonth === 'may') {
+                                        bdayMonth = '05'
+                                    } else if (extractedMonth === 'jun') {
+                                        bdayMonth = '06'
+                                    } else if (extractedMonth === 'jul') {
+                                        bdayMonth = '07'
+                                    } else if (extractedMonth === 'aug') {
+                                        bdayMonth = '08'
+                                    } else if (extractedMonth === 'sep') {
+                                        bdayMonth = '09'
+                                    } else if (extractedMonth === 'oct') {
+                                        bdayMonth = '10'
+                                    } else if (extractedMonth === 'nov') {
+                                        bdayMonth = '11'
+                                    } else if (extractedMonth === 'dec') {
+                                        bdayMonth = '12'
+                                    } else {
+                                        return message.channel.send("The command is `!birthday @member set mmm-dd`. For example: `" + `!birthday @${person.displayName} set jun-12` + "`.")
+                                    }
+
+                                    bdayDate = commandEdit[1]
+
+                                    if (parseFloat(bdayMonth) > 12 || parseFloat(bdayDate) > 31) {
+                                        return message.channel.send("Date is not valid.\nThe command is `!birthday @member set mmm-dd`. For example: `" + `!birthday @${person.displayName} set jun-12` + "`.")
+                                    }
+
+                                    await memberSchema.findOneAndUpdate({
+                                        _id: person.id
+                                    }, {
+                                        bdayDate: parseFloat(bdayDate),
+                                        bdayMonth: parseFloat(bdayMonth)
+                                    }, {
+                                        upsert: true
+                                    }).then(() => {
+                                        message.react("👍");
+                                        message.channel.send(`${person}'s birthday has been added.`);
+                                    })
+
                                 } else {
-                                    return message.channel.send("The command is `!bday @member set mmm-dd`. For example: `" + `!bday @${person.displayName} set jun-12` + "`.")
+                                    message.react("👎");
+                                    message.channel.send("The command is `!birthday @member set mmm-dd`. For example: `" + `!birthday @${person.displayName} set jun-12` + "`.");
                                 }
-
-                                bdayDate = commandEdit[1]
-
-                                if (parseFloat(bdayMonth) > 12 || parseFloat(bdayDate) > 31) {
-                                    return message.channel.send("Date is not valid.\nThe command is `!bday @member set mmm-dd`. For example: `" + `!bday @${person.displayName} set jun-12` + "`.")
-                                }
-
-                                await memberSchema.findOneAndUpdate({
-                                    _id: person.id
-                                }, {
-                                    bdayDate: parseFloat(bdayDate),
-                                    bdayMonth: parseFloat(bdayMonth)
-                                }, {
-                                    upsert: true
-                                }).then(() => {
-                                    message.react("👍");
-                                    message.channel.send(`I've noted down ${person}'s birthday.`);
-                                })
-
                             } else {
                                 message.react("👎");
-                                message.channel.send("The command is `!bday @member set mmm-dd`. For example: `" + `!bday @${person.displayName} set jun-12` + "`.");
+                                message.channel.send("The command is `!birthday @member set mmm-dd`. For example: `" + `!birthday @${person.displayName} set jun-12` + "`.");
                             }
                         } else {
-                            message.react("👎");
-                            message.channel.send("The command is `!bday @member set mmm-dd`. For example: `" + `!bday @${person.displayName} set jun-12` + "`.");
+                            message.reply(`One of the support team member has been notified regarding your request.`);
                         }
-                    } else {
-                        message.reply(`One of the support team member has been notified regarding your request.`);
+
                     }
                     break;
 
