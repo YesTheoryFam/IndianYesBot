@@ -402,7 +402,7 @@ module.exports = (bot, betabot) => {
                             profileTarget = person
                             profileOfId = person.id;
                             profileUserTag = person.user.tag;
-                            profileUserPFP = person.user.avatarURL();
+                            profileUserPFP = person.user.avatarURL() || 'https://cdn.discordapp.com/attachments/746755589895487488/782964494687010826/yes_theory_blue.png';
                             profileUserDisplayName = person.displayName
                             profileUserJoinedAt = person.joinedAt.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", }) + " (IST)";
                             profileUserColour = person.displayColor
@@ -410,7 +410,7 @@ module.exports = (bot, betabot) => {
                             profileTarget = message.author
                             profileOfId = message.author.id;
                             profileUserTag = message.member.user.tag;
-                            profileUserPFP = message.author.avatarURL();
+                            profileUserPFP = message.author.avatarURL() || 'https://cdn.discordapp.com/attachments/746755589895487488/782964494687010826/yes_theory_blue.png';
                             profileUserDisplayName = message.member.displayName;
                             profileUserJoinedAt = message.member.joinedAt.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", }) + " (IST)";
                             profileUserColour = message.member.displayColor

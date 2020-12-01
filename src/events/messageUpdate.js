@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 module.exports = bot => {
     //Message update logging
     bot.on("messageUpdate", async (oldMessage, newMessage) => {
+        if (oldMessage.channel.type === 'dm') return;
         // if (oldMessage.author.bot) return;
         if (oldMessage.content === newMessage.content) {
             return;

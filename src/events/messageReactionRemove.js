@@ -5,6 +5,7 @@ const inactive = 'inactive';
 module.exports = bot => {
 
     bot.on('messageReactionRemove', async (reaction, user) => {
+        if (reaction.message.channel.type === 'dm') return;
 
         const gameSelectChannel = reaction.message.guild.channels.cache.get('766246855939588127');
         const hobbiesSelectChannel = reaction.message.guild.channels.cache.get('766284120497717249');

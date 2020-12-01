@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 module.exports = bot => {
     //Deleted messages logging
     bot.on("messageDelete", async (message) => {
+        if (message.channel.type === 'dm') return;
         // if (message.author.bot) return;
         if (message.channel.parentID === '747509377153368217') return; // Welcome parent
 
