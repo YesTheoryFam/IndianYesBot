@@ -374,7 +374,7 @@ module.exports = (bot, betabot) => {
                     }
                     break;
 
-                case 'profile':
+                 case 'profile':
 
                     if (message.channel === botCommands ||
                         message.channel === adminBotCommands ||
@@ -521,14 +521,14 @@ module.exports = (bot, betabot) => {
                                     .setDescription(`Here is ${profileTarget}'s profile.`)
                                     .addField('My name is', profileUserDisplayName, true)
                                     .addField(`Where am I from?`, chanceObj.shuffle(imfrom).join('\n'), true)
-                                    // .addField(`Groups I'm in`, groupsImin, true)
-                                    .addField('Joined on', profileUserJoinedAt, true)
-                                    .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}`, true)
-                                    .addField('Games I play', gameIPlay.join(', '), true)
-                                    .addField('Usernames', usernameHistory.join(', '), true)
-                                    .addField('Nicknames', nameHistory.join(', '), true)
-                                    .addField('Time Out Status', timeout || 'inactive', true)
-                                    .addField('Warnings', `${warningIds.length}`, true)
+                                    .addField(`Groups I'm in`, groupsImin, true)
+                                    .addField('Joined on', profileUserJoinedAt || '-', true)
+                                    .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}` || '-', true)
+                                    .addField('Games I play', gameIPlay.join(', ') || '-', true)
+                                    .addField('Usernames', usernameHistory.join(', ') || '-', true)
+                                    .addField('Nicknames', nameHistory.join(', ') || '-', true)
+                                    .addField('Time Out Status', timeout || 'inactive' || '-', true)
+                                    .addField('Warnings', `${warningIds.length}` || '-', true)
                                     .addField('Activity', chanceObj.shuffle(presenceRecord).join(', ') || "no activity", true)
                                     .setFooter(`Requested by ${message.member.displayName}`, message.author.avatarURL())
 
@@ -541,13 +541,13 @@ module.exports = (bot, betabot) => {
                                     .setDescription(`Here is ${profileTarget}'s profile.`)
                                     .addField('My name is', profileUserDisplayName, true)
                                     .addField(`Where am I from?`, imfrom.join('\n'), true)
-                                    // .addField(`Groups I'm in`, groupsImin, true)
-                                    .addField('Joined on', profileUserJoinedAt, true)
-                                    .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}`, true)
-                                    .addField('Games I play', gameIPlay.join(', '), true)
-                                    .addField('Usernames', usernameHistory.join(', '), true)
+                                    .addField(`Groups I'm in`, groupsImin || '-', true)
+                                    .addField('Joined on', profileUserJoinedAt || '-', true)
+                                    .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}` || '-', true)
+                                    .addField('Games I play', gameIPlay.join(', ') || '-', true)
+                                    .addField('Usernames', usernameHistory.join(', ') || '-', true)
                                     .addField('Time Out Status', timeout || 'inactive', true)
-                                    .addField('Warnings', warningIds.length, true)
+                                    .addField('Warnings', warningIds.length || '-', true)
                                     .setFooter(`Requested by ${message.member.displayName}`, message.author.avatarURL())
 
                             }
@@ -559,10 +559,10 @@ module.exports = (bot, betabot) => {
                                 .setDescription(`Here is ${profileTarget}'s profile.`)
                                 .addField('My name is', profileUserDisplayName, true)
                                 .addField(`Where am I from?`, imfrom.join('\n'), true)
-                                // .addField(`Groups I'm in`, groupsImin, true)
-                                .addField('Joined on', profileUserJoinedAt, true)
-                                .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}`, true)
-                                .addField('Games I play', gameIPlay.join(', '), true)
+                                .addField(`Groups I'm in`, groupsImin || '-', true)
+                                .addField('Joined on', profileUserJoinedAt || '-', true)
+                                .addField('Birthday', `${profileUserBdayMonth}-${profileUserBdayDay}` || '-', true)
+                                .addField('Games I play', gameIPlay.join(', ') || '-', true)
                                 .setFooter(`Requested by ${message.member.displayName}`, message.author.avatarURL())
 
                             message.author.send(profileEmbedAdmin);
