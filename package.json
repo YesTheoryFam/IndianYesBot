@@ -1,5 +1,5 @@
 {
-  "name": "indianyesbot",
+  "name": "Yesbot",
   "version": "1.0.0",
   "description": "A moderation bot for the Yes Fam India Discrod Server",
   "main": "src/bot.js",
@@ -29,6 +29,7 @@
     "dotenv": "^8.2.0",
     "drive-db": "^6.0.1",
     "moment-timezone": "^0.5.32",
-    "mongoose": "^5.10.18"
+    "mongoose": "^5.11.4",
+    "node-fetch": "^2.6.1"
   }
 }

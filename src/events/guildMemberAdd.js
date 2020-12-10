@@ -24,20 +24,32 @@ module.exports = bot => {
         if (findMember.length > 0) {
             const [{ userRoles, timeout }] = findMember;
 
-            userRoles.forEach((previousRoles) => {
-                if (previousRoles === member.guild.id) return;
-                const theRole = member.guild.roles.cache.get(previousRoles);
+            if (userRoles || userRoles.length > 0) {
 
-                if (theRole) {
-                    member.roles.add(previousRoles)
+                userRoles.forEach((previousRoles) => {
+
+                    if (previousRoles === member.guild.id ||
+                        previousRoles === serverRoles.timeOut ||
+                        previousRoles === serverRoles.unasigned ||
+                        previousRoles === serverRoles.birthday) return;;
+
+                    const theRole = member.guild.roles.cache.get(previousRoles);
+
+                    if (theRole) {
+                        member.roles.add(previousRoles)
+                    }
+
+                })
+
+            }
+            if (timeout) {
+                if (timeout === active) {
+                    return member.roles.add(serverRoles.timeOut);
+                } else if (timeout === inactive) {
+                    welcomeChat.send(`Welcome back, ${member}.`);
+                    return;
                 }
-
-            })
-
-            if (timeout === active) {
-                return member.roles.add(serverRoles.timeOut);
-            } else if (timeout === inactive) {
-                member.roles.remove(serverRoles.timeOut)
+            } else {
                 welcomeChat.send(`Welcome back, ${member}.`);
                 return;
             }
