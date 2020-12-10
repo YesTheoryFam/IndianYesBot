@@ -2,6 +2,7 @@
 /beta
 test.js
 /src/database/Schemas/beta
+server.js
 
 # configuration files
 /config
