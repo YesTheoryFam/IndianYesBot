@@ -60,7 +60,7 @@ Once you've gone through the code and ready to contribute, ping one of the moder
 
 ## Can I fork this code and deploy my bot?
 
-Some of this bot's feature are server specific so you shouldn't be expecting it to work the same way as it works on the Yes Fam India Server. But you are free to take inspirations from this repo.
+Some of this bot's features are server specific so you shouldn't be expecting it to work the same way as it works on the Yes Fam India Server. But you can take inspirations from this repo.
 
 ---
 
