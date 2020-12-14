@@ -3,7 +3,7 @@ const Chance = require('chance');
 
 const chanceObj = new Chance();
 
-const serverRoles = require('../collections/Roles/Roles.json')
+const serverRoles = require('../collections/Roles/Roles.json');
 
 const memberSchema = require('../database/Schemas/memberSchema');
 
@@ -16,58 +16,62 @@ module.exports = (bot) => {
 
         const moment = Moment().tz('Asia/Kolkata');
         const todaysDate = moment.date();
-        const yesterdaysDate = moment.date() - 1;
         const month = moment.month() + 1;
+        const yesterdaysDate = moment.date() - 1;
+        const yesterdaysMonth = moment.date();
 
-        const yfi = bot.guilds.cache.get('701088725605548133');
+
+        const yfi = await bot.guilds.fetch('701088725605548133');
         const bdayRole = yfi.roles.cache.get(serverRoles.birthday);
         const chatChannel = bot.channels.cache.get('701088725605548136');
 
-        const findTodaysBday = await memberSchema.find({
-            bdayDate: todaysDate,
-            bdayMonth: month
-        });
-
-        const findBelatedBday = await memberSchema.find({
-            bdayDate: yesterdaysDate,
-            bdayMonth: month
-        });
+        const findTodaysBday = await memberSchema.find();
 
         if (findTodaysBday.length > 0) {
 
-            findTodaysBday.forEach(async (bdayData) => {
-                const { _id } = bdayData
-                const bdayMember = await yfi.members.fetch(_id).catch((err) => { return; });
+            const chatChannel = bot.channels.cache.get('701088725605548136');
 
-                if (bdayMember) {
-                    if (!bdayMember.roles.cache.has(bdayRole.id)) {
-                        const birthdayPerson = `<@${_id}>`
-                        const birthdayWish = chanceObj.pickone([
-                            `HOOORRRAAAYYY! It's ${birthdayPerson}'s birthday!🎉 🎊`,
-                            `OMG! Today is ${birthdayPerson}'s birthday!! 🎉 🎊`,
-                            `EVERYONE! It's ${birthdayPerson}'s birthday!!🎉 🎊`,
-                        ])
+            findTodaysBday.forEach(async (member) => {
+                const { _id, bdayMonth, bdayDate } = member
 
-                        bdayMember.roles.add(bdayRole)
-                        chatChannel.send(`**${birthdayWish}**`)
+                const fetchMemeber = await yfi.members.fetch(_id).catch((err) => { return });
+
+                if (bdayMonth && bdayDate) {
+
+                    if (fetchMemeber) {
+
+                        if (bdayMonth === month && bdayDate === todaysDate) {
+                            if (!fetchMemeber.roles.cache.has(serverRoles.birthday)) {
+
+                                const birthdayPerson = `<@${_id}>`
+                                const birthdayWish = chanceObj.pickone([
+                                    `HOOORRRAAAYYY! It's ${birthdayPerson}'s birthday!🎉 🎊`,
+                                    `OMG! Today is ${birthdayPerson}'s birthday!! 🎉 🎊`,
+                                    `EVERYONE! It's ${birthdayPerson}'s birthday!!🎉 🎊`,
+                                ]);
+
+                                fetchMemeber.roles.add(serverRoles.birthday);
+                                chatChannel.send(birthdayWish);
+
+                            }
+                        } else {
+
+                            if (fetchMemeber.roles.cache.has(serverRoles)) {
+
+                                fetchMemeber.roles.remove(serverRoles.birthday);
+
+                            }
+
+                        }
+
                     }
+
                 }
-            })
 
-        } else if (findBelatedBday.length > 0) {
-
-            findBelatedBday.forEach(async (bdayData) => {
-                const { _id } = bdayData
-                const belatedBdayMember = await yfi.members.fetch(_id).catch((err) => { return; });
-
-                if (belatedBdayMember) {
-                    if (belatedBdayMember.roles.cache.has(bdayRole.id)) {
-                        belatedBdayMember.roles.remove(bdayRole)
-                    }
-                }
             })
 
         }
+
     }
 
     const work = async () => {
