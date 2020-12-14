@@ -52,7 +52,7 @@ module.exports = (bot) => {
                             }
                         } else {
 
-                            if (fetchMemeber.roles.cache.has(serverRoles)) {
+                            if (fetchMemeber.roles.cache.has(serverRoles.birthday)) {
 
                                 fetchMemeber.roles.remove(serverRoles.birthday);
 
