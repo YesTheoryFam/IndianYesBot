@@ -4,6 +4,9 @@ module.exports = bot => {
     //Message update logging
     bot.on("messageUpdate", async (oldMessage, newMessage) => {
         if (oldMessage.channel.type === 'dm') return;
+
+        if(oldMessage.channel.parentID === '790221817288982558') return;
+
         // if (oldMessage.author.bot) return;
         if (oldMessage.content === newMessage.content) {
             return;
