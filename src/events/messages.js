@@ -14,6 +14,10 @@ const memberSchema = require('../database/Schemas/memberSchema');
 const serverSchema = require('../database/Schemas/serverSchema');
 const warningSchema = require('../database/Schemas/warningSchema');
 const presenceSchema = require('../database/Schemas/activityGroupSchema');
+const serverActivitySchema = require('../database/Schemas/serverActivitySchema')
+
+const messageCounter = require('../functions/Message Counter/messageCounter')
+const serverActivityLogger = require('../functions/server activity/serverActivityLogger');
 
 const active = 'active';
 const inactive = 'inactive';
@@ -63,26 +67,22 @@ module.exports = (bot, betabot) => {
         const beta = '712795842083553363';
 
 
-        // Message Counter 
-        // =====================
 
-        await memberSchema.findOneAndUpdate({
-            _id: message.author.id
-        }, {
-            name: message.member.nickname || '',
-            currentUsername: message.author.username,
-            $addToSet: {
-                usernameHistory: message.author.username,
-                nameHistory: message.member.nickname || '',
-                userRoles: message.member.roles.cache.keyArray(),
-                servers: message.guild.id
-            },
-            $inc: {
-                "messageCount": 1
+        // ======================
+
+        // message/activity counters
+        if (!message.author.bot) {
+
+            if (message.channel.parentID === '790221817288982558') {
+                message.delete();
+                return;
             }
-        }, {
-            upsert: true
-        })
+
+            messageCounter(message, memberSchema)
+            serverActivityLogger(message, currentMoment, serverActivitySchema);
+
+        }
+
 
         // ======================
 
@@ -374,7 +374,7 @@ module.exports = (bot, betabot) => {
                     }
                     break;
 
-                 case 'profile':
+                case 'profile':
 
                     if (message.channel === botCommands ||
                         message.channel === adminBotCommands ||

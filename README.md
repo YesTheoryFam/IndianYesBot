@@ -26,6 +26,7 @@ Here are some of the Server Features:
 - Polls Channel
 - Feature Requests Channel
 - Statewise Chat Channels
+- Server Activity Charts
 - Profile Cards
 - Birthday Reminders
 - Gaming Channels (Coming Soon)
