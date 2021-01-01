@@ -43,7 +43,7 @@ module.exports = (bot, betabot) => {
         const server = await bot.guilds.fetch('701088725605548133');
 
         if (message.channel.type === "dm") {
-            dm(message, server, dmParent, existingDM, dmChannelSchema)
+            dm(bot, message, server, dmParent, existingDM, dmChannelSchema)
         } else {
 
             if (message.author.bot) return;

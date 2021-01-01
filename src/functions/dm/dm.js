@@ -1,5 +1,5 @@
 
-module.exports = async (message, server, dmParent, existingDM, dmChannelSchema) => {
+module.exports = async (bot, message, server, dmParent, existingDM, dmChannelSchema) => {
     if (message.author.bot) return;
 
     const checkIfExisting = server.members.fetch(message.author.id);
