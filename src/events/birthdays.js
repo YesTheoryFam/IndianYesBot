@@ -17,13 +17,9 @@ module.exports = (bot) => {
         const moment = Moment().tz('Asia/Kolkata');
         const todaysDate = moment.date();
         const month = moment.month() + 1;
-        const yesterdaysDate = moment.date() - 1;
-        const yesterdaysMonth = moment.date();
-
 
         const yfi = await bot.guilds.fetch('701088725605548133');
         const bdayRole = yfi.roles.cache.get(serverRoles.birthday);
-        const chatChannel = bot.channels.cache.get('701088725605548136');
 
         const findTodaysBday = await memberSchema.find();
 
@@ -56,7 +52,7 @@ module.exports = (bot) => {
                             }
                         } else {
 
-                            if (fetchMemeber.roles.cache.has(serverRoles)) {
+                            if (fetchMemeber.roles.cache.has(serverRoles.birthday)) {
 
                                 fetchMemeber.roles.remove(serverRoles.birthday);
 
