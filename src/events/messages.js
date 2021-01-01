@@ -4,7 +4,6 @@ const Moment = require('moment-timezone');
 
 const chanceObj = new Chance();
 
-const server = await bot.guilds.fetch('701088725605548133');
 
 const states = require('../collections/Roles/stateTags.json');
 const serverRoles = require("../collections/Roles/Roles.json");
@@ -41,6 +40,7 @@ const existingDM = new Set(); // existing dm set of non server members
 module.exports = (bot, betabot) => {
     bot.on('message', async (message) => {
 
+        const server = await bot.guilds.fetch('701088725605548133');
 
         if (message.channel.type === "dm") {
             dm(message, server, dmParent, existingDM, dmChannelSchema)
