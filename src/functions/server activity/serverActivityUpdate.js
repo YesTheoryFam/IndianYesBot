@@ -78,26 +78,21 @@ module.exports = async (bot) => {
                 month: currentMoment.month(),
                 year: currentMoment.year(),
             }).sort({
-                unix: 1
+                unix: -1
             }).limit(24)
 
             // week
             const checkWeekActivity = await serverActivitySchema.find({
                 type: 'daily',
-                date: currentMoment.date(),
-                month: currentMoment.month(),
-                year: currentMoment.year(),
             }).sort({
-                unix: 1
+                unix: -1
             }).limit(7)
 
             // month
             const checkMonthActivity = await serverActivitySchema.find({
                 type: 'daily',
-                month: currentMoment.month(),
-                year: currentMoment.year(),
             }).sort({
-                unix: 1
+                unix: -1
             }).limit(24)
 
             if (checkHourlyActivity.length > 0) {
@@ -105,7 +100,7 @@ module.exports = async (bot) => {
                 const messageCounts = []
                 const hours = []
 
-                checkHourlyActivity.forEach((activity) => {
+                checkHourlyActivity.reverse().forEach((activity) => {
                     const { messageCount, hour } = activity
 
                     messageCounts.push(messageCount)
@@ -113,33 +108,35 @@ module.exports = async (bot) => {
 
                 })
 
+                setTimeout(() => {
 
-                if (hourlyActivityChannel) {
-                    const hourChart = `https://quickchart.io/chart?bkg=transparent&c={%0A%20type%3A'line'%2C%0A%20data%3A{%0A%20%20%20labels%3A[${hours.join('%2C')}]%2C%0A%20%20%20datasets%3A[{%0A%20%20%20%20%20data%3A[${messageCounts.join('%2C')}]%2C%0A%20%20%20%20%20fill%3Afalse%2C%0A%20%20%20%20%20borderColor%3AgetGradientFillHelper('vertical'%2C['%2336a2eb'%2C'%23a336eb'%2C'%23eb3639'])%2C%0A%20%20%20%20%20borderWidth%3A2%2C%0A%20%20%20%20%20pointRadius%3A0%2C%0A%20%20%20}]%0A%20}%2C%0A%20options%3A{%0A%20%20%20legend%3A{%0A%20%20%20%20%20display%3Afalse%0A%20%20%20}%2C%0A%09scales%3A{%0A%20%20%20}%0A%20}%0A}`
-                    const hourChartLong = `https://quickchart.io/chart?bkg=transparent&w=800&c={%0A%20type%3A'line'%2C%0A%20data%3A{%0A%20%20%20labels%3A[${hours.join('%2C')}]%2C%0A%20%20%20datasets%3A[{%0A%20%20%20%20%20data%3A[${messageCounts.join('%2C')}]%2C%0A%20%20%20%20%20fill%3Afalse%2C%0A%20%20%20%20%20borderColor%3AgetGradientFillHelper('vertical'%2C['%2336a2eb'%2C'%23a336eb'%2C'%23eb3639'])%2C%0A%20%20%20%20%20borderWidth%3A2%2C%0A%20%20%20%20%20pointRadius%3A0%2C%0A%20%20%20}]%0A%20}%2C%0A%20options%3A{%0A%20%20%20legend%3A{%0A%20%20%20%20%20display%3Afalse%0A%20%20%20}%2C%0A%09scales%3A{%0A%20%20%20}%0A%20}%0A}`
+                    if (hourlyActivityChannel) {
+                        const hourChart = `https://quickchart.io/chart?bkg=transparent&c={%0A%20type%3A'line'%2C%0A%20data%3A{%0A%20%20%20labels%3A[${hours.join('%2C')}]%2C%0A%20%20%20datasets%3A[{%0A%20%20%20%20%20data%3A[${messageCounts.join('%2C')}]%2C%0A%20%20%20%20%20fill%3Afalse%2C%0A%20%20%20%20%20borderColor%3AgetGradientFillHelper('vertical'%2C['%2336a2eb'%2C'%23a336eb'%2C'%23eb3639'])%2C%0A%20%20%20%20%20borderWidth%3A2%2C%0A%20%20%20%20%20pointRadius%3A0%2C%0A%20%20%20}]%0A%20}%2C%0A%20options%3A{%0A%20%20%20legend%3A{%0A%20%20%20%20%20display%3Afalse%0A%20%20%20}%2C%0A%09scales%3A{%0A%20%20%20}%0A%20}%0A}`
+                        const hourChartLong = `https://quickchart.io/chart?bkg=transparent&w=800&c={%0A%20type%3A'line'%2C%0A%20data%3A{%0A%20%20%20labels%3A[${hours.join('%2C')}]%2C%0A%20%20%20datasets%3A[{%0A%20%20%20%20%20data%3A[${messageCounts.join('%2C')}]%2C%0A%20%20%20%20%20fill%3Afalse%2C%0A%20%20%20%20%20borderColor%3AgetGradientFillHelper('vertical'%2C['%2336a2eb'%2C'%23a336eb'%2C'%23eb3639'])%2C%0A%20%20%20%20%20borderWidth%3A2%2C%0A%20%20%20%20%20pointRadius%3A0%2C%0A%20%20%20}]%0A%20}%2C%0A%20options%3A{%0A%20%20%20legend%3A{%0A%20%20%20%20%20display%3Afalse%0A%20%20%20}%2C%0A%09scales%3A{%0A%20%20%20}%0A%20}%0A}`
 
-                    hourlyActivityChannel.messages.fetch({ limit: 1 }).then(m => {
-                        let lastMessage = m.first();
-                        if (lastMessage) {
-                            if (lastMessage.author.bot) {
-                                if (messageCounts.length < 12) {
-                                    lastMessage.edit(hourChart)
+                        hourlyActivityChannel.messages.fetch({ limit: 1 }).then(m => {
+                            let lastMessage = m.first();
+                            if (lastMessage) {
+                                if (lastMessage.author.bot) {
+                                    if (messageCounts.length < 12) {
+                                        lastMessage.edit(hourChart)
+                                    } else {
+                                        lastMessage.edit(hourChartLong);
+                                    }
                                 } else {
-                                    lastMessage.edit(hourChartLong);
+                                    lastMessage.delete()
                                 }
                             } else {
-                                lastMessage.delete()
+                                if (messageCounts.length < 12) {
+                                    hourlyActivityChannel.send(hourChart)
+                                } else {
+                                    hourlyActivityChannel.send(hourChartLong)
+                                }
                             }
-                        } else {
-                            if (messageCounts.length < 12) {
-                                hourlyActivityChannel.send(hourChart)
-                            } else {
-                                hourlyActivityChannel.send(hourChartLong)
-                            }
-                        }
-                    })
+                        })
 
-                }
+                    }
+                }, 2000);
 
             }
 
@@ -147,31 +144,33 @@ module.exports = async (bot) => {
 
                 const messageCounts = []
                 const dates = []
-                checkWeekActivity.forEach((activity) => {
+                checkWeekActivity.reverse().forEach((activity) => {
                     const { messageCount, date } = activity
 
                     messageCounts.push(messageCount);
                     dates.push(date)
 
                 })
+                setTimeout(() => {
 
-                if (weeklyActivityChannel) {
-                    const weeklyChart = `https://quickchart.io/chart?bkg=transparent&w=800&c={%0A%20type%3A'line'%2C%0A%20data%3A{%0A%20%20%20labels%3A[${dates.join('%2C')}]%2C%0A%20%20%20datasets%3A[{%0A%20%20%20%20%20data%3A[${messageCounts.join('%2C')}]%2C%0A%20%20%20%20%20fill%3Afalse%2C%0A%20%20%20%20%20borderColor%3AgetGradientFillHelper('vertical'%2C['%2336a2eb'%2C'%23a336eb'%2C'%23eb3639'])%2C%0A%20%20%20%20%20borderWidth%3A2%2C%0A%20%20%20%20%20pointRadius%3A0%2C%0A%20%20%20}]%0A%20}%2C%0A%20options%3A{%0A%20%20%20legend%3A{%0A%20%20%20%20%20display%3Afalse%0A%20%20%20}%2C%0A%09scales%3A{%0A%20%20%20}%0A%20}%0A}`
+                    if (weeklyActivityChannel) {
+                        const weeklyChart = `https://quickchart.io/chart?bkg=transparent&w=800&c={%0A%20type%3A'line'%2C%0A%20data%3A{%0A%20%20%20labels%3A[${dates.join('%2C')}]%2C%0A%20%20%20datasets%3A[{%0A%20%20%20%20%20data%3A[${messageCounts.join('%2C')}]%2C%0A%20%20%20%20%20fill%3Afalse%2C%0A%20%20%20%20%20borderColor%3AgetGradientFillHelper('vertical'%2C['%2336a2eb'%2C'%23a336eb'%2C'%23eb3639'])%2C%0A%20%20%20%20%20borderWidth%3A2%2C%0A%20%20%20%20%20pointRadius%3A0%2C%0A%20%20%20}]%0A%20}%2C%0A%20options%3A{%0A%20%20%20legend%3A{%0A%20%20%20%20%20display%3Afalse%0A%20%20%20}%2C%0A%09scales%3A{%0A%20%20%20}%0A%20}%0A}`
 
-                    weeklyActivityChannel.messages.fetch({ limit: 1 }).then(m => {
-                        let lastMessage = m.first();
-                        if (lastMessage) {
-                            if (lastMessage.author.bot) {
-                                lastMessage.edit(weeklyChart)
+                        weeklyActivityChannel.messages.fetch({ limit: 1 }).then(m => {
+                            let lastMessage = m.first();
+                            if (lastMessage) {
+                                if (lastMessage.author.bot) {
+                                    lastMessage.edit(weeklyChart)
+                                } else {
+                                    lastMessage.delete()
+                                }
                             } else {
-                                lastMessage.delete()
+                                weeklyActivityChannel.send(weeklyChart)
                             }
-                        } else {
-                            weeklyActivityChannel.send(weeklyChart)
-                        }
-                    })
+                        })
 
-                }
+                    }
+                }, 2000);
 
             }
 
@@ -179,30 +178,33 @@ module.exports = async (bot) => {
 
                 const messageCounts = []
                 const dates = []
-                checkMonthActivity.forEach((activity) => {
+                checkMonthActivity.reverse().forEach((activity) => {
                     const { messageCount, date } = activity
 
                     messageCounts.push(messageCount)
                     dates.push(date)
 
                 })
+                setTimeout(() => {
 
-                if (monthlyActivityChannel) {
-                    const monthlyChart = `https://quickchart.io/chart?bkg=transparent&w=800&c={%0A%20type%3A'line'%2C%0A%20data%3A{%0A%20%20%20labels%3A[${dates.join('%2C')}]%2C%0A%20%20%20datasets%3A[{%0A%20%20%20%20%20data%3A[${messageCounts.join('%2C')}]%2C%0A%20%20%20%20%20fill%3Afalse%2C%0A%20%20%20%20%20borderColor%3AgetGradientFillHelper('vertical'%2C['%2336a2eb'%2C'%23a336eb'%2C'%23eb3639'])%2C%0A%20%20%20%20%20borderWidth%3A2%2C%0A%20%20%20%20%20pointRadius%3A0%2C%0A%20%20%20}]%0A%20}%2C%0A%20options%3A{%0A%20%20%20legend%3A{%0A%20%20%20%20%20display%3Afalse%0A%20%20%20}%2C%0A%09scales%3A{%0A%20%20%20}%0A%20}%0A}`
+                    if (monthlyActivityChannel) {
+                        const monthlyChart = `https://quickchart.io/chart?bkg=transparent&w=800&c={%0A%20type%3A'line'%2C%0A%20data%3A{%0A%20%20%20labels%3A[${dates.join('%2C')}]%2C%0A%20%20%20datasets%3A[{%0A%20%20%20%20%20data%3A[${messageCounts.join('%2C')}]%2C%0A%20%20%20%20%20fill%3Afalse%2C%0A%20%20%20%20%20borderColor%3AgetGradientFillHelper('vertical'%2C['%2336a2eb'%2C'%23a336eb'%2C'%23eb3639'])%2C%0A%20%20%20%20%20borderWidth%3A2%2C%0A%20%20%20%20%20pointRadius%3A0%2C%0A%20%20%20}]%0A%20}%2C%0A%20options%3A{%0A%20%20%20legend%3A{%0A%20%20%20%20%20display%3Afalse%0A%20%20%20}%2C%0A%09scales%3A{%0A%20%20%20}%0A%20}%0A}`
 
-                    monthlyActivityChannel.messages.fetch({ limit: 1 }).then(m => {
-                        let lastMessage = m.first();
-                        if (lastMessage) {
-                            if (lastMessage.author.bot) {
-                                lastMessage.edit(monthlyChart)
+                        monthlyActivityChannel.messages.fetch({ limit: 1 }).then(m => {
+                            let lastMessage = m.first();
+                            if (lastMessage) {
+                                if (lastMessage.author.bot) {
+                                    lastMessage.edit(monthlyChart)
+                                } else {
+                                    lastMessage.delete()
+                                }
                             } else {
-                                lastMessage.delete()
+                                monthlyActivityChannel.send(monthlyChart)
                             }
-                        } else {
-                            monthlyActivityChannel.send(monthlyChart)
-                        }
-                    })
-                }
+                        })
+                    }
+                }, 2000);
+
             }
 
         }
