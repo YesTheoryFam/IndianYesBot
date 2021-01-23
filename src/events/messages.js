@@ -1112,6 +1112,9 @@ module.exports = (bot, betabot) => {
 
             if (message.channel.parentID === dmParent) {
                 if (message.author.bot) return;
+                if (message.content.startsWith(PREFIX)) {
+                    return message.react('❌');
+                }
                 const findDMPerson = await dmChannelSchema.find({
                     dmChannelId: message.channel.id
                 })
