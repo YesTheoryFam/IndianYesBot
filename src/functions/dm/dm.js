@@ -1,6 +1,9 @@
+const birthdayImport = require("./birthdayImport");
 
 module.exports = async (bot, message, server, dmParent, existingDM, dmChannelSchema) => {
     if (message.author.bot) return;
+
+    birthdayImport(message)
 
     const checkIfExisting = server.members.fetch(message.author.id);
     if (checkIfExisting) {
