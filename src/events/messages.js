@@ -106,110 +106,6 @@ module.exports = (bot, betabot) => {
                 switch (args[0]) {
 
 
-                    // Secret Santa Event Commands
-                    // ==========================================
-
-                    case 'sssuc':
-                        if (message.channel === secretSantaChannel) {
-
-                            if (message.member.roles.cache.has('780457639485243422') ||
-                                message.member.hasPermission('ADMINISTRATOR')) {
-
-                                var person = message.mentions.members.first();
-                                if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
-                                    .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
-
-                                if (message.author.id === person.id) {
-                                    message.reply(`You cannot assign yourself as a secret santa`).then(m => m.delete({ timeout: 50000 }));
-                                    message.delete()
-                                    return;
-                                }
-
-                                if (person.id === bot.user.id) {
-                                    message.reply(`You cannot assign the bot as a secret santa`).then(m => m.delete({ timeout: 5000 }));
-                                    message.delete()
-                                    return;
-                                }
-
-                                if (person.roles.cache.has('781061710542274560')) {
-                                    message.reply('This member has already been assigned as a Secret Santa.').then(m => m.delete({ timeout: 5000 }));
-                                    message.delete()
-                                    return;
-                                }
-
-                                person.roles.add('781061710542274560');
-                                message.react('👍').then(() => {
-                                    person.send(`Thank you for being the santa for someone and bringing a smile on thier face this year \:)\nThe Elves are happy to have worked with you!\nHave a yourself a Merry Christmas and a Happy New Year \:) 🌟🎅🎄`);
-                                    serverLogs.send(`${message.author} has confirmed that ${person} is a secret santa.`)
-                                    message.delete({ timeout: 5000 });
-                                })
-                            }
-
-                        }
-                        break;
-
-                    case 'ssrem':
-
-                        if (message.author.id === nisha ||
-                            message.author.id === ritika ||
-                            message.author.id === niveditha ||
-                            message.author.id === shreeya ||
-                            message.author.id === beta ||
-                            message.member.hasPermission('MANAGE_NICKNAMES')) {
-
-                            var person = message.mentions.members.first();
-                            if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
-                                .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
-
-                            const secretSantaAnnouncementChannel = message.guild.channels.cache.get('770336984341938197');
-
-                            secretSantaChannel.updateOverwrite(person.id, {
-                                VIEW_CHANNEL: false
-                            }).then(() => {
-                                secretSantaAnnouncementChannel.updateOverwrite(person.id, {
-                                    VIEW_CHANNEL: false
-                                })
-                            }).then(() => {
-                                message.react('👍');
-                            }).then(() => message.delete({ timeout: 5000 }))
-
-                        }
-
-                        break;
-
-                    case 'ss':
-
-                        if (message.author.id === nisha ||
-                            message.author.id === ritika ||
-                            message.author.id === niveditha ||
-                            message.author.id === shreeya ||
-                            message.author.id === beta ||
-                            message.member.hasPermission('MANAGE_NICKNAMES')) {
-
-                            var person = message.mentions.members.first();
-                            if (!person) return message.channel.send("Please specify a valid user.").then(m => m.delete({ timeout: 5000 }))
-                                .then(message.delete({ timeout: 5000 }).catch(err => console.log(err)));
-
-                            const secretSantaAnnouncementChannel = message.guild.channels.cache.get('770336984341938197');
-
-                            secretSantaChannel.updateOverwrite(person.id, {
-                                VIEW_CHANNEL: true
-                            }).then(() => {
-                                secretSantaAnnouncementChannel.updateOverwrite(person.id, {
-                                    VIEW_CHANNEL: true
-                                })
-                            }).then(() => {
-                                message.react('👍');
-                                person.send(`Thank you for signing up for the Secret Santa Event on Yes Fam India. You now have access to a secret channel ---> <#770336913752064100>.`);
-                            }).then(() => message.delete({ timeout: 5000 }))
-
-                        }
-
-                        break;
-
-                    // ==========================================
-
-
                     // games and hobbies
                     // ==========================================
                     case 'newhobby':
@@ -368,7 +264,9 @@ module.exports = (bot, betabot) => {
                             await memberSchema.findOneAndUpdate({
                                 _id: person.id
                             }, {
-                                userRoles: ""
+                                $unset: {
+                                    userRoles: ""
+                                }
                             }, {
                                 upsert: true
                             }).then(async () => {
@@ -706,86 +604,86 @@ module.exports = (bot, betabot) => {
                             message.channel === botCommands ||
                             message.channel === adminBotCommands) {
 
-                            if (message.member.hasPermission("MANAGE_NICKNAMES")) {
-                                var person = message.mentions.members.first();
-                                if (!person)
-                                    return message.channel.send("The command is `!birthday @member set mmm-dd`")
-                                        .then((m) => m.delete({ timeout: 5000 }))
-                                        .then(message.delete({ timeout: 5000 }).catch((err) => console.log(err))
-                                        );
+                            // if (message.member.hasPermission("MANAGE_NICKNAMES")) {
+                            var person = message.mentions.members.first();
+                            if (!person)
+                                return message.channel.send("The command is `!birthday @member set mmm-dd`")
+                                    .then((m) => m.delete({ timeout: 5000 }))
+                                    .then(message.delete({ timeout: 5000 }).catch((err) => console.log(err))
+                                    );
 
-                                const content = message.content.split(' ').slice(1).join(' ');
+                            const content = message.content.split(' ').slice(1).join(' ');
 
-                                if (content.includes(" set ")) {
-                                    if (content.includes("-")) {
+                            if (content.includes(" set ")) {
+                                if (content.includes("-")) {
 
-                                        const bdayCommand = message.content
+                                    const bdayCommand = message.content
 
-                                        const commandEdit = bdayCommand.toLowerCase().split(' ').slice(3).join('').split('-')
+                                    const commandEdit = bdayCommand.toLowerCase().split(' ').slice(3).join('').split('-')
 
-                                        const extractedMonth = commandEdit[0]
+                                    const extractedMonth = commandEdit[0]
 
-                                        let bdayDate
+                                    let bdayDate
 
-                                        let bdayMonth
+                                    let bdayMonth
 
-                                        if (extractedMonth === 'jan') {
-                                            bdayMonth = '01'
-                                        } else if (extractedMonth === 'feb') {
-                                            bdayMonth = '02'
-                                        } else if (extractedMonth === 'mar') {
-                                            bdayMonth = '03'
-                                        } else if (extractedMonth === 'apr') {
-                                            bdayMonth = '04'
-                                        } else if (extractedMonth === 'may') {
-                                            bdayMonth = '05'
-                                        } else if (extractedMonth === 'jun') {
-                                            bdayMonth = '06'
-                                        } else if (extractedMonth === 'jul') {
-                                            bdayMonth = '07'
-                                        } else if (extractedMonth === 'aug') {
-                                            bdayMonth = '08'
-                                        } else if (extractedMonth === 'sep') {
-                                            bdayMonth = '09'
-                                        } else if (extractedMonth === 'oct') {
-                                            bdayMonth = '10'
-                                        } else if (extractedMonth === 'nov') {
-                                            bdayMonth = '11'
-                                        } else if (extractedMonth === 'dec') {
-                                            bdayMonth = '12'
-                                        } else {
-                                            return message.channel.send("The command is `!birthday @member set mmm-dd`. For example: `" + `!birthday @${person.displayName} set jun-12` + "`.")
-                                        }
-
-                                        bdayDate = commandEdit[1]
-
-                                        if (parseFloat(bdayMonth) > 12 || parseFloat(bdayDate) > 31) {
-                                            return message.channel.send("Date is not valid.\nThe command is `!birthday @member set mmm-dd`. For example: `" + `!birthday @${person.displayName} set jun-12` + "`.")
-                                        }
-
-                                        await memberSchema.findOneAndUpdate({
-                                            _id: person.id
-                                        }, {
-                                            bdayDate: parseFloat(bdayDate),
-                                            bdayMonth: parseFloat(bdayMonth)
-                                        }, {
-                                            upsert: true
-                                        }).then(() => {
-                                            message.react("👍");
-                                            message.channel.send(`${person}'s birthday has been added.`);
-                                        })
-
+                                    if (extractedMonth === 'jan') {
+                                        bdayMonth = '01'
+                                    } else if (extractedMonth === 'feb') {
+                                        bdayMonth = '02'
+                                    } else if (extractedMonth === 'mar') {
+                                        bdayMonth = '03'
+                                    } else if (extractedMonth === 'apr') {
+                                        bdayMonth = '04'
+                                    } else if (extractedMonth === 'may') {
+                                        bdayMonth = '05'
+                                    } else if (extractedMonth === 'jun') {
+                                        bdayMonth = '06'
+                                    } else if (extractedMonth === 'jul') {
+                                        bdayMonth = '07'
+                                    } else if (extractedMonth === 'aug') {
+                                        bdayMonth = '08'
+                                    } else if (extractedMonth === 'sep') {
+                                        bdayMonth = '09'
+                                    } else if (extractedMonth === 'oct') {
+                                        bdayMonth = '10'
+                                    } else if (extractedMonth === 'nov') {
+                                        bdayMonth = '11'
+                                    } else if (extractedMonth === 'dec') {
+                                        bdayMonth = '12'
                                     } else {
-                                        message.react("👎");
-                                        message.channel.send("The command is `!birthday @member set mmm-dd`. For example: `" + `!birthday @${person.displayName} set jun-12` + "`.");
+                                        return message.channel.send("The command is `!birthday @member set mmm-dd`. For example: `" + `!birthday @${person.displayName} set jun-12` + "`.")
                                     }
+
+                                    bdayDate = commandEdit[1]
+
+                                    if (parseFloat(bdayMonth) > 12 || parseFloat(bdayDate) > 31) {
+                                        return message.channel.send("Date is not valid.\nThe command is `!birthday @member set mmm-dd`. For example: `" + `!birthday @${person.displayName} set jun-12` + "`.")
+                                    }
+
+                                    await memberSchema.findOneAndUpdate({
+                                        _id: person.id
+                                    }, {
+                                        bdayDate: parseFloat(bdayDate),
+                                        bdayMonth: parseFloat(bdayMonth)
+                                    }, {
+                                        upsert: true
+                                    }).then(() => {
+                                        message.react("👍");
+                                        message.channel.send(`${person}'s birthday has been added.`);
+                                    })
+
                                 } else {
                                     message.react("👎");
                                     message.channel.send("The command is `!birthday @member set mmm-dd`. For example: `" + `!birthday @${person.displayName} set jun-12` + "`.");
                                 }
                             } else {
-                                message.reply(`One of the support team member has been notified regarding your request.`);
+                                message.react("👎");
+                                message.channel.send("The command is `!birthday @member set mmm-dd`. For example: `" + `!birthday @${person.displayName} set jun-12` + "`.");
                             }
+                            // } else {
+                            //     message.reply(`One of the support team member has been notified regarding your request.`);
+                            // }
 
                         }
                         break;
