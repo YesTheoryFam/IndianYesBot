@@ -17,7 +17,7 @@ This is the Indian **Yesbot**. A bot that moderates [**Yes Fam India Discord Ser
 
 ## What can this bot do?
 
-The Yesbot is designed to moderate the Yes Fam Indian's Discord Server. Starting from the joining of a member, the bot keeps a check on every single message sent on the server, ensuring that every member is following the community guidelines. So every feature this bot offers are considered as a server feature.
+The Yesbot is designed to handle all of the communication on the Yes Fam India's Discord server. Starting from any new member joining the server, the bot will monitor every post on the server to ensure that everyone is following community guidelines. So every feature this bot offers are considered as a server feature.
 
 Here are some of the Server Features:
 
@@ -29,11 +29,11 @@ Here are some of the Server Features:
 - Server Activity Charts
 - Profile Cards
 - Birthday Reminders
-- Gaming Channels (Coming Soon)
+- Gaming Channels
   - Gamers can be summoned with @gamers tag.
   - List of interested games are added to the member's profile.
-- Hobby Channels (Coming Soon)
-- Groups (Coming Soon)
+- Hobby Channels
+- Groups
 
 ---
 
@@ -42,8 +42,8 @@ Here are some of the Server Features:
 The Yesbot and it's database is hosted on a couple of VPS Servers, in the US Regions.
 
 ```
-Main Bot VPS - Digital Ocean
-Test Bot VPS - Heroku
+Main Bot - Digital Ocean(VPS)
+Test Bot - railway.app(Docker)
 Database - mongodb
 ```
 
@@ -51,13 +51,13 @@ Database - mongodb
 
 ## Is that it?
 
-Well, of course not. The Yesbot will keep getting updates on a constant basis, making it better overtime.
+Well, of course not. The Yesbot is constantly being updated and will constantly be improved.
 
 ## Can I contribute?
 
-Yes, certainly. The code is written in a very simple format, in order, to welcome new born coders to understand and contribute.
+Yes, certainly. In order for new born programmers to learn and contribute, the code is written in a very simple format.
 
-Once you've gone through the code and ready to contribute, ping one of the moderators on the server with the @support tag and let them know that you want to contribute.
+Once you've gone through the code and ready to contribute, or even if it's just a suggestion, ping one of the moderators on the server with the @support tag and let them know that you want to contribute.
 
 ## Can I fork this code and deploy my bot?
 

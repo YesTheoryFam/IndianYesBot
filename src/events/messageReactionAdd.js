@@ -30,16 +30,16 @@ module.exports = bot => {
         const islandRegion = reaction.message.guild.channels.cache.get('747508979931939038');
         const welcomeChat = reaction.message.guild.channels.cache.get('721050178794291292');
 
-        var welcomMessage = chanceObj.pickone([`
-        A wild ${user} appeared.`,
-        `${user} joined the party.`,
-        `${user} just landed.`,
-        `${user} just *sliiid* into the server.`,
-        `${user} is here.`,
-        `Welcome, ${user}. We hope you brought pizza 🍕.`,
-        `${user} just showed up!`,
-        `Everyone welcome ${user}`,
-        `Good to see you, ${user}`
+        var welcomMessage = chanceObj.pickone([
+            `A wild ${user} appeared.`,
+            `${user} joined the party.`,
+            `${user} just landed.`,
+            `${user} just *sliiid* into the server.`,
+            `${user} is here.`,
+            `Welcome, ${user}. We hope you brought pizza 🍕.`,
+            `${user} just showed up!`,
+            `Everyone welcome ${user}`,
+            `Good to see you, ${user}`
         ]);
 
         if (reaction.message.partial) await reaction.message.fetch();
